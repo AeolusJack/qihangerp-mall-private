@@ -1,17 +1,23 @@
 <script setup>
 import HomePanel from './HomePanel.vue';
-import { findNewAPI } from '@/apis/home'
+import {getNewBanner} from '@/apis/home'
 import { ref, onMounted } from 'vue'
 
 // 获取数据
 const newList = ref([])
 
 const getNewList = async () => {
-  const res = await findNewAPI()
-  newList.value = res.result
+  const res = await getNewBanner()
+  newList.value = res.data
 }
 
 onMounted(() => getNewList())
+// const getNewList = async () => {
+//   const res = await findNewAPI()
+//   newList.value = res.result
+// }
+//
+// onMounted(() => getNewList())
 
 </script>
 
@@ -20,9 +26,9 @@ onMounted(() => getNewList())
     <ul class="goods-list">
       <li v-for="item in newList" :key="item.id">
         <RouterLink :to="`/detail/${item.id}`">
-          <img :src="item.picture" alt="" />
-          <p class="name">{{ item.name }}</p>
-          <p class="price">&yen;{{ item.price }}</p>
+          <img :src="item.image" alt="" />
+          <p class="name">{{ item.title }}</p>
+          <p class="price">&yen;{{ item.showPrice }}</p>
         </RouterLink>
       </li>
     </ul>

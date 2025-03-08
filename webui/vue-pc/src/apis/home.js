@@ -5,12 +5,35 @@ export function getBannerAPI(params = {}) {
   return httpInstance({
     url: '/api/mall-api/banner/list',
     params: {
-      which: 2,
+      which: 1,
       type:2,
       position:'HOME'
     }
   })
 }
+export function getNewBanner(params = {}) {
+  return httpInstance({
+    url: '/api/mall-api/banner/list',
+    params: {
+      which: 1,
+      type:3,
+      position:'HOME',
+      special:'new'
+    }
+  })
+}
+export function getHotBanner(params = {}) {
+  return httpInstance({
+    url: '/api/mall-api/banner/list',
+    params: {
+      which: 1,
+      type:3,
+      position:'HOME',
+      special:'hot'
+    }
+  })
+}
+
 // export function getBannerAPI(params = {}) {
 //   // 默认为1 商品为2
 //   const { distributionSite = '1' } = params
@@ -22,20 +45,23 @@ export function getBannerAPI(params = {}) {
 //   })
 // }
 
-export const findNewAPI = () => {
-  return httpInstance({
-    url: '/home/new'
+export const getHomeNav = () => {
+  return httpInstance.get('/api/mall-api/nav/list', {
+    params: {
+      pageId: 0
+    }
   })
 }
 
-export const getHotAPI = () => {
+// export const getGoodsAPI = () => {
+//   return httpInstance({
+//     url: '/home/goods'
+//   })
+// }
+export function getGoodsAPI(params = {}) {
   return httpInstance({
-    url: 'home/hot'
-  })
-}
-
-export const getGoodsAPI = () => {
-  return httpInstance({
-    url: '/home/goods'
+    url: '/api/mall-api/recCategory/list',
+    params: {
+    }
   })
 }

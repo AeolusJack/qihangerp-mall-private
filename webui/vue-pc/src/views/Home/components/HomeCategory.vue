@@ -17,13 +17,13 @@ const categoryStore = useCategoryStore()
                     <ul>
                         <li v-for="i in item.goods" :key="i.id">
                             <RouterLink to="/">
-                                <img :src="i.picture" alt="" />
+                                <img :src="i.goodsImage" alt="" />
                                 <div class="info">
                                     <p class="name ellipsis-2">
-                                        {{ i.name }}
+                                        {{ i.goodsName }}
                                     </p>
-                                    <p class="desc ellipsis">{{ i.desc }}</p>
-                                    <p class="price"><i>¥</i>{{ i.price }}</p>
+                                    <p class="desc ellipsis">{{ i.comment }}</p>
+                                    <p class="price"><i>¥</i>{{ i.goodsPriceMin }}</p>
                                 </div>
                             </RouterLink>
                         </li>

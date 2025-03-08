@@ -36,7 +36,8 @@ export const getHomeNav = () => {
 export const getHomeGoods = () => {
   return request.get('/api/mall-api/recGoods/list', {
     params: {
-      pageId: 0
+      which: 2,
+      position:'HOME'
     }
   })
 }

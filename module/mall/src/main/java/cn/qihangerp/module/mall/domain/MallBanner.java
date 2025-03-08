@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 商城Banner
- * @TableName mall_banners
+ * @TableName mall_banner
  */
 @TableName(value ="mall_banner")
 @Data
@@ -41,7 +41,7 @@ public class MallBanner implements Serializable {
     private String image;
 
     /**
-     * 类型（1：logo 2：banner 3：推荐商品)
+     * 类型（1：logo 2：banner 3 special 专题 )
      */
     private Integer type;
 
@@ -54,6 +54,21 @@ public class MallBanner implements Serializable {
      * 展示端1：PC 2：H5
      */
     private Integer which;
+
+    /**
+     * 专题类别
+     */
+    private String special;
+
+    /**
+     * 描述
+     */
+    private String remark;
+
+    /**
+     * 显示价格
+     */
+    private String showPrice;
 
     /**
      * 开始时间

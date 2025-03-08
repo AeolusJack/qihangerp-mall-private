@@ -1,25 +1,36 @@
 <script setup>
-import { useCategoryStore } from '@/stores/categoryStore';
+// import { useCategoryStore } from '@/stores/categoryStore';
 import HeaderCart from './HeaderCart.vue';
+import {getBannerAPI, getHomeNav} from "@/apis/home.js";
+import {onMounted, ref} from "vue";
 
 // 使用pinia中的数据
-const categoryStore = useCategoryStore()
+// const categoryStore = getHomeNav()
+// console.log("======aaaaaa====",categoryStore.data)
+const navList = ref([])
+
+const getBanner = async () => {
+  const res = await getHomeNav()
+  navList.value = res.data
+}
+
+onMounted(() => getBanner())
 </script>
 
 <template>
     <header class='app-header'>
         <div class="container">
             <h1 class="logo">
-                <RouterLink to="/">小鲜兔</RouterLink>
+                <RouterLink to="/">启航商城</RouterLink>
             </h1>
             <ul class="app-header-nav">
-                <li class="home" v-for="item in categoryStore.categoryList" key="item.id">
-                    <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+                <li class="home" v-for="item in navList" key="item.id">
+                    <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.text }}</RouterLink>
                 </li>
             </ul>
             <div class="search">
                 <i class="iconfont icon-search"></i>
-                <input type="text" placeholder="搜一搜">
+                <input type="text" placeholder="搜一搜a">
             </div>
             <!-- 头部购物车 -->
             <HeaderCart />
@@ -58,7 +69,7 @@ const categoryStore = useCategoryStore()
 
         li {
             margin-right: 40px;
-            width: 38px;
+            //width: 38px;
             text-align: center;
 
             a {

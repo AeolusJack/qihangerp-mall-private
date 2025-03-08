@@ -13,6 +13,9 @@
             <result property="type" column="type" jdbcType="INTEGER"/>
             <result property="position" column="position" jdbcType="VARCHAR"/>
             <result property="which" column="which" jdbcType="INTEGER"/>
+            <result property="special" column="special" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="showPrice" column="show_price" jdbcType="VARCHAR"/>
             <result property="startTime" column="start_time" jdbcType="INTEGER"/>
             <result property="endTime" column="end_time" jdbcType="INTEGER"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
@@ -23,7 +26,8 @@
     <sql id="Base_Column_List">
         id,sort,title,
         url,image,type,
-        position,which,start_time,
+        position,which,special,
+        remark,show_price,start_time,
         end_time,status,create_by,
         create_on
     </sql>

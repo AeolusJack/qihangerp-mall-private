@@ -18,11 +18,12 @@ import java.util.List;
 public class HomeBannerController extends BaseController {
     private final MallBannerService bannersService;
     @GetMapping("/list")
-    public AjaxResult list(Integer which,Integer type,String position)
+    public AjaxResult list(Integer which,Integer type,String position,String special)
     {
         LambdaQueryWrapper<MallBanner> queryWrapper = new LambdaQueryWrapper<MallBanner>()
                 .eq(which!=null,MallBanner::getWhich,which)
                 .eq(type!=null,MallBanner::getType,type)
+                .eq(StringUtils.hasText(special),MallBanner::getSpecial,special)
                 .eq(StringUtils.hasText(position),MallBanner::getPosition,position);
 
         List<MallBanner> list = bannersService.list(queryWrapper);

@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 08/03/2025 12:36:11
+ Date: 08/03/2025 16:21:55
 */
 
 SET NAMES utf8mb4;
@@ -70,9 +70,12 @@ CREATE TABLE `mall_banner`  (
   `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题',
   `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'url',
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '图片地址',
-  `type` int NOT NULL COMMENT '类型（1：logo 2：banner )',
+  `type` int NOT NULL COMMENT '类型（1：logo 2：banner 3 special 专题 )',
   `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '位置（HOME首页',
   `which` int NOT NULL COMMENT '展示端1：PC 2：H5',
+  `special` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '专题类别',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `show_price` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '显示价格',
   `start_time` int NULL DEFAULT NULL COMMENT '开始时间',
   `end_time` int NULL DEFAULT NULL COMMENT '结束时间',
   `status` int NOT NULL COMMENT '状态 1正常 0下架',
@@ -84,71 +87,22 @@ CREATE TABLE `mall_banner`  (
 -- ----------------------------
 -- Records of mall_banner
 -- ----------------------------
-INSERT INTO `mall_banner` VALUES (1, 12, 'AA', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/6d239000de9c3f12aafa571349b63d22.jpg', 2, 'HOME', 2, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (2, 12, 'BB', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/5901a2e13e1075882950af75c98d0007.jpg', 2, 'HOME', 2, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (3, 12, 'CC', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/7143e84bf3dd41fa67b9675a9e5d81a3.jpg', 2, 'HOME', 2, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (4, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/4a79180a-1a5a-4042-8a77-4db0b9c800a8.jpg', 2, 'HOME', 1, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (5, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/1ba86bcc-ae71-42a3-bc3e-37b662f7f07e.jpg', 2, 'HOME', 1, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (6, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/dfc11bb0-4af5-4e9b-9458-99f615cc685a.jpg', 2, 'HOME', 1, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (7, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/6d202d8e-bb47-4f92-9523-f32ab65754f4.jpg', 2, 'HOME', 1, NULL, NULL, 1, 'admin', 1739754344);
-INSERT INTO `mall_banner` VALUES (8, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/e83efb1b-309c-46f7-98a3-f1fefa694338.jpg', 2, 'HOME', 1, NULL, NULL, 1, 'admin', 1739754344);
-
--- ----------------------------
--- Table structure for mall_goods
--- ----------------------------
-DROP TABLE IF EXISTS `mall_goods`;
-CREATE TABLE `mall_goods`  (
-  `goods_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `goods_code` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '0' COMMENT '商品编码',
-  `goods_image` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'产品主图\'',
-  `goods_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'商品标题\'',
-  `deputy_title` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
-  `category_id` bigint NOT NULL DEFAULT 0 COMMENT '商品分类id',
-  `goods_price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最高价',
-  `goods_price_min` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最低价',
-  `line_price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '划线最高价',
-  `line_price_min` decimal(8, 2) NULL DEFAULT NULL COMMENT '划线最低价',
-  `sale_price` decimal(8, 2) NOT NULL COMMENT '销售价格',
-  `cost_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '成本价格(采购价)',
-  `market_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '市场价格',
-  `commision_rate` decimal(3, 2) NOT NULL DEFAULT 0.20 COMMENT '佣金比例(一级)',
-  `commision_rate2` decimal(3, 2) NOT NULL DEFAULT 0.10 COMMENT '佣金比例(二级)',
-  `comment` varchar(145) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'产品简短介绍，参照京东商品红色文字\'',
-  `category1` bigint NOT NULL COMMENT '产品一级分类',
-  `category2` bigint NOT NULL COMMENT '产品二级分类',
-  `category3` bigint NOT NULL COMMENT '产品三级分类',
-  `order_socre` decimal(6, 2) NOT NULL COMMENT '排序综合得分',
-  `is_stickypost` int NOT NULL COMMENT '是否置顶(是1，否0)',
-  `comment_num` int NOT NULL COMMENT '评论数量',
-  `comment_socre` decimal(4, 2) NOT NULL COMMENT '评论得分',
-  `goods_sales` int NOT NULL DEFAULT 0 COMMENT '累积销量',
-  `goods_sales_show` int NULL DEFAULT 0 COMMENT '销量，用于前台显示',
-  `publish_state` int NOT NULL COMMENT '发布状态（2在库中1已上架）',
-  `sales_status` int NOT NULL COMMENT '销售状态（2已下架1上架中）',
-  `create_on` int NOT NULL COMMENT '创建时间',
-  `create_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'创建人\'',
-  `modify_on` int NULL DEFAULT NULL COMMENT '最后修改时间',
-  `modify_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
-  `delivery_freight_template` int NULL DEFAULT NULL COMMENT '运费模版',
-  `delivery_province` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\n发货省份',
-  `delivery_city` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货城市',
-  `delivery_address` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货地文字（显示用，如：广东深圳）',
-  `keyword` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '关键词',
-  `is_promotion` int NOT NULL DEFAULT 0 COMMENT '是否在促销，0否1是默认0',
-  `promotion_id` int NOT NULL DEFAULT 0 COMMENT '促销id',
-  `promotion_type` int NOT NULL DEFAULT 0 COMMENT '促销类型',
-  `promotion_title` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '促销标题',
-  `promotion_rate` int NOT NULL DEFAULT 0 COMMENT '促销的折扣',
-  `promotion_full_count` int NOT NULL DEFAULT 1 COMMENT '单品满折条件',
-  `erp_goods_id` int NOT NULL DEFAULT 0 COMMENT 'ERP商品id',
-  `sales_type` int NOT NULL DEFAULT 1 COMMENT '销售模式1现售2预售',
-  `send_days` int NULL DEFAULT NULL COMMENT '预售发货天数',
-  PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of mall_goods
--- ----------------------------
+INSERT INTO `mall_banner` VALUES (1, 12, 'AA', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/6d239000de9c3f12aafa571349b63d22.jpg', 2, 'HOME', 2, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (2, 12, 'BB', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/5901a2e13e1075882950af75c98d0007.jpg', 2, 'HOME', 2, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (3, 12, 'CC', 'aa', 'https://smart-shop.itheima.net/uploads/10001/20230320/7143e84bf3dd41fa67b9675a9e5d81a3.jpg', 2, 'HOME', 2, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (4, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/4a79180a-1a5a-4042-8a77-4db0b9c800a8.jpg', 2, 'HOME', 1, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (5, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/1ba86bcc-ae71-42a3-bc3e-37b662f7f07e.jpg', 2, 'HOME', 1, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (6, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/dfc11bb0-4af5-4e9b-9458-99f615cc685a.jpg', 2, 'HOME', 1, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (7, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/6d202d8e-bb47-4f92-9523-f32ab65754f4.jpg', 2, 'HOME', 1, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (8, 11, 'AA', '/category/1019000', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-15/e83efb1b-309c-46f7-98a3-f1fefa694338.jpg', 2, 'HOME', 1, NULL, NULL, NULL, NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (9, 11, '黑科技专利款100%防水保暖针织毛线帽\", desc: \"黑科技专利，做到真正的保暖防水', '/category/1019000', 'https://yanxuan-item.nosdn.127.net/3683d874b9623434a10b4ab0c2e6be9f.png', 3, 'HOME', 1, 'new', NULL, '135.00', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (10, 11, '探险者黑胶防晒防雨遮阳伞户外钓鱼伞', '/category/1019000', 'https://yanxuan-item.nosdn.127.net/66090c5de391e43e4516601e14870842.jpg', 3, 'HOME', 1, 'new', NULL, '169.00', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (11, 11, '趣味小恐龙绣花，男童灯芯绒衬衫', '/category/1019000', 'https://yanxuan-item.nosdn.127.net/e68d406a58622a8d850de442aacfcf2e.jpg', 3, 'HOME', 1, 'new', NULL, '89.00', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (12, 11, '日本冰块冰球制冰模具', '/category/1019000', 'https://yanxuan-item.nosdn.127.net/2be38fc160992fe41f7d4a45bd0f90e5.png', 3, 'HOME', 1, 'new', NULL, '29.80', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (13, 11, '特惠推荐', '/category/1019000', 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_1.jpg', 3, 'HOME', 1, 'hot', '它们最实惠', '29.80', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (14, 11, '爆款推荐', '/category/1019000', 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_2.jpg', 3, 'HOME', 1, 'hot', '它们最受欢迎', '29.80', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (15, 11, '一站买全', '/category/1019000', 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_3.jpg', 3, 'HOME', 1, 'hot', '使用场景下精心优选', '29.80', NULL, NULL, 1, 'admin', 1739754344);
+INSERT INTO `mall_banner` VALUES (16, 11, '领券中心', '/category/1019000', 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/popular_4.jpg', 3, 'HOME', 1, 'hot', '更多超值优惠券', '29.80', NULL, NULL, 1, 'admin', 1739754344);
 
 -- ----------------------------
 -- Table structure for mall_goods_attachment
@@ -226,6 +180,63 @@ CREATE TABLE `mall_goods_comment_image`  (
 
 -- ----------------------------
 -- Records of mall_goods_comment_image
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for mall_goods_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_goods_detail`;
+CREATE TABLE `mall_goods_detail`  (
+  `goods_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id（来自于o_goods表的主键id）',
+  `goods_code` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '0' COMMENT '商品编码',
+  `goods_image` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'产品主图\'',
+  `goods_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'商品标题\'',
+  `deputy_title` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
+  `category_id` bigint NOT NULL DEFAULT 0 COMMENT '商品分类id',
+  `goods_price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最高价',
+  `goods_price_min` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最低价',
+  `line_price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '划线最高价',
+  `line_price_min` decimal(8, 2) NULL DEFAULT NULL COMMENT '划线最低价',
+  `sale_price` decimal(8, 2) NOT NULL COMMENT '销售价格',
+  `cost_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '成本价格(采购价)',
+  `market_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '市场价格',
+  `commision_rate` decimal(3, 2) NOT NULL DEFAULT 0.20 COMMENT '佣金比例(一级)',
+  `commision_rate2` decimal(3, 2) NOT NULL DEFAULT 0.10 COMMENT '佣金比例(二级)',
+  `comment` varchar(145) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'产品简短介绍，参照京东商品红色文字\'',
+  `category1` bigint NOT NULL COMMENT '产品一级分类',
+  `category2` bigint NOT NULL COMMENT '产品二级分类',
+  `category3` bigint NOT NULL COMMENT '产品三级分类',
+  `order_socre` decimal(6, 2) NOT NULL COMMENT '排序综合得分',
+  `is_stickypost` int NOT NULL COMMENT '是否置顶(是1，否0)',
+  `comment_num` int NOT NULL COMMENT '评论数量',
+  `comment_socre` decimal(4, 2) NOT NULL COMMENT '评论得分',
+  `goods_sales` int NOT NULL DEFAULT 0 COMMENT '累积销量',
+  `goods_sales_show` int NULL DEFAULT 0 COMMENT '销量，用于前台显示',
+  `publish_state` int NOT NULL COMMENT '发布状态（2在库中1已上架）',
+  `sales_status` int NOT NULL COMMENT '销售状态（2已下架1上架中）',
+  `create_on` int NOT NULL COMMENT '创建时间',
+  `create_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'创建人\'',
+  `modify_on` int NULL DEFAULT NULL COMMENT '最后修改时间',
+  `modify_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
+  `delivery_freight_template` int NULL DEFAULT NULL COMMENT '运费模版',
+  `delivery_province` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\n发货省份',
+  `delivery_city` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货城市',
+  `delivery_address` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货地文字（显示用，如：广东深圳）',
+  `keyword` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '关键词',
+  `is_promotion` int NOT NULL DEFAULT 0 COMMENT '是否在促销，0否1是默认0',
+  `promotion_id` int NOT NULL DEFAULT 0 COMMENT '促销id',
+  `promotion_type` int NOT NULL DEFAULT 0 COMMENT '促销类型',
+  `promotion_title` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '促销标题',
+  `promotion_rate` int NOT NULL DEFAULT 0 COMMENT '促销的折扣',
+  `promotion_full_count` int NOT NULL DEFAULT 1 COMMENT '单品满折条件',
+  `erp_goods_id` int NOT NULL DEFAULT 0 COMMENT 'ERP商品id',
+  `sales_type` int NOT NULL DEFAULT 1 COMMENT '销售模式1现售2预售',
+  `send_days` int NULL DEFAULT NULL COMMENT '预售发货天数',
+  PRIMARY KEY (`goods_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品商城详情' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of mall_goods_detail
 -- ----------------------------
 
 -- ----------------------------
@@ -318,6 +329,40 @@ INSERT INTO `mall_nav` VALUES (3, '服饰鞋包', 'https://smart-shop.itheima.ne
 INSERT INTO `mall_nav` VALUES (4, '美食酒水', 'https://smart-shop.itheima.net/uploads/10001/20230320/f01c5fc360f55c6053beec34913bc699.png', 'icon-2.png', 'pages/category/index', 'HOME', 2, 1, NULL, NULL);
 
 -- ----------------------------
+-- Table structure for mall_rec_category
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_rec_category`;
+CREATE TABLE `mall_rec_category`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `picture` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `parent_id` bigint NULL DEFAULT NULL,
+  `sale_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城推荐分类展示' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of mall_rec_category
+-- ----------------------------
+INSERT INTO `mall_rec_category` VALUES (1, '居家', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-05-06/201516e3-25d0-48f5-bcee-7f0cafb14176.png', 'https://yjy-oss-files.oss-cn-zhangjiakou.aliyuncs.com/tuxian/home_goods_cover.jpg', 0, '2折狂欢');
+INSERT INTO `mall_rec_category` VALUES (2, '居家生活用品', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (3, '收纳', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (4, '宠物食品', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (5, '艺术藏品', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (6, '宠物用品', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (7, '家庭医疗', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (8, '中医保健', NULL, NULL, 1, NULL);
+INSERT INTO `mall_rec_category` VALUES (9, '美食', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-05-06/cf82e5b4-bf1b-4c68-aa86-96f66e8e5282.png', 'https://yanxuan-item.nosdn.127.net/0d7d091a10faf1c22027046f517511cf.png?quality=95&thumbnail=610x610&imageView', 0, '全场3件8折');
+INSERT INTO `mall_rec_category` VALUES (10, '南北干货', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (11, '调味酱菜', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (12, '方便食品', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (13, '米面粮油', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (14, '名酒馆', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (15, '进口酒', NULL, NULL, 9, NULL);
+INSERT INTO `mall_rec_category` VALUES (16, '服饰', 'http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-05-06/33e1f5de-0fdb-4cfa-9ba9-781233024b53.png', 'https://yanxuan-item.nosdn.127.net/0d7d091a10faf1c22027046f517511cf.png?quality=95&thumbnail=610x610&imageView', 0, '全场3件8折');
+
+-- ----------------------------
 -- Table structure for mall_rec_goods
 -- ----------------------------
 DROP TABLE IF EXISTS `mall_rec_goods`;
@@ -336,18 +381,20 @@ CREATE TABLE `mall_rec_goods`  (
   `which` int NOT NULL COMMENT '展示端1：PC 2：H5',
   `start_time` int NULL DEFAULT NULL COMMENT '开始时间',
   `end_time` int NULL DEFAULT NULL COMMENT '结束时间',
+  `category_id` bigint NOT NULL DEFAULT 0 COMMENT '所属分类id',
   `status` int NOT NULL DEFAULT 1 COMMENT '状态 1正常 0下架',
   `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_on` int NULL DEFAULT NULL COMMENT '创建时间',
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '推荐商品表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of mall_rec_goods
 -- ----------------------------
-INSERT INTO `mall_rec_goods` VALUES (1, 10052, 'http://smart-shop.itheima.net/uploads/10001/20230321/1d1801baa9c9b8d1d1524ec917d2adde.jpg', '蒙牛 特仑苏纯牛奶 250ml*12包 学生青少年营养早餐奶 送礼佳品 1月产', 49.00, 49.00, 1990, 59.00, 59.00, NULL, 'HOME', 2, NULL, NULL, 1, NULL, NULL);
-INSERT INTO `mall_rec_goods` VALUES (2, 10038, 'http://smart-shop.itheima.net/uploads/10001/20230321/8f505c6c437fc3d4b4310b57b1567544.jpg', '三星手机 SAMSUNG Galaxy S23 8GB+256GB 超视觉夜拍系统 超清夜景 悠雾紫 5G手机 游戏拍照旗舰机s23', 55.00, 55.00, 4554, 2333.00, 2333.00, NULL, 'HOME', 2, NULL, NULL, 1, NULL, NULL);
-INSERT INTO `mall_rec_goods` VALUES (3, 1233, 'http://smart-shop.itheima.net/uploads/10001/20230321/bfe7f91b8413f35f8a222450d630d0c0.jp', '[郎酒旗舰店郎牌郎酒]郎酒 郎牌郎酒 普郎 53度酱香型白酒 500ml*6瓶 整箱装白酒普郎原箱', 1620.00, 1620.00, 3444, 2499.00, 2499.00, NULL, 'HOME', 2, NULL, NULL, 1, NULL, NULL);
+INSERT INTO `mall_rec_goods` VALUES (1, 10052, 'http://smart-shop.itheima.net/uploads/10001/20230321/1d1801baa9c9b8d1d1524ec917d2adde.jpg', '蒙牛 特仑苏纯牛奶 250ml*12包 学生青少年营养早餐奶 送礼佳品 1月产', 49.00, 49.00, 1990, 59.00, 59.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
+INSERT INTO `mall_rec_goods` VALUES (2, 10038, 'http://smart-shop.itheima.net/uploads/10001/20230321/8f505c6c437fc3d4b4310b57b1567544.jpg', '三星手机 SAMSUNG Galaxy S23 8GB+256GB 超视觉夜拍系统 超清夜景 悠雾紫 5G手机 游戏拍照旗舰机s23', 55.00, 55.00, 4554, 2333.00, 2333.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
+INSERT INTO `mall_rec_goods` VALUES (3, 1233, 'http://smart-shop.itheima.net/uploads/10001/20230321/bfe7f91b8413f35f8a222450d630d0c0.jpg', '[郎酒旗舰店郎牌郎酒]郎酒 郎牌郎酒 普郎 53度酱香型白酒 500ml*6瓶 整箱装白酒普郎原箱', 1620.00, 1620.00, 3444, 2499.00, 2499.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for mall_trade_account

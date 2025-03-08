@@ -87,6 +87,11 @@ public class MallRecGoods implements Serializable {
     private Integer endTime;
 
     /**
+     * 所属分类id
+     */
+    private Long categoryId;
+
+    /**
      * 状态 1正常 0下架
      */
     private Integer status;
@@ -100,6 +105,11 @@ public class MallRecGoods implements Serializable {
      * 创建时间
      */
     private Integer createOn;
+
+    /**
+     * 
+     */
+    private String comment;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

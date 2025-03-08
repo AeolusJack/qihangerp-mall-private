@@ -19,9 +19,11 @@
             <result property="which" column="which" jdbcType="INTEGER"/>
             <result property="startTime" column="start_time" jdbcType="INTEGER"/>
             <result property="endTime" column="end_time" jdbcType="INTEGER"/>
+            <result property="categoryId" column="category_id" jdbcType="BIGINT"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createOn" column="create_on" jdbcType="INTEGER"/>
+            <result property="comment" column="comment" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -29,7 +31,8 @@
         goods_name,goods_price_max,goods_price_min,
         goods_sales,line_price_max,line_price_min,
         selling_poin,position,which,
-        start_time,end_time,status,
-        create_by,create_on
+        start_time,end_time,category_id,
+        status,create_by,create_on,
+        comment
     </sql>
 </mapper>
