@@ -1,0 +1,184 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: qihangerp-mysql
+    ports:
+      - "3306:3306"  # 映射3306端口
+    volumes:
+      - ./init/mysql:/docker-entrypoint-initdb.d/  # 初始化脚本
+      - mysql_data:/var/lib/mysql  # 持久化数据
+    environment:
+      MYSQL_ROOT_PASSWORD: "Andy@123!"  # 设置复杂的 root 密码
+      MYSQL_USER: qihangerp
+      MYSQL_PASSWORD: "Andy@123!"  # 设置复杂的用户密码
+      MYSQL_DATABASE: qihangerp-test
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --bind-address=0.0.0.0  # 允许远程访问
+    restart: always
+    networks:
+      - my-network
+
+  redis:
+    image: redis:7
+    container_name: qihangerp-redis
+    ports:
+      - "6379:6379"  # 映射6379端口
+    command: ["redis-server"]  # 允许所有IP访问
+    volumes:
+      - redis_data:/data
+    restart: always
+    networks:
+      - my-network
+
+  nacos:
+    image: nacos/nacos-server:v2.2.0
+    container_name: qihangerp-nacos
+    environment:
+      MODE: standalone  # 单机模式
+      NACOS_AUTH_ENABLED: "false"  # 禁用认证
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    restart: always
+    volumes:
+      - nacos_data:/home/nacos/data
+    networks:
+      - my-network  # 自定义网络
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8848/nacos/v1/ns/operator/servers"]
+      interval: 10s
+      retries: 5
+      start_period: 20s
+      timeout: 5s
+
+  gateway:
+    image: 127.0.0.1:8055/qihangerp-gateway:v0115
+    container_name: qihangerp-gateway
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "qihangerp-nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+    ports:
+      - "8088:8088"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  sys-api:
+    image: 127.0.0.1:8055/qihangerp-sys-api:v0115
+    container_name: qihangerp-sys-api
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "qihangerp-nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR: "qihangerp-nacos:8848"
+      SPRING_CLOUD_NACOS_CONFIG_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_PASSWORD: "nacos"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  oms-api:
+    image: 127.0.0.1:8055/qihangerp-oms-api:v0115
+    container_name: qihangerp-oms-api
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_CONFIG_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_PASSWORD: "nacos"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  open-api:
+    image: 127.0.0.1:8055/qihangerp-open-api:v0115
+    container_name: qihangerp-open-api
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_CONFIG_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_PASSWORD: "nacos"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  erp-api:
+    image: 127.0.0.1:8055/qihangerp-erp-api:v0115
+    container_name: qihangerp-erp-api
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_CONFIG_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_PASSWORD: "nacos"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  open:
+    image: 127.0.0.1:8055/qihangerp-open:v0115
+    container_name: qihangerp-open
+    environment:
+      SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_SERVER-ADDR: "nacos:8848"
+      SPRING_CLOUD_NACOS_CONFIG_USERNAME: "nacos"
+      SPRING_CLOUD_NACOS_CONFIG_PASSWORD: "nacos"
+    depends_on:
+      - mysql
+      - redis
+      - nacos
+    restart: always
+    networks:
+      - my-network
+
+  nginx:
+    image: 127.0.0.1:8055/qihangerp-nginx:v0115
+    container_name: qihangerp-nginx
+    ports:
+      - "88:88"  # 映射88端口
+#    volumes:
+#      - /opt/qihangerp/nginx/dist:/usr/share/nginx/html  # HTML 文件目录
+#      - /opt/qihangerp/nginx/nginx_conf/nginx:/etc/nginx  # Nginx 配置目录
+#      - /opt/qihangerp/nginx/nginx_logs:/var/log/nginx  # Nginx 日志目录
+    networks:
+      - my-network  # 使用 my-network 网络
+    restart: always  # 容器崩溃后自动重启
+
+
+volumes:
+  redis_data:  # 定义持久化数据卷
+  mysql_data:
+  nacos_data:
+networks:
+  my-network:
+    driver: bridge
