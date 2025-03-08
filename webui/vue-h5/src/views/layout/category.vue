@@ -16,7 +16,7 @@
     <div class="list-box">
       <div class="left">
         <ul>
-          <li v-for="(item, index) in list" :key="item.category_id">
+          <li v-for="(item, index) in list" :key="item.id">
             <a
               :class="{ active: index === activeIndex }"
               @click="activeIndex = index"
@@ -28,12 +28,12 @@
       </div>
       <div class="right">
         <div
-          @click="$router.push(`/searchlist?categoryId=${item.category_id}`)"
+          @click="$router.push(`/searchlist?categoryId=${item.id}`)"
           v-for="item in list[activeIndex]?.children"
-          :key="item.category_id"
+          :key="item.id"
           class="cate-goods"
         >
-          <img :src="item.image?.external_url" alt="" />
+          <img :src="item.picture" alt="" />
           <p>{{ item.name }}</p>
         </div>
       </div>
@@ -56,10 +56,15 @@ export default {
   },
   methods: {
     async getCategoryList() {
-      const {
-        data: { list },
-      } = await getCategoryData();
-      this.list = list;
+      // const {
+      //   data: { list },
+      // } = await getCategoryData();
+      // this.list = list;
+      getCategoryData().then(resp => {
+        this.list = resp.data;
+      }).catch(error => {
+        console.error("Error fetching banner data:", error);
+      });
     },
   },
 };
