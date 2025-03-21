@@ -72,7 +72,7 @@ export default {
     // 选中的总价
     selPrice(state, getters) {
       return getters.selCartList.reduce((sum, item) => {
-        return sum + item.goods_num * item.goods.goods_price_min
+        return sum + item.goods_num * item.goods.skuInfo.goods_price
       }, 0).toFixed(2)
     },
     //是否全选

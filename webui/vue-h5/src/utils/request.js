@@ -54,6 +54,13 @@ instance.interceptors.response.use(function (response) {
   return res;
 }, function (error) {
   // 超出 2xx 范围的状态码都会触发该函数。
+  if (error.response && error.response.status === 401) {
+    // 如果是401错误，跳转到登录页面
+    Toast.clear();
+    Toast.fail('身份验证失败，请重新登录');
+    // 跳转到登录页，假设你的登录页面路径是 '/login'
+    // this.$router.push('/login');
+  }
   // 对响应错误做点什么
   return Promise.reject(error);
 });

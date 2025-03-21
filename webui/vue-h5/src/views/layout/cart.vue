@@ -28,7 +28,7 @@
             <span class="tit text-ellipsis-2">{{ item.goods.goods_name }}</span>
             <span class="bottom">
               <div class="price">
-                ¥ <span>{{ item.goods.goods_price_min }}</span>
+                ¥ <span>{{ item.goods.skuInfo.goods_price }}</span>
               </div>
               <!-- 既希望保留原本形参 又需要通过调用函数传参 =>用箭头函数包装一层 -->
               <CountBox

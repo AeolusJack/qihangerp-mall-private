@@ -86,19 +86,6 @@ public class LoginController extends BaseController {
 //        return ajax;
     }
 
-    /**
-     * 获取用户信息
-     *
-     * @return 用户信息
-     */
-    @GetMapping("/getUserInfo")
-    public AjaxResult getInfo(HttpServletRequest request)
-    {
-        UserInfoResponse userInfoResponse = new UserInfoResponse();
-        userInfoResponse.setToken(getToken(request));
-        userInfoResponse.setUserId(getUserId(request));
-        userInfoResponse.setMobile(getUsername(request));
-        return AjaxResult.success(userInfoResponse);
-    }
+
 
 }

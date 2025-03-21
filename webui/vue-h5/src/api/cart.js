@@ -13,7 +13,7 @@ export const addCart = (goodsId, goodsNum, goodsSkuId) => {
 
 //获取购物车列表
 export const getCartList = () => {
-  return request.get('/cart/list')
+  return request.get('/api/mall-api/cart/list')
 }
 
 //更新购物车商品数量
