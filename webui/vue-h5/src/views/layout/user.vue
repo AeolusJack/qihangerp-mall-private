@@ -134,10 +134,10 @@ export default {
   methods: {
     async getUserInfoDetail() {
       const {
-        data: { userInfo },
+        data: { user },
       } = await getUserInfoDetail();
-      this.detail = userInfo;
-      console.log(this.detail);
+      this.detail = user;
+      console.log("userinfo",this.detail);
     },
     logout() {
       this.$dialog

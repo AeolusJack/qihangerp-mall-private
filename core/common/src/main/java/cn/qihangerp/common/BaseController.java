@@ -107,6 +107,11 @@ public class BaseController
         return userId;
 
     }
+    public String getToken(HttpServletRequest request) {
+        String token = JwtUtils.getToken(request); // 你需要实现此方法
+        return token;
+
+    }
 
     /**
      * 获取登录用户名
@@ -114,8 +119,10 @@ public class BaseController
     public String getUsername(HttpServletRequest request)
     {
         String token = request.getHeader("Authorization");
-        if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7); // 去掉 "Bearer " 前缀
+        if (token != null ) {
+            if( token.startsWith("Bearer ")) {
+                token = token.substring(7); // 去掉 "Bearer " 前缀
+            }
             // 解析 JWT 获取 userName (同样是伪代码)
             String userName = JwtUtils.getUsernameFromToken(token); // 你需要实现此方法
             return userName;

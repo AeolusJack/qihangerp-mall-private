@@ -30,3 +30,9 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
 
+sms:
+  url: https://zincloudeshopapi.zinsoft.com/api.php/sms/sendSms
+  appkey: fad00ef0ca6e8f018cce88fac8896805
+  appsecret: PROJECT_NAMEed8bd917d4bf19d648e8ef1e78dcffd5
+  template: SMS_474885198
+  signName: 纳斯软件

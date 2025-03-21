@@ -46,4 +46,10 @@ public class CacheConstants
      * 验证码 redis key
      */
     public static final String CAPTCHA_CODE_KEY = "captcha_codes:";
+
+    /**
+     * 验证码 redis key
+     */
+    public static final String SMS_VERIFICATION_CODE_KEY = "sms:verification_code:";
+
 }

@@ -56,6 +56,14 @@ public class JwtUtils {
                 .getBody()
                 .getSubject();
     }
+    public static String getUsernameFromToken(HttpServletRequest request) {
+        String token = getToken(request);
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
 //    public static Long getUserIdFromToken(String token) {
 //
 //
@@ -96,7 +104,7 @@ public class JwtUtils {
             return null;
         }
     }
-    private static String getToken(HttpServletRequest request)
+    public static String getToken(HttpServletRequest request)
     {
         String token = request.getHeader("Authorization");
         if (StringUtils.isNotEmpty(token) && token.startsWith(TOKEN_PREFIX))

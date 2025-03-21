@@ -17,16 +17,16 @@
             type="text"
           />
         </div>
-        <div class="form-item">
-          <input
-            v-model="picCode"
-            class="inp"
-            maxlength="5"
-            placeholder="请输入图形验证码"
-            type="text"
-          />
-          <img v-if="picUrl" :src="picUrl" @click="getPicCode" alt="" />
-        </div>
+<!--        <div class="form-item">-->
+<!--          <input-->
+<!--            v-model="picCode"-->
+<!--            class="inp"-->
+<!--            maxlength="5"-->
+<!--            placeholder="请输入图形验证码"-->
+<!--            type="text"-->
+<!--          />-->
+<!--          <img v-if="picUrl" :src="picUrl" @click="getPicCode" alt="" />-->
+<!--        </div>-->
         <div class="form-item">
           <input
             v-model="msgCode"
@@ -59,13 +59,12 @@ export default {
       totalSecond: 60, //总秒数
       second: 60, //当前秒数 开定时器
       timer: null, //定时器id
-      mobile: "", //手机号
-      picCode: "", //用户输入的图形验证码
-      msgCode: "", //短信验证码
+      mobile: "15818590119", //手机号
+      msgCode: "1234", //短信验证码
     };
   },
   async created() {
-    this.getPicCode();
+    // this.getPicCode();
   },
 
   methods: {
@@ -85,10 +84,10 @@ export default {
         this.$toast("请输入正确的手机号");
         return false;
       }
-      if (!/^\w{4}$/.test(this.picCode)) {
-        this.$toast("请输入正确的图形验证码");
-        return false;
-      }
+      // if (!/^\w{4}$/.test(this.picCode)) {
+      //   this.$toast("请输入正确的图形验证码");
+      //   return false;
+      // }
       return true;
     },
     //获取短信验证码
@@ -117,7 +116,7 @@ export default {
         return;
       }
 
-      if (!/^\d{6}$/.test(this.msgCode)) {
+      if (!/^\d{4}$/.test(this.msgCode)) {
         this.$toast("请输入正确的手机验证码");
         return;
       }
@@ -125,8 +124,10 @@ export default {
       console.log("发送登录请求");
 
       const res = await codeLogin(this.mobile, this.msgCode);
+      console.log('登陆返回',res.data);
+      debugger
       this.$store.commit("user/setUserInfo", res.data);
-      console.log(res);
+
       this.$toast("登录成功");
       //看地址栏有无回调地址
       //如果有 =>其他页面拦截到登录来的 需要回跳

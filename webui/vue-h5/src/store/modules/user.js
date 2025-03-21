@@ -11,6 +11,7 @@ export default {
   mutations: {
     //所有mutations的第一个参数都是state
     setUserInfo(state, obj) {
+      console.log('==========个人用户信息1111111111=====',obj)
       state.userInfo = obj
       setInfo(obj)
     }
