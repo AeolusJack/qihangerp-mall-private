@@ -15,6 +15,9 @@ const SearchList = () => import('@/views/search/list')
 const ProDetail = () => import('@/views/prodetail')
 const Pay = () => import('@/views/pay')
 const MyOrder = () => import('@/views/myorder')
+const GoodsSource = () => import('@/views/goodssource')
+const GoodsOrder = () => import('@/views/goodsorder')
+const GoodsSourcePublish = () => import('@/views/goodssource/publish')
 
 Vue.use(VueRouter)
 
@@ -28,7 +31,9 @@ const router = new VueRouter({
         { path: '/home', component: Home },
         { path: '/category', component: Category },
         { path: '/cart', component: Cart },
+        { path: '/goodsorder', component: GoodsOrder },
         { path: '/user', component: User },
+        { path: '/goodssource', component: GoodsSource },
       ]
     },
     { path: '/login', component: Login },
@@ -38,6 +43,8 @@ const router = new VueRouter({
     { path: '/prodetail/:id', component: ProDetail },
     { path: '/pay', component: Pay },
     { path: '/myorder', component: MyOrder },
+
+    { path: '/goodssource/publish', component: GoodsSourcePublish },
   ]
 })
 
