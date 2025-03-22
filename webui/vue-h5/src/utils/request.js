@@ -41,12 +41,18 @@ instance.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   // const res = response.data
   const res = response.data
+  console.log('====响应拦截====',response.data)
   if (res.code !== 200) {
-    // Toast默认是单例模式 后面Toast调用了 会将前一个覆盖
-    //同时只能存在一个Toast
-    Toast(res.msg)
-    //抛出一个错误的Promise
-    return Promise.reject(res.msg)
+    if(res.code===401){
+      Toast.fail('身份验证失败，请重新登录');
+      location.href = '/#/login';
+    }else{
+      // Toast默认是单例模式 后面Toast调用了 会将前一个覆盖
+      //同时只能存在一个Toast
+      Toast(res.msg)
+      //抛出一个错误的Promise
+      return Promise.reject(res.msg)
+    }
   } else {
     //正确 清除loading效果
     Toast.clear()

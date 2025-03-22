@@ -1,11 +1,16 @@
 package cn.qihangerp.mall.config;
 
 import cn.qihangerp.utils.JwtUtils;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @Slf4j
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
@@ -27,8 +32,11 @@ public class JwtInterceptor implements HandlerInterceptor {
                 return true;
             } else {
                 // Token 无效，返回 401
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("Unauthorized");
+                response.setStatus(HttpServletResponse.SC_OK);
+                Map<String,Object> map = new HashMap<>();
+                map.put("code",401);
+                map.put("msg","登录过期");
+                response.getWriter().write(JSONObject.toJSONString(map));
                 return false;
             }
         } else {

@@ -2,7 +2,7 @@
   <div class="user">
     <div class="head-page" v-if="isLogin">
       <div class="head-img">
-        <img src="@/assets/default-avatar.png" alt="" />
+        <img :src="detail.avatar?detail.avatar:'@/assets/default-avatar.png'" alt="" />
       </div>
       <div class="info">
         <div class="mobile">{{ detail.mobile }}</div>
@@ -134,12 +134,17 @@ export default {
   methods: {
     async getUserInfoDetail() {
       console.log('=========请求用户信息')
+
       // const {
-      //   data: { user },
+      //   data: { userInfo },
       // } = await getUserInfoDetail();
       const response = await getUserInfoDetail();
-      // this.detail = user;
       console.log("========返回userinfo======",response);
+      if(response.code === 200){
+        this.detail = response.data.userInfo;
+      }
+      //
+
     },
     logout() {
       this.$dialog
