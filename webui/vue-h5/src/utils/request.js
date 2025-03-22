@@ -58,8 +58,11 @@ instance.interceptors.response.use(function (response) {
     // 如果是401错误，跳转到登录页面
     Toast.clear();
     Toast.fail('身份验证失败，请重新登录');
+    console.log('=====发现token过期=========',error.response)
     // 跳转到登录页，假设你的登录页面路径是 '/login'
     // this.$router.push('/login');
+    location.href = '/#/login';
+    // return Promise.reject({code:1401,msg:'过期'})
   }
   // 对响应错误做点什么
   return Promise.reject(error);

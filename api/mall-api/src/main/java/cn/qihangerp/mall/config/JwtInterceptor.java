@@ -15,8 +15,10 @@ public class JwtInterceptor implements HandlerInterceptor {
         // 从请求头中获取 Token
         String token = request.getHeader("Authorization");
         log.info("======访问："+request.getRequestURI()+"====TOKEN:"+token);
-        if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7);
+        if (token != null ) {
+            if( token.startsWith("Bearer ")) {
+                token = token.substring(7);
+            }
             if (JwtUtils.validateToken(token)) {
                 // 如果 Token 有效，继续请求
                 String username = JwtUtils.getUsernameFromToken(token);

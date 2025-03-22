@@ -8,6 +8,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   getters: {
     token(state) {
+      console.log('=====获取到的用户token====444444444444444======',state.user.userInfo.token)
       return state.user.userInfo.token
     }
   },

@@ -125,7 +125,6 @@ export default {
 
       const res = await codeLogin(this.mobile, this.msgCode);
       console.log('登陆返回',res.data);
-      debugger
       this.$store.commit("user/setUserInfo", res.data);
 
       this.$toast("登录成功");

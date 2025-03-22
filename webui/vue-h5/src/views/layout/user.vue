@@ -133,11 +133,13 @@ export default {
   },
   methods: {
     async getUserInfoDetail() {
-      const {
-        data: { user },
-      } = await getUserInfoDetail();
-      this.detail = user;
-      console.log("userinfo",this.detail);
+      console.log('=========请求用户信息')
+      // const {
+      //   data: { user },
+      // } = await getUserInfoDetail();
+      const response = await getUserInfoDetail();
+      // this.detail = user;
+      console.log("========返回userinfo======",response);
     },
     logout() {
       this.$dialog
