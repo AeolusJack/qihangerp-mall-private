@@ -16,11 +16,13 @@ public class LoginBody
      * 用户密码
      */
     private String password;
+    private String username;
 
     /**
      * 验证码
      */
     private String smsCode;
+    private String code;
 
     /**
      * 唯一标识

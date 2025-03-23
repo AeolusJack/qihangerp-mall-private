@@ -35,14 +35,19 @@ public class JwtInterceptor implements HandlerInterceptor {
                 response.setStatus(HttpServletResponse.SC_OK);
                 Map<String,Object> map = new HashMap<>();
                 map.put("code",401);
-                map.put("msg","登录过期");
+                map.put("msg","Unauthorized");
                 response.getWriter().write(JSONObject.toJSONString(map));
                 return false;
             }
         } else {
             // 如果没有 Token，返回 401
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Unauthorized");
+//            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            response.getWriter().write("Unauthorized");
+            response.setStatus(HttpServletResponse.SC_OK);
+            Map<String,Object> map = new HashMap<>();
+            map.put("code",401);
+            map.put("msg","Unauthorized");
+            response.getWriter().write(JSONObject.toJSONString(map));
             return false;
         }
     }

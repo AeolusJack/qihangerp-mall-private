@@ -7,8 +7,14 @@ export const getInfo = () => {
 
   const defaultObj = { token: '', userId: '' }
   const result = localStorage.getItem(INFO_KEY)
-  console.log('=====获取个人信息=====',result)
-  return result ? JSON.parse(result) : defaultObj
+  console.log('=====获取个人信息=====',result,result=='undefined')
+
+  if(result==undefined||result=='undefined'){
+    return defaultObj
+  }else {
+    return result ? JSON.parse(result) : defaultObj
+  }
+
 }
 //设置个人信息
 export const setInfo = (obj) => {
