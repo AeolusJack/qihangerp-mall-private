@@ -16,6 +16,7 @@
     <url>http://maven.apache.org</url>
     <modules>
         <module>ams-api</module>
+        <module>oms-api</module>
         <module>mall-api</module>
         <module>gateway</module>
     </modules>

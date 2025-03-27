@@ -1,0 +1,55 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://rm-7xv883kleiuvyy721ro.mysql.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#    url: jdbc:mysql://10.0.2.22:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#    url: jdbc:mysql://pc-7xvrmq7347z45h0qf.mysql.polardb.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+#    url: jdbc:mysql://masterpublic.mysql.polardb.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+#    username: fabu
+#    password: B4@r%zPm8*Qw$1Fh7&Vx#2GyJ0!
+    password: Andy_123
+  data:
+    # redis 配置
+    redis:
+#      host: zhenping.redis.rds.aliyuncs.com
+#      host: 10.0.2.22
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      # 密码
+      #    password: 123321
+      # 连接超时时间
+      timeout: 10s
+      lettuce:
+        pool:
+          # 连接池中的最小空闲连接
+          min-idle: 0
+          # 连接池中的最大空闲连接
+          max-idle: 8
+          # 连接池的最大数据库连接数
+          max-active: 8
+          # #连接池最大阻塞等待时间（使用负值表示没有限制）
+          max-wait: -1ms
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: cn.qihangerp.oms.domain;cn.qihangerp.domain;
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
+
+
+## minio配置
+#minio:
+#  endpoint: http://127.0.0.1:9000
+#  accessKey: 0AksAWDtI20Lpb4qxq5S
+#  secretKey: yOAZkOVwrhPooBRel5PB0GwS5uw8VAgmqYykHl3T
+#  secure: false
+#  bucketName: ecerp
+#minio:
+#  endpoint: http://223.83.100.30:9001
+#  accessKey: 4146MhovKkxe7VM4AXDQ
+#  secretKey: xkUhwIAOEFqYK6LafXwKE6vfXoP4dhN2MUsMNSQ5
+#  secure: false
+#  bucketName: omsimage
