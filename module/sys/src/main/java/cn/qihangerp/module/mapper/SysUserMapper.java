@@ -1,7 +1,7 @@
 package cn.qihangerp.module.mapper;
 
 
-import cn.qihangerp.domain.SysUser;
+import cn.qihangerp.module.domain.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

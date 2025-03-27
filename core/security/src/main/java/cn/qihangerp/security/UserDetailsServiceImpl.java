@@ -5,10 +5,10 @@ import cn.qihangerp.common.ServiceException;
 import cn.qihangerp.common.enums.UserStatus;
 import cn.qihangerp.utils.MessageUtils;
 import cn.qihangerp.utils.StringUtils;
-import cn.qihangerp.service.ISysUserService;
+import cn.qihangerp.module.service.ISysUserService;
 
 
-import cn.qihangerp.domain.SysUser;
+import cn.qihangerp.module.domain.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

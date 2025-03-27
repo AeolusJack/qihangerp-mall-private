@@ -9,7 +9,7 @@ import cn.qihangerp.module.goods.domain.bo.GoodsAddBo;
 import cn.qihangerp.module.goods.domain.bo.GoodsSkuAddBo;
 import cn.qihangerp.module.goods.domain.vo.GoodsSpecListVo;
 import com.baomidou.mybatisplus.extension.service.IService;
-import cn.qihangerp.domain.OGoodsSku;
+import cn.qihangerp.module.goods.domain.OGoodsSku;
 
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package cn.qihangerp.module.goods.service.impl;
 
-import cn.qihangerp.domain.OGoodsSku;
+import cn.qihangerp.module.goods.domain.OGoodsSku;
 
 import cn.qihangerp.module.goods.mapper.OGoodsSkuMapper;
 import cn.qihangerp.module.goods.service.OGoodsSkuService;

@@ -31,7 +31,7 @@ public class JwtUtils {
                 .setSubject(username)
                 .claim("userId", userId)  // 自定义claim，存储用户ID
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+//                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
     }

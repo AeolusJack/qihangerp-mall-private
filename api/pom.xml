@@ -15,7 +15,7 @@
     <name>api</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>sys-api</module>
+        <module>ams-api</module>
         <module>mall-api</module>
         <module>gateway</module>
     </modules>
@@ -61,11 +61,7 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>cn.qihangerp.core</groupId>-->
-<!--            <artifactId>security</artifactId>-->
-<!--            <version>1.0</version>-->
-<!--        </dependency>-->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

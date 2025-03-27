@@ -24,14 +24,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class LoginController extends BaseController {
     private final MallUserService mallUserService;
-    @Autowired
-    private OGoodsSupplierService supplierService;
 
     @Autowired
     private RedisCache redisCache;
-    private static int expireTime = 30;
-    protected static final long MILLIS_SECOND = 1000;
-    protected static final long MILLIS_MINUTE = 60 * MILLIS_SECOND;
+
 
     @PostMapping("/logout")
     public AjaxResult logout() {

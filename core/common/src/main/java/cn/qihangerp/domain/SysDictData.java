@@ -1,6 +1,7 @@
 package cn.qihangerp.domain;
 
 
+import cn.qihangerp.BaseEntity;
 import cn.qihangerp.common.constant.UserConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

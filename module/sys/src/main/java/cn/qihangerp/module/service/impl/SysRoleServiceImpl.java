@@ -8,8 +8,8 @@ import cn.qihangerp.utils.SpringUtils;
 import cn.qihangerp.utils.StringUtils;
 
 
-import cn.qihangerp.domain.SysRole;
-import cn.qihangerp.domain.SysUser;
+import cn.qihangerp.module.domain.SysRole;
+import cn.qihangerp.module.domain.SysUser;
 import cn.qihangerp.module.domain.SysRoleMenu;
 import cn.qihangerp.module.domain.SysUserRole;
 import cn.qihangerp.module.mapper.SysRoleMapper;

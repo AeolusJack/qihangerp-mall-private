@@ -6,13 +6,13 @@ import cn.qihangerp.common.constant.UserConstants;
 import cn.qihangerp.utils.StringUtils;
 
 
-import cn.qihangerp.domain.SysRole;
-import cn.qihangerp.domain.SysUser;
+import cn.qihangerp.module.domain.SysRole;
+import cn.qihangerp.module.domain.SysUser;
 import cn.qihangerp.module.domain.SysUserRole;
 import cn.qihangerp.module.mapper.SysRoleMapper;
 import cn.qihangerp.module.mapper.SysUserMapper;
 import cn.qihangerp.module.mapper.SysUserRoleMapper;
-import cn.qihangerp.service.ISysUserService;
+import cn.qihangerp.module.service.ISysUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

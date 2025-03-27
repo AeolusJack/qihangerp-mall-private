@@ -3,7 +3,7 @@ package cn.qihangerp.module.mapper;
 
 
 
-import cn.qihangerp.domain.SysRole;
+import cn.qihangerp.module.domain.SysRole;
 
 import java.util.List;
 

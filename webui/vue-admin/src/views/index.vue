@@ -1,11 +1,11 @@
 <template>
   <div class="dashboard-editor-container">
 
-    <panel-group :chart-data="report" @handleSetLineChartData="handleSetLineChartData" />
+<!--    <panel-group :chart-data="report" @handleSetLineChartData="handleSetLineChartData" />-->
 
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
-      <line-chart :chart-data="lineChartData" />
-    </el-row>
+<!--    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">-->
+<!--      <line-chart :chart-data="lineChartData" />-->
+<!--    </el-row>-->
 <!--    <el-row>-->
 <!--      <el-table-->
 <!--        :data="tableData"-->
@@ -26,23 +26,23 @@
 <!--        </el-table-column>-->
 <!--      </el-table>-->
 <!--    </el-row>-->
-    <el-row :gutter="32">
-<!--      <el-col :xs="24" :sm="24" :lg="8">-->
+<!--    <el-row :gutter="32">-->
+<!--&lt;!&ndash;      <el-col :xs="24" :sm="24" :lg="8">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="chart-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;          <raddar-chart />&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </el-col>&ndash;&gt;-->
+<!--      <el-col :xs="24" :sm="24" :lg="24">-->
 <!--        <div class="chart-wrapper">-->
-<!--          <raddar-chart />-->
+<!--          <pie-chart :chart-data="skuTopData" />-->
 <!--        </div>-->
 <!--      </el-col>-->
-      <el-col :xs="24" :sm="24" :lg="24">
-        <div class="chart-wrapper">
-          <pie-chart :chart-data="skuTopData" />
-        </div>
-      </el-col>
-<!--      <el-col :xs="24" :sm="24" :lg="12">-->
-<!--        <div class="chart-wrapper">-->
-<!--          <bar-chart />-->
-<!--        </div>-->
-<!--      </el-col>-->
-    </el-row>
+<!--&lt;!&ndash;      <el-col :xs="24" :sm="24" :lg="12">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="chart-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;          <bar-chart />&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </el-col>&ndash;&gt;-->
+<!--    </el-row>-->
 
 
   </div>
@@ -54,7 +54,7 @@ import LineChart from './dashboard/LineChart'
 import RaddarChart from './dashboard/RaddarChart'
 import PieChart from './dashboard/PieChart'
 import BarChart from './dashboard/BarChart'
-import { todayDaily,salesDaily,salesTopSku } from "@/api/report/report";
+
 const lineChartData = {
   // newVisitis: {
   //   expectedData: [100, 120, 161, 134, 105, 160, 165],
@@ -113,26 +113,7 @@ export default {
     }
   },
   mounted() {
-    // 加载统计
-    todayDaily().then(resp=>{
 
-      this.report = resp.data
-    })
-    salesDaily().then(resp=>{
-
-      this.lineChartData.date=[]
-      this.lineChartData.salesVolume =[]
-      this.lineChartData.salesOrder =[]
-      resp.data.forEach(x=>{
-        this.lineChartData.date.push(x.date)
-        this.lineChartData.salesVolume.push(x.amount)
-        this.lineChartData.salesOrder.push(x.count)
-      })
-    })
-    salesTopSku().then(resp=>{
-      console.log("=====",resp.data)
-      this.skuTopData.data= resp.data
-    })
   },
   methods: {
     handleSetLineChartData(type) {

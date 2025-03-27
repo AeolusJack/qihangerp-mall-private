@@ -1,7 +1,5 @@
 package cn.qihangerp.security.service;
 
-
-
 import cn.qihangerp.common.ServiceException;
 import cn.qihangerp.common.config.RedisCache;
 import cn.qihangerp.common.constant.CacheConstants;
@@ -16,9 +14,9 @@ import cn.qihangerp.security.AuthenticationContextHolder;
 import cn.qihangerp.security.LoginUser;
 import cn.qihangerp.security.TokenService;
 import cn.qihangerp.security.UserPasswordNotMatchException;
-import cn.qihangerp.domain.SysUser;
+import cn.qihangerp.module.domain.SysUser;
 import cn.qihangerp.security.utils.IpUtils;
-import cn.qihangerp.service.ISysUserService;
+import cn.qihangerp.module.service.ISysUserService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

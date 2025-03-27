@@ -2,7 +2,7 @@ package cn.qihangerp.module.service;
 
 
 
-import cn.qihangerp.domain.vo.RouterVo;
+import cn.qihangerp.response.RouterVo;
 import cn.qihangerp.module.domain.SysMenu;
 import cn.qihangerp.module.domain.vo.TreeSelect;
 

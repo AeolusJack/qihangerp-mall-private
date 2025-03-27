@@ -5,10 +5,10 @@ import cn.qihangerp.common.constant.Constants;
 import cn.qihangerp.common.constant.UserConstants;
 import cn.qihangerp.utils.StringUtils;
 
-import cn.qihangerp.domain.SysRole;
-import cn.qihangerp.domain.SysUser;
-import cn.qihangerp.domain.vo.MetaVo;
-import cn.qihangerp.domain.vo.RouterVo;
+import cn.qihangerp.module.domain.SysRole;
+import cn.qihangerp.module.domain.SysUser;
+import cn.qihangerp.response.MetaVo;
+import cn.qihangerp.response.RouterVo;
 import cn.qihangerp.module.domain.SysMenu;
 import cn.qihangerp.module.domain.vo.TreeSelect;
 import cn.qihangerp.module.mapper.SysMenuMapper;

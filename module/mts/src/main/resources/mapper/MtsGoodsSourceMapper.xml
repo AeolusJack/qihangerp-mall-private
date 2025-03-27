@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qihangerp.module.mts.mapper.MtsGoodsSourceMapper">
+
+    <resultMap id="BaseResultMap" type="cn.qihangerp.module.mts.domain.MtsGoodsSource">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="image" column="image" jdbcType="VARCHAR"/>
+            <result property="pictures" column="pictures" jdbcType="VARCHAR"/>
+            <result property="model" column="model" jdbcType="VARCHAR"/>
+            <result property="modelId" column="model_id" jdbcType="BIGINT"/>
+            <result property="brand" column="brand" jdbcType="VARCHAR"/>
+            <result property="brandId" column="brand_id" jdbcType="BIGINT"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="typeId" column="type_id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="sourceContacts" column="source_contacts" jdbcType="VARCHAR"/>
+            <result property="sourceMobile" column="source_mobile" jdbcType="VARCHAR"/>
+            <result property="sourceWx" column="source_wx" jdbcType="VARCHAR"/>
+            <result property="sellerContacts" column="seller_contacts" jdbcType="VARCHAR"/>
+            <result property="sellerMobile" column="seller_mobile" jdbcType="VARCHAR"/>
+            <result property="sellerWx" column="seller_wx" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+            <result property="minQty" column="min_qty" jdbcType="INTEGER"/>
+            <result property="fz" column="fz" jdbcType="VARCHAR"/>
+            <result property="pici" column="pici" jdbcType="VARCHAR"/>
+            <result property="validityPeriod" column="validity_period" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="files" column="files" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="phase" column="phase" jdbcType="INTEGER"/>
+            <result property="negotiator" column="negotiator" jdbcType="VARCHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,image,
+        pictures,model,model_id,
+        brand,brand_id,type,
+        type_id,user_id,source_contacts,
+        source_mobile,source_wx,seller_contacts,
+        seller_mobile,seller_wx,price,
+        quantity,min_qty,fz,
+        pici,validity_period,remark,
+        files,status,phase,
+        negotiator,create_by,create_time,
+        update_by,update_time
+    </sql>
+</mapper>

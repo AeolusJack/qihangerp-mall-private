@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询商品管理列表
 export function listGoods(query) {
   return request({
-    url: '/api/oms-api/goods/list',
+    url: '/api/ams-api/goods/list',
     method: 'get',
     params: query
   })
@@ -12,7 +12,7 @@ export function listGoods(query) {
 // 查询商品规格列表
 export function searchSku(query) {
   return request({
-    url: '/api/oms-api/goods/searchSku',
+    url: '/api/ams-api/goods/searchSku',
     method: 'get',
     params: query
   })
@@ -21,7 +21,7 @@ export function searchSku(query) {
 // 查询商品管理详细
 export function getGoods(id) {
   return request({
-    url: '/api/oms-api/goods/' + id,
+    url: '/api/ams-api/goods/' + id,
     method: 'get'
   })
 }
@@ -29,7 +29,7 @@ export function getGoods(id) {
 // 新增商品管理
 export function addGoods(data) {
   return request({
-    url: '/api/oms-api/goods/add',
+    url: '/api/ams-api/goods/add',
     method: 'post',
     data: data
   })
@@ -38,7 +38,7 @@ export function addGoods(data) {
 // 修改商品管理
 export function updateGoods(data) {
   return request({
-    url: '/api/oms-api/goods',
+    url: '/api/ams-api/goods',
     method: 'put',
     data: data
   })
@@ -47,14 +47,14 @@ export function updateGoods(data) {
 // 删除商品管理
 export function delGoods(id) {
   return request({
-    url: '/api/oms-api/goods/del/' + id,
+    url: '/api/ams-api/goods/del/' + id,
     method: 'delete'
   })
 }
 
 export function updateGoodsStatus(data) {
   return request({
-    url: '/api/oms-api/goods/updateGoodsStatus',
+    url: '/api/ams-api/goods/updateGoodsStatus',
     method: 'post',
     data: data
   })
