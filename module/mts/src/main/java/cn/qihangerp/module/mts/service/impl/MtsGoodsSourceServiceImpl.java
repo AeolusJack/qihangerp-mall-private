@@ -29,6 +29,14 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
     implements MtsGoodsSourceService{
 
     @Override
+    public PageResult<MtsGoodsSource> queryPageList(MtsGoodsSource bo, PageQuery pageQuery) {
+        LambdaQueryWrapper<MtsGoodsSource> queryWrapper = new LambdaQueryWrapper<>();
+
+        Page<MtsGoodsSource> pages = this.baseMapper.selectPage(pageQuery.build(), queryWrapper);
+        return PageResult.build(pages);
+    }
+
+    @Override
     public PageResult<MtsGoodsSource> queryPageList(Long userId,Integer status, Integer phase, PageQuery pageQuery) {
         LambdaQueryWrapper<MtsGoodsSource> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(MtsGoodsSource::getUserId, userId);
@@ -39,12 +47,14 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
     }
 
     @Override
-    public ResultVo addSource(GoodsSourcePublishRequest publish,Long userId) {
+    public ResultVo addSource(GoodsSourcePublishRequest publish,Long userId,String userName) {
         if(publish.getPicList()==null || publish.getPicList().length==0){
             return ResultVo.error("至少需要上传一张图片");
         }
         MtsGoodsSource mtsGoodsSource = new MtsGoodsSource();
         mtsGoodsSource.setUserId(userId);
+        mtsGoodsSource.setUserName(userName);
+        mtsGoodsSource.setUserMobile(userName);
         mtsGoodsSource.setImage(publish.getPicList()[0]);
         mtsGoodsSource.setPictures(String.join(",", publish.getPicList()));
         mtsGoodsSource.setModel(publish.getModel());
@@ -70,6 +80,25 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
         mtsGoodsSource.setPhase(1);
         mtsGoodsSource.setCreateTime(new Date());
         this.baseMapper.insert(mtsGoodsSource);
+        return ResultVo.success();
+    }
+
+    @Override
+    public ResultVo audit(Long id, Long userId, String userName) {
+        MtsGoodsSource mtsGoodsSource = this.baseMapper.selectById(id);
+        if(mtsGoodsSource==null){
+            return ResultVo.error("数据不存在");
+        }else if(mtsGoodsSource.getStatus()!=1){
+            return ResultVo.error("状态不对");
+        }
+        MtsGoodsSource update = new MtsGoodsSource();
+        update.setId(id);
+        update.setStatus(2);
+        update.setAuditUserId(userId);
+        update.setAuditUserName(userName);
+        update.setAuditTime(new Date());
+        update.setUpdateTime(new Date());
+        this.baseMapper.updateById(update);
         return ResultVo.success();
     }
 }

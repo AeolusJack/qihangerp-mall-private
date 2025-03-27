@@ -34,7 +34,7 @@ services:
       - my-network
 
   nacos:
-    image: nacos/nacos-server:v2.2.0
+    image: nacos/nacos-server:v2.3.2
     container_name: qihangerp-nacos
     environment:
       MODE: standalone  # 单机模式
@@ -55,12 +55,12 @@ services:
       timeout: 5s
 
   gateway:
-    image: 127.0.0.1:8055/qihangerp-gateway:v0115
+    image: 127.0.0.1:5000/qihangerp-gateway:v0115
     container_name: qihangerp-gateway
     environment:
       SPRING_CLOUD_NACOS_DISCOVERY_SERVER-ADDR: "qihangerp-nacos:8848"
-      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
-      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
+#      SPRING_CLOUD_NACOS_DISCOVERY_USERNAME: "nacos"
+#      SPRING_CLOUD_NACOS_DISCOVERY_PASSWORD: "nacos"
     ports:
       - "8088:8088"
     depends_on:

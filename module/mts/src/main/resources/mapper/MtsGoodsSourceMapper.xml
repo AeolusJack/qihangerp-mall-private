@@ -16,6 +16,8 @@
             <result property="type" column="type" jdbcType="VARCHAR"/>
             <result property="typeId" column="type_id" jdbcType="BIGINT"/>
             <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="userMobile" column="user_mobile" jdbcType="VARCHAR"/>
             <result property="sourceContacts" column="source_contacts" jdbcType="VARCHAR"/>
             <result property="sourceMobile" column="source_mobile" jdbcType="VARCHAR"/>
             <result property="sourceWx" column="source_wx" jdbcType="VARCHAR"/>
@@ -37,19 +39,24 @@
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="auditUserId" column="audit_user_id" jdbcType="BIGINT"/>
+            <result property="auditUserName" column="audit_user_name" jdbcType="VARCHAR"/>
+            <result property="auditTime" column="audit_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,title,image,
         pictures,model,model_id,
         brand,brand_id,type,
-        type_id,user_id,source_contacts,
-        source_mobile,source_wx,seller_contacts,
-        seller_mobile,seller_wx,price,
-        quantity,min_qty,fz,
-        pici,validity_period,remark,
-        files,status,phase,
-        negotiator,create_by,create_time,
-        update_by,update_time
+        type_id,user_id,user_name,
+        user_mobile,source_contacts,source_mobile,
+        source_wx,seller_contacts,seller_mobile,
+        seller_wx,price,quantity,
+        min_qty,fz,pici,
+        validity_period,remark,files,
+        status,phase,negotiator,
+        create_by,create_time,update_by,
+        update_time,audit_user_id,audit_user_name,
+        audit_time
     </sql>
 </mapper>

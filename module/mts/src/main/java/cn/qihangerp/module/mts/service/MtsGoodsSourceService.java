@@ -13,6 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-03-26 10:14:16
 */
 public interface MtsGoodsSourceService extends IService<MtsGoodsSource> {
+    PageResult<MtsGoodsSource> queryPageList(MtsGoodsSource bo, PageQuery pageQuery);
     PageResult<MtsGoodsSource> queryPageList(Long userId,Integer status,Integer phase, PageQuery pageQuery);
-    ResultVo addSource(GoodsSourcePublishRequest publish,Long userId);
+    ResultVo addSource(GoodsSourcePublishRequest publish,Long userId,String userName);
+
+    ResultVo audit(Long id,Long userId,String userName);
 }

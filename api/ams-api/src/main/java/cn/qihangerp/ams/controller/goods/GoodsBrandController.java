@@ -18,7 +18,7 @@ import java.util.Date;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/goods_brand")
+@RequestMapping("/goods/brand")
 public class GoodsBrandController extends BaseController {
     private final OGoodsBrandService brandService;
     @GetMapping("/list")

@@ -19,7 +19,7 @@ public class MtsGoodsSource implements Serializable {
     /**
      * 
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -71,6 +71,16 @@ public class MtsGoodsSource implements Serializable {
      * 信息发布者
      */
     private Long userId;
+
+    /**
+     * 信息发布人
+     */
+    private String userName;
+
+    /**
+     * 信息发布热手机号
+     */
+    private String userMobile;
 
     /**
      * 信息提供人联系人
@@ -143,12 +153,12 @@ public class MtsGoodsSource implements Serializable {
     private String files;
 
     /**
-     * 状态0草稿中1待审核2已审核3接单中
+     * 状态0草稿中1待审核2放单中3接单中
      */
     private Integer status;
 
     /**
-     * 阶段1货源信息2货源
+     * 阶段1货源信息2货源商品
      */
     private Integer phase;
 
@@ -176,6 +186,21 @@ public class MtsGoodsSource implements Serializable {
      * 更新时间
      */
     private Date updateTime;
+
+    /**
+     * 审核人userid
+     */
+    private Long auditUserId;
+
+    /**
+     * 审核人
+     */
+    private String auditUserName;
+
+    /**
+     * 审核时间
+     */
+    private Date auditTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询商品品牌列表
 export function listBrand(query) {
   return request({
-    url: '/api/ams-api/goods_brand/list',
+    url: '/api/ams-api/goods/brand/list',
     method: 'get',
     params: query
   })

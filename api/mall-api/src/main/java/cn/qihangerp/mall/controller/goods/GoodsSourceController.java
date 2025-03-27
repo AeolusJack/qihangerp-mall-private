@@ -34,7 +34,7 @@ public class GoodsSourceController extends BaseController {
         }catch (Exception e) {
             return AjaxResult.error("请登录");
         }
-        ResultVo resultVo = goodsSourceService.addSource(publish, userId);
+        ResultVo resultVo = goodsSourceService.addSource(publish, userId,JwtUtils.getUsernameFromToken(request));
         if(resultVo.getCode() == 0)
             return AjaxResult.success();
         else
