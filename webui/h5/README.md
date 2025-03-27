@@ -1,19 +1,21 @@
-# hm-shopping
+## 版本
++ nodejs:v16.20
++ vue2
++ vant2
++ axios
 
-## Project setup
+## 开发 
++ 安装依赖
 ```
-npm install
+npm install --registry=https://registry.npmmirror.com
 ```
 
-### Compiles and hot-reloads for development
++ 运行
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
++ 打包
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

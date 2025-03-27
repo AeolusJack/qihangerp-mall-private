@@ -1,19 +1,12 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://rm-7xv883kleiuvyy721ro.mysql.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-#    url: jdbc:mysql://10.0.2.22:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    url: jdbc:mysql://localhost:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-#    url: jdbc:mysql://pc-7xvrmq7347z45h0qf.mysql.polardb.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-#    url: jdbc:mysql://masterpublic.mysql.polardb.rds.aliyuncs.com:3306/qihang-erp?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/qihang-mall?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
-#    username: fabu
-#    password: B4@r%zPm8*Qw$1Fh7&Vx#2GyJ0!
     password: Andy_123
   data:
     # redis 配置
     redis:
-#      host: zhenping.redis.rds.aliyuncs.com
 #      host: 10.0.2.22
       host: 127.0.0.1
       port: 6379
@@ -38,18 +31,3 @@ mybatis-plus:
   type-aliases-package: cn.qihangerp.oms.domain;cn.qihangerp.domain;
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启sql日志
-
-
-## minio配置
-#minio:
-#  endpoint: http://127.0.0.1:9000
-#  accessKey: 0AksAWDtI20Lpb4qxq5S
-#  secretKey: yOAZkOVwrhPooBRel5PB0GwS5uw8VAgmqYykHl3T
-#  secure: false
-#  bucketName: ecerp
-#minio:
-#  endpoint: http://223.83.100.30:9001
-#  accessKey: 4146MhovKkxe7VM4AXDQ
-#  secretKey: xkUhwIAOEFqYK6LafXwKE6vfXoP4dhN2MUsMNSQ5
-#  secure: false
-#  bucketName: omsimage

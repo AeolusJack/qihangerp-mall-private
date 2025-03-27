@@ -1,12 +1,9 @@
+## 版本
++ nodejs:v16.20.2
+
 ## 开发
 
 ```bash
-# 克隆项目
-
-
-# 进入项目目录
-cd zhijian-vue
-
 # 安装依赖
 npm install
 
@@ -17,7 +14,7 @@ npm install --registry=https://registry.npmmirror.com
 npm run dev
 ```
 
-浏览器访问 http://localhost:80
+浏览器访问 http://localhost:88
 
 ## 发布
 
