@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qihangerp.module.user.mapper.MallUserMapper">
+
+    <resultMap id="BaseResultMap" type="cn.qihangerp.module.user.domain.MallUser">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="loginPwd" column="login_pwd" jdbcType="VARCHAR"/>
+            <result property="source" column="source" jdbcType="VARCHAR"/>
+            <result property="sourceMarketId" column="source_market_id" jdbcType="BIGINT"/>
+            <result property="sourceDeviceSn" column="source_device_sn" jdbcType="VARCHAR"/>
+            <result property="referrerId" column="referrer_id" jdbcType="BIGINT"/>
+            <result property="userType" column="user_type" jdbcType="INTEGER"/>
+            <result property="currIdentity" column="curr_identity" jdbcType="INTEGER"/>
+            <result property="currMarketId" column="curr_market_id" jdbcType="BIGINT"/>
+            <result property="currShopUserId" column="curr_shop_user_id" jdbcType="BIGINT"/>
+            <result property="gender" column="gender" jdbcType="VARCHAR"/>
+            <result property="authnName" column="authn_name" jdbcType="VARCHAR"/>
+            <result property="authnCardNo" column="authn_card_no" jdbcType="VARCHAR"/>
+            <result property="authnStatus" column="authn_status" jdbcType="INTEGER"/>
+            <result property="authnTime" column="authn_time" jdbcType="TIMESTAMP"/>
+            <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
+            <result property="lastLoginIp" column="last_login_ip" jdbcType="VARCHAR"/>
+            <result property="lastLoginDeviceSn" column="last_login_device_sn" jdbcType="VARCHAR"/>
+            <result property="lastLoginMarketId" column="last_login_market_id" jdbcType="BIGINT"/>
+            <result property="regTime" column="reg_time" jdbcType="TIMESTAMP"/>
+            <result property="regIp" column="reg_ip" jdbcType="VARCHAR"/>
+            <result property="wxOpenId" column="wx_open_id" jdbcType="VARCHAR"/>
+            <result property="wxUnionId" column="wx_union_id" jdbcType="VARCHAR"/>
+            <result property="wxSessionKey" column="wx_session_key" jdbcType="VARCHAR"/>
+            <result property="wxHeadImg" column="wx_head_img" jdbcType="VARCHAR"/>
+            <result property="wxNickName" column="wx_nick_name" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="isNegotiator" column="is_negotiator" jdbcType="INTEGER"/>
+            <result property="isBusinessPerson" column="is_business_person" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,mobile,user_name,
+        login_pwd,source,source_market_id,
+        source_device_sn,referrer_id,user_type,
+        curr_identity,curr_market_id,curr_shop_user_id,
+        gender,authn_name,authn_card_no,
+        authn_status,authn_time,last_login_time,
+        last_login_ip,last_login_device_sn,last_login_market_id,
+        reg_time,reg_ip,wx_open_id,
+        wx_union_id,wx_session_key,wx_head_img,
+        wx_nick_name,status,create_by,
+        create_time,update_by,update_time,
+        is_negotiator,is_business_person
+    </sql>
+</mapper>

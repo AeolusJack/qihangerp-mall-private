@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qihangerp.module.user.mapper.MallUserAuthnMapper">
+
+    <resultMap id="BaseResultMap" type="cn.qihangerp.module.user.domain.MallUserAuthn">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="tenantId" column="tenant_id" jdbcType="BIGINT"/>
+            <result property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="trueName" column="true_name" jdbcType="VARCHAR"/>
+            <result property="idCardNo" column="id_card_no" jdbcType="VARCHAR"/>
+            <result property="pic1" column="pic1" jdbcType="VARCHAR"/>
+            <result property="pic2" column="pic2" jdbcType="VARCHAR"/>
+            <result property="pic3" column="pic3" jdbcType="VARCHAR"/>
+            <result property="autograph" column="autograph" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,user_id,
+        true_name,id_card_no,pic1,
+        pic2,pic3,autograph,
+        status,create_by,create_time,
+        update_by,update_time
+    </sql>
+</mapper>

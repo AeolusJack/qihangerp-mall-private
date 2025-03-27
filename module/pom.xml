@@ -19,6 +19,7 @@
         <module>goods</module>
         <module>mall</module>
         <module>mts</module>
+        <module>user</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
