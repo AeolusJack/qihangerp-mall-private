@@ -40,4 +40,14 @@ public class GoodsSourceController extends BaseController {
         else
             return AjaxResult.error(resultVo.getMsg());
     }
+
+    @GetMapping("/pendingSourceList")
+    public TableDataInfo pendingSourceList(PageQuery pageQuery, HttpServletRequest request)
+    {
+        MtsGoodsSource source = new MtsGoodsSource();
+        source.setPhase(1);
+        source.setStatus(2);
+        PageResult<MtsGoodsSource> pageList = goodsSourceService.queryPageList(source, pageQuery);
+        return getDataTable(pageList);
+    }
 }

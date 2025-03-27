@@ -31,7 +31,8 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
     @Override
     public PageResult<MtsGoodsSource> queryPageList(MtsGoodsSource bo, PageQuery pageQuery) {
         LambdaQueryWrapper<MtsGoodsSource> queryWrapper = new LambdaQueryWrapper<>();
-
+        queryWrapper.eq(bo.getPhase() != null, MtsGoodsSource::getPhase, bo.getPhase());
+        queryWrapper.eq(bo.getStatus() != null, MtsGoodsSource::getStatus, bo.getStatus());
         Page<MtsGoodsSource> pages = this.baseMapper.selectPage(pageQuery.build(), queryWrapper);
         return PageResult.build(pages);
     }
