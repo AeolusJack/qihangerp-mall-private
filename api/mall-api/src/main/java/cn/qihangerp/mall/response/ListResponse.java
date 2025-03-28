@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ListResponse {
+public class ListResponse<T> {
     @JsonProperty("current_page")
     private int currentPage=1;
     @JsonProperty("total")
@@ -17,5 +17,5 @@ public class ListResponse {
     @JsonProperty("per_page")
     private int perPage=15;
     @JsonProperty("data")
-    private List<UserOrderResponse> data = new ArrayList<>();
+    private List<T> data = new ArrayList<>();
 }

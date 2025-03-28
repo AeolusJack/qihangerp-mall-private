@@ -23,3 +23,12 @@ export function acceptSourceOrder(data) {
   })
 }
 
+// 订单列表
+export const getMySourceOrderList = (dataType, page) => {
+  return request.get('/api/mall-api/goodsSource/order/list', {
+    params: {
+      dataType,
+      page
+    }
+  })
+}

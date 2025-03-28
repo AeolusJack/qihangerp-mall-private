@@ -5,6 +5,7 @@ import cn.qihangerp.domain.OShopPlatform;
 import cn.qihangerp.mall.request.UserOrderRequest;
 import cn.qihangerp.mall.response.DataListResponse;
 import cn.qihangerp.mall.response.ListResponse;
+import cn.qihangerp.mall.response.UserOrderResponse;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class OrderController extends BaseController {
     public AjaxResult list(UserOrderRequest bo, HttpServletRequest request)
     {
         DataListResponse response = new DataListResponse();
-        ListResponse listResponse = new ListResponse();
+        ListResponse<UserOrderResponse> listResponse = new ListResponse();
         response.setList(listResponse);
 
         return AjaxResult.success(response);

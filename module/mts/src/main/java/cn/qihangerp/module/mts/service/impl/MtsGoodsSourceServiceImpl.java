@@ -5,8 +5,8 @@ import cn.qihangerp.common.PageResult;
 import cn.qihangerp.common.ResultVo;
 
 import cn.qihangerp.module.mts.bo.GoodsSourcePublishRequest;
-import cn.qihangerp.module.mts.domain.MtsGoodsSourceAccept;
-import cn.qihangerp.module.mts.mapper.MtsGoodsSourceAcceptMapper;
+import cn.qihangerp.module.mts.domain.MtsGoodsSourceOrder;
+import cn.qihangerp.module.mts.mapper.MtsGoodsSourceOrderMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -30,7 +30,7 @@ import java.util.Date;
 @Service
 public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper, MtsGoodsSource>
     implements MtsGoodsSourceService{
-    private final MtsGoodsSourceAcceptMapper mtsGoodsSourceAcceptMapper;
+    private final MtsGoodsSourceOrderMapper mtsGoodsSourceOrderMapper;
     @Override
     public PageResult<MtsGoodsSource> queryPageList(MtsGoodsSource bo, PageQuery pageQuery) {
         LambdaQueryWrapper<MtsGoodsSource> queryWrapper = new LambdaQueryWrapper<>();
@@ -119,13 +119,24 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
             return ResultVo.error("已被接单");
         }
         // 加入接单数据
-        MtsGoodsSourceAccept accept = new MtsGoodsSourceAccept();
+        MtsGoodsSourceOrder accept = new MtsGoodsSourceOrder();
         accept.setGoodsSourceId(id);
         accept.setUserId(userId);
         accept.setIdentity(10);
         accept.setStatus(1);
         accept.setAcceptTime(new Date());
-        mtsGoodsSourceAcceptMapper.insert(accept);
+        accept.setSellerContacts(mtsGoodsSource.getSellerContacts());
+        accept.setSellerMobile(mtsGoodsSource.getSellerMobile());
+        accept.setSellerWx(mtsGoodsSource.getSellerWx());
+        accept.setPrice(mtsGoodsSource.getPrice());
+        accept.setQuantity(mtsGoodsSource.getQuantity());
+        accept.setMinQty(mtsGoodsSource.getMinQty());
+        accept.setQuantity(mtsGoodsSource.getQuantity());
+        accept.setModel(mtsGoodsSource.getModel());
+        accept.setBrand(mtsGoodsSource.getBrand());
+        accept.setType(mtsGoodsSource.getType());
+        accept.setImage(mtsGoodsSource.getImage());
+        mtsGoodsSourceOrderMapper.insert(accept);
         // 更新自己的状态
         MtsGoodsSource update = new MtsGoodsSource();
         update.setId(id);

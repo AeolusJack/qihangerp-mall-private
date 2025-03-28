@@ -5,23 +5,23 @@
 <!--    <van-cell-group inset >-->
     <div class="my-asset" >
       <div class="asset-left">
-        <div class="asset-left-item">
-          <span>{{ list.length }}</span>
-          <span>待接单</span>
-        </div>
-        <div class="asset-left-item">
+<!--        <div class="asset-left-item">-->
+<!--          <span>{{ list.length }}</span>-->
+<!--          <span>待接单</span>-->
+<!--        </div>-->
+        <div class="asset-left-item" @click="$router.push('/source/myOrder?dataType=accept')">
           <span>0</span>
           <span>进行中</span>
         </div>
-        <div class="asset-left-item">
+        <div class="asset-left-item" @click="$router.push('/source/myOrder?dataType=complete')" >
           <span>0</span>
           <span>已完成</span>
         </div>
       </div>
       <div class="asset-right">
-        <div class="asset-right-item">
+        <div class="asset-right-item" @click="$router.push('/source/myOrder?dataType=accept')">
           <van-icon name="balance-pay" />
-          <span>我的订单</span>
+          <span>我的接单</span>
         </div>
       </div>
     </div>

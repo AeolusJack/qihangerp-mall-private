@@ -16,6 +16,7 @@ const ProDetail = () => import('@/views/prodetail')
 const Pay = () => import('@/views/pay')
 const MyOrder = () => import('@/views/myorder')
 const Goods = () => import('@/views/layout/goods.vue')
+const mySourceOrder = () => import('@/views/source/myOrder.vue')
 const GoodsSourceOrder = () => import('@/views/source/acceptOrder.vue')
 const GoodsSourcePublish = () => import('@/views/source/publish')
 
@@ -43,6 +44,7 @@ const router = new VueRouter({
     { path: '/prodetail/:id', component: ProDetail },
     { path: '/pay', component: Pay },
     { path: '/myorder', component: MyOrder },
+    { path: '/source/myOrder', component: mySourceOrder },
 
     { path: '/source/publish', component: GoodsSourcePublish },
   ]

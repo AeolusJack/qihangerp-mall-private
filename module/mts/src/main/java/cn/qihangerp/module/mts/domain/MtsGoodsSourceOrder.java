@@ -5,16 +5,19 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
  * 货源信息接单表
- * @TableName mts_goods_source_accept
+ * @TableName mts_goods_source_order
  */
-@TableName(value ="mts_goods_source_accept")
+@TableName(value ="mts_goods_source_order")
 @Data
-public class MtsGoodsSourceAccept implements Serializable {
+public class MtsGoodsSourceOrder implements Serializable {
     /**
      * 
      */
@@ -44,6 +47,7 @@ public class MtsGoodsSourceAccept implements Serializable {
     /**
      * 接单时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date acceptTime;
 
     /**
@@ -65,6 +69,56 @@ public class MtsGoodsSourceAccept implements Serializable {
      * 审核人
      */
     private Long auditUser;
+
+    /**
+     * 卖家联系人
+     */
+    private String sellerContacts;
+
+    /**
+     * 卖家联系手机号
+     */
+    private String sellerMobile;
+
+    /**
+     * 卖家联系微信
+     */
+    private String sellerWx;
+
+    /**
+     * 价格
+     */
+    private BigDecimal price;
+
+    /**
+     * 数量
+     */
+    private Integer quantity;
+
+    /**
+     * 最低数量
+     */
+    private Integer minQty;
+
+    /**
+     * 主图
+     */
+    private String image;
+
+    /**
+     * 型号
+     */
+    private String model;
+
+    /**
+     * 品牌
+     */
+    private String brand;
+
+    /**
+     * 类型
+     */
+    private String type;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
