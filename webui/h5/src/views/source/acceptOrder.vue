@@ -1,12 +1,12 @@
 <template>
   <div class="cart">
-    <van-nav-bar title="订单" fixed  />
+    <van-nav-bar title="接单" fixed  />
     <div style="padding-top: 16px;"></div>
 <!--    <van-cell-group inset >-->
     <div class="my-asset" >
       <div class="asset-left">
         <div class="asset-left-item">
-          <span>0</span>
+          <span>{{ list.length }}</span>
           <span>待接单</span>
         </div>
         <div class="asset-left-item">
@@ -66,7 +66,7 @@
 
     <div class="empty-cart" v-else>
       <img src="../../assets/empty.png" alt="" />
-      <div class="tips">您的购物车是空的, 快去逛逛吧</div>
+      <div class="tips">还没有单可抢, 先等等吧</div>
       <div class="btn" @click="$router.push('/')">去逛逛</div>
     </div>
   </div>

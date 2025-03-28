@@ -31,7 +31,7 @@ export const submitOrder = (mode, obj) => {
 
 // 订单列表
 export const getMyOrderList = (dataType, page) => {
-  return request.get('/order/list', {
+  return request.get('/api/mall-api/order/list', {
     params: {
       dataType,
       page

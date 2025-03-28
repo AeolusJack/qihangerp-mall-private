@@ -16,7 +16,7 @@ const ProDetail = () => import('@/views/prodetail')
 const Pay = () => import('@/views/pay')
 const MyOrder = () => import('@/views/myorder')
 const Goods = () => import('@/views/layout/goods.vue')
-const GoodsSourceOrder = () => import('@/views/source/myorder.vue')
+const GoodsSourceOrder = () => import('@/views/source/acceptOrder.vue')
 const GoodsSourcePublish = () => import('@/views/source/publish')
 
 Vue.use(VueRouter)
