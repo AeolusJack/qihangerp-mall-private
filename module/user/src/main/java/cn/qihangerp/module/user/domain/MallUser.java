@@ -32,6 +32,16 @@ public class MallUser implements Serializable {
     private String userName;
 
     /**
+     * 微信昵称
+     */
+    private String nickName;
+
+    /**
+     * 微信头像
+     */
+    private String headImg;
+
+    /**
      * 登录密码
      */
     private String loginPwd;
@@ -40,16 +50,6 @@ public class MallUser implements Serializable {
      * 来源：小程序、小程序分享、交易终端
      */
     private String source;
-
-    /**
-     * 来源市场id
-     */
-    private Long sourceMarketId;
-
-    /**
-     * 来源设备sn
-     */
-    private String sourceDeviceSn;
 
     /**
      * 推荐人id
@@ -62,19 +62,9 @@ public class MallUser implements Serializable {
     private Integer userType;
 
     /**
-     * 当前身份（10买家身份20卖家身份；默认买家身份，当用户切换了买家卖家之后当前身份根据切换的身份做变更）
+     * 商务身份（10谈判人20商务）
      */
-    private Integer currIdentity;
-
-    /**
-     * 当前选择的市场id
-     */
-    private Long currMarketId;
-
-    /**
-     * 当前店铺userid
-     */
-    private Long currShopUserId;
+    private Integer businessType;
 
     /**
      * 性别（男，女，未知）
@@ -147,16 +137,6 @@ public class MallUser implements Serializable {
     private String wxSessionKey;
 
     /**
-     * 微信头像
-     */
-    private String wxHeadImg;
-
-    /**
-     * 微信昵称
-     */
-    private String wxNickName;
-
-    /**
      * 状态（1正常2禁用）
      */
     private Integer status;
@@ -182,14 +162,19 @@ public class MallUser implements Serializable {
     private Date updateTime;
 
     /**
-     * 是否谈判人（0否1是）
+     * 省
      */
-    private Integer isNegotiator;
+    private String province;
 
     /**
-     * 是否商务（0否1是）
+     * 市
      */
-    private Integer isBusinessPerson;
+    private String city;
+
+    /**
+     * 区
+     */
+    private String district;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

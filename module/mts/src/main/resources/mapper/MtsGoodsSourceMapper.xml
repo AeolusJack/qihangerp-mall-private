@@ -33,8 +33,8 @@
             <result property="remark" column="remark" jdbcType="VARCHAR"/>
             <result property="files" column="files" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
+            <result property="acceptStatus" column="accept_status" jdbcType="INTEGER"/>
             <result property="phase" column="phase" jdbcType="INTEGER"/>
-            <result property="negotiator" column="negotiator" jdbcType="VARCHAR"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
@@ -42,6 +42,10 @@
             <result property="auditUserId" column="audit_user_id" jdbcType="BIGINT"/>
             <result property="auditUserName" column="audit_user_name" jdbcType="VARCHAR"/>
             <result property="auditTime" column="audit_time" jdbcType="TIMESTAMP"/>
+            <result property="acceptUserId" column="accept_user_id" jdbcType="BIGINT"/>
+            <result property="acceptUserName" column="accept_user_name" jdbcType="VARCHAR"/>
+            <result property="acceptUserMobile" column="accept_user_mobile" jdbcType="VARCHAR"/>
+            <result property="acceptTime" column="accept_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -54,9 +58,10 @@
         seller_wx,price,quantity,
         min_qty,fz,pici,
         validity_period,remark,files,
-        status,phase,negotiator,
+        status,accept_status,phase,
         create_by,create_time,update_by,
         update_time,audit_user_id,audit_user_name,
-        audit_time
+        audit_time,accept_user_id,accept_user_name,
+        accept_user_mobile,accept_time
     </sql>
 </mapper>

@@ -5,9 +5,9 @@ import cn.qihangerp.common.BaseController;
 import cn.qihangerp.common.LoginBody;
 import cn.qihangerp.common.config.RedisCache;
 import cn.qihangerp.common.constant.CacheConstants;
-import cn.qihangerp.module.goods.service.OGoodsSupplierService;
-import cn.qihangerp.module.mall.domain.MallUser;
-import cn.qihangerp.module.mall.service.MallUserService;
+
+import cn.qihangerp.module.user.domain.MallUser;
+import cn.qihangerp.module.user.service.MallUserService;
 import cn.qihangerp.response.LoginUserInfoResponse;
 import cn.qihangerp.utils.JwtUtils;
 import cn.qihangerp.utils.StringUtils;
@@ -46,21 +46,14 @@ public class LoginController extends BaseController {
 //        if(!loginBody.getSmsCode().equals(code)){
 //            return AjaxResult.error("验证码不正确");
 //        }
-        MallUser byMobile = mallUserService.getByMobile(loginBody.getMobile());
-        if(byMobile == null){
+        MallUser user = mallUserService.getByMobile(loginBody.getMobile());
+        if(user == null){
             return AjaxResult.error("手机号不存在");
         }
-//        OGoodsSupplier supplier = supplierService.getByLoginName(loginBody.getMobile());
-//        if (supplier == null) return AjaxResult.error(1500, "供应商账号不存在");
-//        String pwd = PasswordUtils.hashPasswordWithSalt(loginBody.getPassword(), supplier.getLoginSlat());
-//        if (!pwd.equals(supplier.getLoginPwd())) return AjaxResult.error(1504, "账号密码不正确");
-//
-
-
 
         // 验证用户名和密码（略）
         // 如果验证成功，生成 JWT
-        String token = JwtUtils.generateToken(loginBody.getMobile(),byMobile.getId());
+        String token = JwtUtils.generateToken(loginBody.getMobile(),user.getId());
 
 //            // 根据uuid将loginUser缓存
 //        String userKey =  "login_tokens:"+tokenUuid;
@@ -68,11 +61,12 @@ public class LoginController extends BaseController {
         LoginUserInfoResponse response = new LoginUserInfoResponse();
         response.setToken(token);
         response.setMobile(loginBody.getMobile());
-        response.setUserId(byMobile.getId());
+        response.setUserId(user.getId());
+        response.setNickname(user.getNickName());
+        response.setHeadImg(user.getHeadImg());
+        response.setUsername(user.getUserName());
+        response.setBusinessType(user.getBusinessType());
         return AjaxResult.success(response);
-//        AjaxResult ajax = AjaxResult.success();
-//        ajax.put(Constants.TOKEN, token);
-//        return ajax;
     }
 
 

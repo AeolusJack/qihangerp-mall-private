@@ -8,15 +8,13 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
             <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="headImg" column="head_img" jdbcType="VARCHAR"/>
             <result property="loginPwd" column="login_pwd" jdbcType="VARCHAR"/>
             <result property="source" column="source" jdbcType="VARCHAR"/>
-            <result property="sourceMarketId" column="source_market_id" jdbcType="BIGINT"/>
-            <result property="sourceDeviceSn" column="source_device_sn" jdbcType="VARCHAR"/>
             <result property="referrerId" column="referrer_id" jdbcType="BIGINT"/>
             <result property="userType" column="user_type" jdbcType="INTEGER"/>
-            <result property="currIdentity" column="curr_identity" jdbcType="INTEGER"/>
-            <result property="currMarketId" column="curr_market_id" jdbcType="BIGINT"/>
-            <result property="currShopUserId" column="curr_shop_user_id" jdbcType="BIGINT"/>
+            <result property="businessType" column="business_type" jdbcType="INTEGER"/>
             <result property="gender" column="gender" jdbcType="VARCHAR"/>
             <result property="authnName" column="authn_name" jdbcType="VARCHAR"/>
             <result property="authnCardNo" column="authn_card_no" jdbcType="VARCHAR"/>
@@ -31,29 +29,27 @@
             <result property="wxOpenId" column="wx_open_id" jdbcType="VARCHAR"/>
             <result property="wxUnionId" column="wx_union_id" jdbcType="VARCHAR"/>
             <result property="wxSessionKey" column="wx_session_key" jdbcType="VARCHAR"/>
-            <result property="wxHeadImg" column="wx_head_img" jdbcType="VARCHAR"/>
-            <result property="wxNickName" column="wx_nick_name" jdbcType="VARCHAR"/>
             <result property="status" column="status" jdbcType="INTEGER"/>
             <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="isNegotiator" column="is_negotiator" jdbcType="INTEGER"/>
-            <result property="isBusinessPerson" column="is_business_person" jdbcType="INTEGER"/>
+            <result property="province" column="province" jdbcType="VARCHAR"/>
+            <result property="city" column="city" jdbcType="VARCHAR"/>
+            <result property="district" column="district" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,mobile,user_name,
-        login_pwd,source,source_market_id,
-        source_device_sn,referrer_id,user_type,
-        curr_identity,curr_market_id,curr_shop_user_id,
-        gender,authn_name,authn_card_no,
-        authn_status,authn_time,last_login_time,
-        last_login_ip,last_login_device_sn,last_login_market_id,
-        reg_time,reg_ip,wx_open_id,
-        wx_union_id,wx_session_key,wx_head_img,
-        wx_nick_name,status,create_by,
-        create_time,update_by,update_time,
-        is_negotiator,is_business_person
+        nick_name,head_img,login_pwd,
+        source,referrer_id,user_type,
+        business_type,gender,authn_name,
+        authn_card_no,authn_status,authn_time,
+        last_login_time,last_login_ip,last_login_device_sn,
+        last_login_market_id,reg_time,reg_ip,
+        wx_open_id,wx_union_id,wx_session_key,
+        status,create_by,create_time,
+        update_by,update_time,province,
+        city,district
     </sql>
 </mapper>

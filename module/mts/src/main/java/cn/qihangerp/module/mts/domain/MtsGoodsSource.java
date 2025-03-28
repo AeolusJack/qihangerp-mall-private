@@ -153,19 +153,19 @@ public class MtsGoodsSource implements Serializable {
     private String files;
 
     /**
-     * 状态0草稿中1待审核2放单中3接单中
+     * 状态0草稿中1待审核2已审核3已发布
      */
     private Integer status;
 
     /**
-     * 阶段1货源信息2货源商品
+     * 0待谈判接单1谈判人已接单
      */
-    private Integer phase;
+    private Integer acceptStatus;
 
     /**
-     * 谈判人
+     * 阶段0待谈判人接单1谈判人已接单2已发布商品
      */
-    private String negotiator;
+    private Integer phase;
 
     /**
      * 创建人
@@ -201,6 +201,26 @@ public class MtsGoodsSource implements Serializable {
      * 审核时间
      */
     private Date auditTime;
+
+    /**
+     * 接单人（谈判人）userid
+     */
+    private Long acceptUserId;
+
+    /**
+     * 接单人username
+     */
+    private String acceptUserName;
+
+    /**
+     * 接单人mobile
+     */
+    private String acceptUserMobile;
+
+    /**
+     * 接单时间
+     */
+    private Date acceptTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -11,5 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-03-27 20:52:20
 */
 public interface MallUserService extends IService<MallUser> {
+    MallUser getByMobile(String mobile);
     PageResult<MallUser> queryPageList(MallUser bo, PageQuery pageQuery);
 }

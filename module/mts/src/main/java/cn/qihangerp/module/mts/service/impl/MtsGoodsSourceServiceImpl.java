@@ -5,6 +5,8 @@ import cn.qihangerp.common.PageResult;
 import cn.qihangerp.common.ResultVo;
 
 import cn.qihangerp.module.mts.bo.GoodsSourcePublishRequest;
+import cn.qihangerp.module.mts.domain.MtsGoodsSourceAccept;
+import cn.qihangerp.module.mts.mapper.MtsGoodsSourceAcceptMapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -14,6 +16,7 @@ import cn.qihangerp.module.mts.mapper.MtsGoodsSourceMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -27,10 +30,11 @@ import java.util.Date;
 @Service
 public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper, MtsGoodsSource>
     implements MtsGoodsSourceService{
-
+    private final MtsGoodsSourceAcceptMapper mtsGoodsSourceAcceptMapper;
     @Override
     public PageResult<MtsGoodsSource> queryPageList(MtsGoodsSource bo, PageQuery pageQuery) {
         LambdaQueryWrapper<MtsGoodsSource> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(bo.getAcceptStatus() != null, MtsGoodsSource::getAcceptStatus, bo.getAcceptStatus());
         queryWrapper.eq(bo.getPhase() != null, MtsGoodsSource::getPhase, bo.getPhase());
         queryWrapper.eq(bo.getStatus() != null, MtsGoodsSource::getStatus, bo.getStatus());
         Page<MtsGoodsSource> pages = this.baseMapper.selectPage(pageQuery.build(), queryWrapper);
@@ -78,7 +82,8 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
         mtsGoodsSource.setValidityPeriod(publish.getValidityPeriod());
         mtsGoodsSource.setRemark(publish.getRemark());
         mtsGoodsSource.setStatus(1);
-        mtsGoodsSource.setPhase(1);
+        mtsGoodsSource.setAcceptStatus(0);
+        mtsGoodsSource.setPhase(0);
         mtsGoodsSource.setCreateTime(new Date());
         this.baseMapper.insert(mtsGoodsSource);
         return ResultVo.success();
@@ -99,6 +104,38 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
         update.setAuditUserName(userName);
         update.setAuditTime(new Date());
         update.setUpdateTime(new Date());
+        this.baseMapper.updateById(update);
+        return ResultVo.success();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public ResultVo acceptSourceOrder(Long id, Long userId, String userName) {
+        MtsGoodsSource mtsGoodsSource = this.baseMapper.selectById(id);
+        if(mtsGoodsSource==null){return ResultVo.error("未找到数据");
+        }else if(mtsGoodsSource.getStatus()!=2 && mtsGoodsSource.getAcceptStatus()!=0){
+            return ResultVo.error("状态不对，无法操作");
+        } else if (mtsGoodsSource.getPhase()!=0) {
+            return ResultVo.error("已被接单");
+        }
+        // 加入接单数据
+        MtsGoodsSourceAccept accept = new MtsGoodsSourceAccept();
+        accept.setGoodsSourceId(id);
+        accept.setUserId(userId);
+        accept.setIdentity(10);
+        accept.setStatus(1);
+        accept.setAcceptTime(new Date());
+        mtsGoodsSourceAcceptMapper.insert(accept);
+        // 更新自己的状态
+        MtsGoodsSource update = new MtsGoodsSource();
+        update.setId(id);
+        update.setAcceptStatus(1);
+        update.setPhase(1);
+        update.setAcceptUserId(userId);
+        update.setAcceptUserName(userName);
+        update.setAcceptUserMobile(userName);
+        update.setUpdateTime(new Date());
+        update.setAcceptTime(new Date());
         this.baseMapper.updateById(update);
         return ResultVo.success();
     }

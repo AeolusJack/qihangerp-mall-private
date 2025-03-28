@@ -28,60 +28,40 @@
 <!--    </van-cell-group>-->
     <!-- 可抢单开头 -->
     <div class="cart-title">
-      <span class="all">共<i>{{ cartTotal }}</i>单可抢单</span>
+      <span class="all">共<i>{{ list.length }}</i>单可抢单</span>
 
     </div>
 
-    <div v-if="isLogin ">
+    <div v-if="list.length>0">
       <!-- 可抢单列表 -->
-      <div class="cart-list">
+      <div class="cart-list" v-for="item in list">
       <van-cell-group inset>
-<!--        <van-cell title="型号" value="内容" />-->
-<!--        <van-cell title="单元格" value="内容" label="描述信息" />-->
-<!--      </van-cell-group>-->
-<!--      <van-cell-group title="" inset>-->
       <van-card style="background-color: #FFFFFF"
-          num="200000"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+          :num="item.quantity"
+          :price="item.price"
+          :desc="item.remark"
+          :title="item.title?item.title:'货源信息'"
+          :thumb="item.image"
       >
         <template #tags>
-          <van-tag plain type="danger">型号</van-tag>
-          <van-tag plain type="danger">标签</van-tag>
+          <span>
+          <van-tag plain type="primary">{{item.model}}</van-tag>
+          </span>
+          <span style="padding-left: 10px;">
+          <van-tag plain type="primary" >{{item.brand}}</van-tag>
+          </span>
+          <span style="padding-left: 10px;">
+          <van-tag plain type="primary" >{{item.type}}</van-tag>
+          </span>
         </template>
         <template #footer>
-          <van-button type="primary" size="small">抢单</van-button>
+          <van-button type="primary" size="small" @click="acceptSourceOrder(item)">抢单</van-button>
 
         </template>
       </van-card>
       </van-cell-group>
       </div>
-      <div class="cart-list" >
-      <van-cell-group inset>
-        <!--        <van-cell title="型号" value="内容" />-->
-        <!--        <van-cell title="单元格" value="内容" label="描述信息" />-->
-        <!--      </van-cell-group>-->
-        <!--      <van-cell-group title="" inset>-->
-        <van-card style="background-color: #FFFFFF"
-                  num="200000"
-                  price="2.00"
-                  desc="描述信息"
-                  title="商品标题"
-                  thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
-        >
-          <template #tags>
-            <van-tag plain type="danger">型号</van-tag>
-            <van-tag plain type="danger">标签</van-tag>
-          </template>
-          <template #footer>
-            <van-button type="primary" size="small">抢单</van-button>
 
-          </template>
-        </van-card>
-      </van-cell-group>
-      </div>
     </div>
 
     <div class="empty-cart" v-else>
@@ -96,6 +76,9 @@
 <script>
 import CountBox from "@/components/CountBox.vue";
 import { mapGetters, mapState } from "vuex";
+import {getUserInfoDetail} from "@/api/user";
+import {listPendingGoodsSource, acceptSourceOrder} from "@/api/goodssource";
+import {Toast} from "vant";
 export default {
   name: "GoodsSourceOrderPage",
   components: {
@@ -104,30 +87,44 @@ export default {
   data() {
     return {
       isEdit: false,
+      userInfo:null,
+      list:[]
     };
   },
   computed: {
-    ...mapState("cart", ["cartList"]),
-    ...mapGetters("cart", [
-      "cartTotal",
-      "selCartList",
-      "selCount",
-      "selPrice",
-      "isAllChecked",
-    ]),
-    isLogin() {
-      return this.$store.getters.token;
-    },
+
   },
+
   created() {
-    //必须是登录过的用户 才能获取购物车列表
-    if (this.isLogin) {
-      // this.$store.dispatch("cart/getCartAction");
-    }
+    this.getUserInfo()
   },
   methods: {
-
-
+    async getUserInfo() {
+      const response = await getUserInfoDetail();
+      console.log("========返回userinfo======",response);
+      if(response.code === 200){
+        this.userInfo = response.data.userInfo;
+        this.getPendingSourceList()
+      }
+    },
+    async getPendingSourceList() {
+      listPendingGoodsSource().then(resp=>{
+        console.log('=========返回的货源列表===========',resp.rows)
+        this.list = resp.rows
+      })
+    },
+    acceptSourceOrder(goods){
+      console.log('=======抢单============',goods)
+      acceptSourceOrder({id:goods.id}).then(resp=>{
+        console.log('======抢单提交结果======',resp)
+        if(resp.code == 200){
+          Toast("接单成功")
+          this.getPendingSourceList()
+        } else if(resp.code == 500){
+          Toast(resp.msg)
+        }
+      })
+    }
   },
   watch: {
 

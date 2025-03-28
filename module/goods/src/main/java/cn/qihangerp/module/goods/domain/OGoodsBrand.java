@@ -17,7 +17,7 @@ public class OGoodsBrand implements Serializable {
      * 主键ID
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 品牌名

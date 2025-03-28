@@ -45,27 +45,22 @@
 <!--       <el-table-column type="selection" width="55" align="center" />-->
       <el-table-column label="ID" align="center" prop="id" />
 
-      <el-table-column label="头像" align="center" prop="wxHeadImg" width="70">
+      <el-table-column label="头像" align="center" prop="headImg" width="70">
         <template slot-scope="scope">
-          <image-preview :src="scope.row.wxHeadImg" :width="50" :height="50"/>
+          <image-preview :src="scope.row.headImg" :width="50" :height="50"/>
         </template>
       </el-table-column>
       <el-table-column label="会员名" align="left" prop="userName" />
-      <el-table-column label="昵称" align="left" prop="wxNickName" />
+      <el-table-column label="昵称" align="left" prop="nickName" />
        <el-table-column label="手机号" align="center" prop="mobile" />
        <el-table-column label="实名" align="left" prop="authnName" />
-      <el-table-column label="是否谈判人" align="center" prop="isNegotiator" >
+      <el-table-column label="商务身份" align="center" prop="isNegotiator" >
         <template slot-scope="scope">
-          <el-tag size="small" v-if="scope.row.isNegotiator === 0">否</el-tag>
-          <el-tag size="small" v-if="scope.row.isNegotiator === 1">是</el-tag>
+          <el-tag size="small" v-if="scope.row.businessType === 10">谈判人</el-tag>
+          <el-tag size="small" v-if="scope.row.businessType === 20">商务</el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="是否商务" align="center" prop="isBusinessPerson" >
-        <template slot-scope="scope">
-          <el-tag size="small" v-if="scope.row.isBusinessPerson === 0">否</el-tag>
-          <el-tag size="small" v-if="scope.row.isBusinessPerson === 1">是</el-tag>
-        </template>
-      </el-table-column>
+
 <!--      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">-->
 <!--        <template slot-scope="scope">-->
 <!--          <el-row>-->

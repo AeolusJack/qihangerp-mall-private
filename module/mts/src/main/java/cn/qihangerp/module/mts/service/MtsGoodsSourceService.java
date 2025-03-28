@@ -18,4 +18,6 @@ public interface MtsGoodsSourceService extends IService<MtsGoodsSource> {
     ResultVo addSource(GoodsSourcePublishRequest publish,Long userId,String userName);
 
     ResultVo audit(Long id,Long userId,String userName);
+
+    ResultVo acceptSourceOrder(Long id,Long userId,String userName);
 }

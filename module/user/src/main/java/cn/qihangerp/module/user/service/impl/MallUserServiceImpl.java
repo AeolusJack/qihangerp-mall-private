@@ -18,7 +18,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class MallUserServiceImpl extends ServiceImpl<MallUserMapper, MallUser>
     implements MallUserService{
-
+    @Override
+    public MallUser getByMobile(String mobile) {
+        return this.baseMapper.selectOne(new LambdaQueryWrapper<MallUser>().eq(MallUser::getMobile, mobile));
+    }
     @Override
     public PageResult<MallUser> queryPageList(MallUser bo, PageQuery pageQuery) {
         LambdaQueryWrapper<MallUser> queryWrapper = new LambdaQueryWrapper<>();
