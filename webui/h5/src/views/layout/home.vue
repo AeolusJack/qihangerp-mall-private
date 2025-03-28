@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- 导航条 -->
-    <van-nav-bar title="启航商城" fixed />
+    <van-nav-bar title="首页" fixed />
 
     <!-- 搜索框 -->
     <van-search

@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import printTao from "@/views/shipping/ewaybillPrint/tao/index.vue";
-import printPdd from "@/views/shipping/ewaybillPrint/pdd/index.vue";
-import printDou from "@/views/shipping/ewaybillPrint/dou/index.vue";
-import printJd from "@/views/shipping/ewaybillPrint/jd/index.vue";
-import printWei from "@/views/shipping/ewaybillPrint/wei/index.vue";
-import printOffline from "@/views/shipping/ewaybillPrint/offline/index.vue";
+import printTao from "@/views/shipping/ewaybillPrint/tao/goods.vue";
+import printPdd from "@/views/shipping/ewaybillPrint/pdd/goods.vue";
+import printDou from "@/views/shipping/ewaybillPrint/dou/goods.vue";
+import printJd from "@/views/shipping/ewaybillPrint/jd/goods.vue";
+import printWei from "@/views/shipping/ewaybillPrint/wei/goods.vue";
+import printOffline from "@/views/shipping/ewaybillPrint/offline/goods.vue";
 import {listPlatform} from "@/api/shop/shop";
 
 export default {

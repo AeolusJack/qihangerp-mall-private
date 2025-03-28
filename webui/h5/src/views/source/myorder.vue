@@ -85,7 +85,7 @@
     </div>
 
     <div class="empty-cart" v-else>
-      <img src="@/assets/empty.png" alt="" />
+      <img src="../../assets/empty.png" alt="" />
       <div class="tips">您的购物车是空的, 快去逛逛吧</div>
       <div class="btn" @click="$router.push('/')">去逛逛</div>
     </div>
