@@ -37,11 +37,13 @@ public class MallGoods implements Serializable {
     /**
      * '产品主图'
      */
+    @JsonProperty("goodsImage")
     private String mainImage;
 
     /**
      * '商品标题'
      */
+    @JsonProperty("goodsName")
     private String title;
 
     /**
@@ -72,11 +74,13 @@ public class MallGoods implements Serializable {
     /**
      * 销售价格
      */
+    @JsonProperty("goodsPriceMin")
     private BigDecimal salePrice;
 
     /**
      * 市场价格
      */
+    @JsonProperty("goodsPriceMax")
     private BigDecimal marketPrice;
 
     /**
@@ -142,6 +146,7 @@ public class MallGoods implements Serializable {
     /**
      * 累积销量
      */
+    @JsonProperty("goodsSales")
     private Integer saleNum;
 
     /**

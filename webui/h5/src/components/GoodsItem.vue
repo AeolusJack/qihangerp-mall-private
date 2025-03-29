@@ -5,16 +5,16 @@
     @click="$router.push(`/prodetail/${item.goodsId}`)"
   >
     <div class="left">
-      <img :src="item.mainImage" alt="" />
+      <img :src="item.goodsImage" alt="" />
     </div>
     <div class="right">
       <p class="tit text-ellipsis-2">
-        {{ item.title }}
+        {{ item.goodsName }}
       </p>
-      <p class="count">已售{{ item.saleNum }}件</p>
+      <p class="count">已售{{ item.goodsSales }}件</p>
       <p class="price">
-        <span class="new">¥{{ item.salePrice }}</span>
-        <span class="old">¥{{ item.marketPrice }}</span>
+        <span class="new">¥{{ item.goodsPriceMin }}</span>
+        <span class="old">¥{{ item.goodsPriceMax }}</span>
       </p>
     </div>
   </div>
