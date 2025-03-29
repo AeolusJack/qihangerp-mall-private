@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 29/03/2025 20:24:28
+ Date: 29/03/2025 20:58:41
 */
 
 SET NAMES utf8mb4;
@@ -68,10 +68,10 @@ DROP TABLE IF EXISTS `mall_goods`;
 CREATE TABLE `mall_goods`  (
   `goods_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `goods_source_id` bigint NOT NULL COMMENT '货源id',
-  `goods_code` varchar(25) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '商品编码',
-  `main_image` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'产品主图\'',
-  `title` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'商品标题\'',
-  `deputy_title` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
+  `goods_code` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品编码',
+  `main_image` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '\'产品主图\'',
+  `title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '\'商品标题\'',
+  `deputy_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品副标题',
   `price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最高价',
   `price_min` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品最低价',
   `line_price_max` decimal(8, 2) NULL DEFAULT NULL COMMENT '划线最高价',
@@ -80,8 +80,8 @@ CREATE TABLE `mall_goods`  (
   `market_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '市场价格',
   `commision_rate` decimal(3, 2) NOT NULL DEFAULT 0.00 COMMENT '佣金比例(一级)',
   `commision_rate2` decimal(3, 2) NOT NULL DEFAULT 0.00 COMMENT '佣金比例(二级)',
-  `detail` varchar(545) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'产品简短介绍，参照京东商品红色文字\'',
-  `detail_pics` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '详情图片（按顺序）',
+  `detail` varchar(545) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'产品简短介绍，参照京东商品红色文字\'',
+  `detail_pics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '详情图片（按顺序）',
   `goods_type_id` bigint NOT NULL COMMENT '商品类型id',
   `category_id` bigint NOT NULL DEFAULT 0 COMMENT '商品分类id',
   `category1` bigint NOT NULL DEFAULT 0 COMMENT '产品一级分类',
@@ -96,19 +96,19 @@ CREATE TABLE `mall_goods`  (
   `publish_status` int NOT NULL COMMENT '发布状态（2在库中1已上架）',
   `sale_status` int NOT NULL COMMENT '销售状态（2已下架1上架中）',
   `create_on` int NOT NULL COMMENT '创建时间',
-  `create_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'创建人\'',
+  `create_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '\'创建人\'',
   `modify_on` int NULL DEFAULT NULL COMMENT '最后修改时间',
-  `modify_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
+  `modify_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
   `delivery_freight_template` int NULL DEFAULT 0 COMMENT '运费模版',
-  `delivery_province` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\n发货省份',
-  `delivery_city` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货城市',
-  `delivery_address` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '发货地文字（显示用，如：广东深圳）',
+  `delivery_province` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\n发货省份',
+  `delivery_city` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '发货城市',
+  `delivery_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '发货地文字（显示用，如：广东深圳）',
   `delivery_days` int NULL DEFAULT 0 COMMENT '预售发货天数',
-  `keyword` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '关键词',
+  `keyword` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关键词',
   `is_promotion` int NOT NULL DEFAULT 0 COMMENT '是否在促销，0否1是默认0',
   `promotion_id` int NOT NULL DEFAULT 0 COMMENT '促销id',
   `promotion_type` int NOT NULL DEFAULT 0 COMMENT '促销类型',
-  `promotion_title` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '促销标题',
+  `promotion_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '促销标题',
   `promotion_rate` int NOT NULL DEFAULT 0 COMMENT '促销的折扣',
   `promotion_full_count` int NOT NULL DEFAULT 1 COMMENT '单品满折条件',
   `o_goods_id` int NOT NULL DEFAULT 0 COMMENT '商品库商品id',
@@ -118,7 +118,7 @@ CREATE TABLE `mall_goods`  (
   `shop_mobile` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家联系手机号（谈判联系人）',
   `shop_wx` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家联系微信（谈判联系人）',
   PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods
@@ -133,14 +133,14 @@ CREATE TABLE `mall_goods_attachment`  (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `goods_id` bigint NOT NULL,
   `type` int NOT NULL COMMENT '附件类型（0图片1视频2文件3详情图片4详情视频5详情图文）',
-  `url` varchar(245) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'附件链接地址\'',
-  `comment` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'附件说明\'',
-  `content` longtext CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL,
+  `url` varchar(245) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'附件链接地址\'',
+  `comment` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'附件说明\'',
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
   `sort` int NOT NULL COMMENT '排序asc（显示位置）',
   `create_on` int NOT NULL COMMENT '创建时间',
-  `create_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '\'创建人\'',
+  `create_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '\'创建人\'',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品附件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品附件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_attachment
@@ -155,11 +155,11 @@ CREATE TABLE `mall_goods_attribute`  (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `goods_id` bigint NOT NULL,
   `attribute_id` bigint NOT NULL COMMENT '属性id',
-  `attribute` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `attribute` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `value_id` bigint NOT NULL COMMENT '属性值id',
-  `value` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品属性表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_attribute
@@ -259,9 +259,9 @@ CREATE TABLE `mall_goods_sku`  (
   `width` float NOT NULL DEFAULT 0 COMMENT '宽度',
   `weight` float NOT NULL DEFAULT 0 COMMENT '重量',
   `create_on` int NOT NULL COMMENT '创建时间',
-  `create_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'创建人\'',
+  `create_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'创建人\'',
   `modify_on` int NULL DEFAULT NULL COMMENT '最后修改时间',
-  `modify_by` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
+  `modify_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城商品SKU表' ROW_FORMAT = DYNAMIC;
@@ -1008,7 +1008,7 @@ CREATE TABLE `o_goods_sku`  (
   UNIQUE INDEX `sku_id_unique`(`outer_erp_sku_id`) USING BTREE,
   INDEX `id`(`id`) USING BTREE,
   INDEX `number`(`sku_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1865649758294282256 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品库SKU表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品库SKU表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of o_goods_sku
@@ -1026,18 +1026,18 @@ INSERT INTO `o_goods_sku` VALUES (31, 76, NULL, '23', '小众碎花连衣裙女�
 INSERT INTO `o_goods_sku` VALUES (41, 76, NULL, '52', '小众碎花连衣裙女夏高级感初恋裙子显瘦浪漫茶歇裙温柔风甜美气质', '黄色 XL', 'DY36404304', 359, '黄色', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 344, 'XL', 0, '', NULL, 79.20, 0.00, 0.00, '', 2, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (51, 77, NULL, NULL, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', '黑色', 'QIHANGNIUERP00122', 308, '黑色', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', 0, '', 0, '', NULL, 49.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (61, 78, NULL, NULL, '红罐加多宝', '大红色 均码', 'JIADUOBAO2600', 333, '大红色', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', 340, '均码', 0, '11', NULL, 19.00, 25.90, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282244, 82, NULL, NULL, 'aaa', 'aad 红色', '1233', 0, 'aad', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282245, 82, NULL, NULL, 'aaa', 'aad 绿色', '1244', 0, 'aad', 'aa', 0, '绿色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282246, 82, NULL, NULL, 'aaa', 'dfdfd 红色', '1355', 0, 'dfdfd', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282247, 82, NULL, NULL, 'aaa', 'dfdfd 绿色', '1345', 0, 'dfdfd', 'aa', 0, '绿色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282248, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 S 长款', 'ANK99380', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'S', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282249, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 S 短款', 'ANK99389', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'S', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282250, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 M 长款', 'ANK99382', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'M', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282251, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 M 短款', 'ANK99384', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'M', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282252, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 L 长款', 'ANK99381', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'L', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282253, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 L 短款', 'ANK99387', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'L', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282254, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 长款', 'ANK99388', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (1865649758294282255, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 短款', 'ANK99383', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (11, 82, NULL, NULL, 'aaa', 'aad 红色', '1233', 0, 'aad', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (12, 82, NULL, NULL, 'aaa', 'aad 绿色', '1244', 0, 'aad', 'aa', 0, '绿色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (13, 82, NULL, NULL, 'aaa', 'dfdfd 红色', '1355', 0, 'dfdfd', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (14, 82, NULL, NULL, 'aaa', 'dfdfd 绿色', '1345', 0, 'dfdfd', 'aa', 0, '绿色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (15, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 S 长款', 'ANK99380', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'S', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (16, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 S 短款', 'ANK99389', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'S', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (17, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 M 长款', 'ANK99382', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'M', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (18, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 M 短款', 'ANK99384', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'M', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (19, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 L 长款', 'ANK99381', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'L', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (20, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 L 短款', 'ANK99387', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'L', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (21, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 长款', 'ANK99388', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (22, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 短款', 'ANK99383', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for o_goods_sku_attr
@@ -1053,7 +1053,7 @@ CREATE TABLE `o_goods_sku_attr`  (
   `v` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `img` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1832398130583224339 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 700 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of o_goods_sku_attr
@@ -1648,23 +1648,23 @@ INSERT INTO `o_goods_sku_attr` VALUES (599, 74, 'size', '尺码', 115, 408, NULL
 INSERT INTO `o_goods_sku_attr` VALUES (600, 74, 'size', '尺码', 115, 407, NULL, NULL);
 INSERT INTO `o_goods_sku_attr` VALUES (601, 74, 'style', '款式', 116, 413, NULL, NULL);
 INSERT INTO `o_goods_sku_attr` VALUES (602, 74, 'style', '款式', 116, 412, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224322, 76, 'color', '颜色', 114, 359, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224323, 76, 'size', '尺码', 115, 341, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224324, 76, 'size', '尺码', 115, 342, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224325, 76, 'size', '尺码', 115, 343, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224326, 76, 'size', '尺码', 115, 344, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224327, 76, 'style', '款式', 116, 359, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224328, 77, 'color', '颜色', 114, 308, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224329, 77, 'style', '款式', 116, 308, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224330, 78, 'color', '颜色', 114, 333, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224331, 78, 'size', '尺码', 115, 340, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224332, 78, 'style', '款式', 116, 333, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224333, 79, 'color', '颜色', 114, 425, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224334, 79, 'style', '款式', 116, 425, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224335, 80, 'color', '颜色', 114, 425, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224336, 80, 'style', '款式', 116, 425, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224337, 81, 'color', '颜色', 114, 425, NULL, NULL);
-INSERT INTO `o_goods_sku_attr` VALUES (1832398130583224338, 81, 'style', '款式', 116, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (603, 76, 'color', '颜色', 114, 359, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (611, 76, 'size', '尺码', 115, 341, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (612, 76, 'size', '尺码', 115, 342, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (613, 76, 'size', '尺码', 115, 343, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (614, 76, 'size', '尺码', 115, 344, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (615, 76, 'style', '款式', 116, 359, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (616, 77, 'color', '颜色', 114, 308, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (617, 77, 'style', '款式', 116, 308, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (618, 78, 'color', '颜色', 114, 333, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (619, 78, 'size', '尺码', 115, 340, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (620, 78, 'style', '款式', 116, 333, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (621, 79, 'color', '颜色', 114, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (622, 79, 'style', '款式', 116, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (623, 80, 'color', '颜色', 114, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (624, 80, 'style', '款式', 116, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (625, 81, 'color', '颜色', 114, 425, NULL, NULL);
+INSERT INTO `o_goods_sku_attr` VALUES (626, 81, 'style', '款式', 116, 425, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for o_goods_supplier
@@ -1998,7 +1998,7 @@ CREATE TABLE `sys_oss`  (
   `update_by` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`oss_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1892911294599737346 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_oss
@@ -2008,17 +2008,17 @@ INSERT INTO `sys_oss` VALUES (51, 'x11.jpg', 'x11.jpg', '.jpg', 'http://127.0.0.
 INSERT INTO `sys_oss` VALUES (52, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:31:44', '', NULL);
 INSERT INTO `sys_oss` VALUES (53, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:35:41', '', NULL);
 INSERT INTO `sys_oss` VALUES (54, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', '/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:36:09', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832352848193552385, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', '/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:38:57', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832357618597769218, '主图画板2.jpg', '主图画板2.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', '/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:57:54', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832359000897757185, '主图画板5.jpg', '主图画板5.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', '/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:03:24', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832359093759758337, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/ecerp//images/2024/09/07/3ed00452-5973-4c7e-91ae-5e87aa32dd23.jpg', '/images/2024/09/07/3ed00452-5973-4c7e-91ae-5e87aa32dd23.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:03:46', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832359349419278337, '主图画板5.jpg', '主图画板5.jpg', '.jpg', 'http://127.0.0.1:9000/ecerp/images/2024/09/07/4b2583ae-65ae-45b6-9227-ebbee99d6558.jpg', '/images/2024/09/07/4b2583ae-65ae-45b6-9227-ebbee99d6558.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:04:47', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832375926286041090, '主图画板2.jpg', '主图画板2.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/a64ff14b-09d4-42d6-8d52-0344360efdbf.jpg', '/images/2024/09/07/a64ff14b-09d4-42d6-8d52-0344360efdbf.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 19:10:39', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832379940008394754, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/af19385d-a1dd-4efb-8257-3099706d1272.jpg', '/images/2024/09/07/af19385d-a1dd-4efb-8257-3099706d1272.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 19:26:36', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832397715502317569, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/5aac40e1-ddc1-41a8-a468-28d81e699980.jpg', '/images/2024/09/07/5aac40e1-ddc1-41a8-a468-28d81e699980.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 20:37:14', '', NULL);
-INSERT INTO `sys_oss` VALUES (1832397869190004737, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', '/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 20:37:51', '', NULL);
-INSERT INTO `sys_oss` VALUES (1892911240765845505, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', '/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:23', '', NULL);
-INSERT INTO `sys_oss` VALUES (1892911294599737345, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', '/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:36', '', NULL);
+INSERT INTO `sys_oss` VALUES (1, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', '/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:38:57', '', NULL);
+INSERT INTO `sys_oss` VALUES (2, '主图画板2.jpg', '主图画板2.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', '/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:57:54', '', NULL);
+INSERT INTO `sys_oss` VALUES (3, '主图画板5.jpg', '主图画板5.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', '/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:03:24', '', NULL);
+INSERT INTO `sys_oss` VALUES (4, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/ecerp//images/2024/09/07/3ed00452-5973-4c7e-91ae-5e87aa32dd23.jpg', '/images/2024/09/07/3ed00452-5973-4c7e-91ae-5e87aa32dd23.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:03:46', '', NULL);
+INSERT INTO `sys_oss` VALUES (5, '主图画板5.jpg', '主图画板5.jpg', '.jpg', 'http://127.0.0.1:9000/ecerp/images/2024/09/07/4b2583ae-65ae-45b6-9227-ebbee99d6558.jpg', '/images/2024/09/07/4b2583ae-65ae-45b6-9227-ebbee99d6558.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:04:47', '', NULL);
+INSERT INTO `sys_oss` VALUES (6, '主图画板2.jpg', '主图画板2.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/a64ff14b-09d4-42d6-8d52-0344360efdbf.jpg', '/images/2024/09/07/a64ff14b-09d4-42d6-8d52-0344360efdbf.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 19:10:39', '', NULL);
+INSERT INTO `sys_oss` VALUES (7, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/af19385d-a1dd-4efb-8257-3099706d1272.jpg', '/images/2024/09/07/af19385d-a1dd-4efb-8257-3099706d1272.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 19:26:36', '', NULL);
+INSERT INTO `sys_oss` VALUES (8, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/5aac40e1-ddc1-41a8-a468-28d81e699980.jpg', '/images/2024/09/07/5aac40e1-ddc1-41a8-a468-28d81e699980.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 20:37:14', '', NULL);
+INSERT INTO `sys_oss` VALUES (9, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', '/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 20:37:51', '', NULL);
+INSERT INTO `sys_oss` VALUES (10, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', '/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:23', '', NULL);
+INSERT INTO `sys_oss` VALUES (11, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', '/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:36', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -2157,90 +2157,8 @@ CREATE TABLE `sys_task_logs`  (
   `status` int NULL DEFAULT NULL COMMENT '状态1运行中，2已结束',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1895359559949791235 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后台任务运行日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后台任务运行日志表' ROW_FORMAT = DYNAMIC;
 
--- ----------------------------
--- Records of sys_task_logs
--- ----------------------------
-INSERT INTO `sys_task_logs` VALUES (1894671242065244161, 11, '没有找到任务数据', '2025-02-26 16:50:00', '2025-02-26 16:50:00', 2, '2025-02-26 16:50:00');
-INSERT INTO `sys_task_logs` VALUES (1894672500134146050, 11, '没有找到任务数据', '2025-02-26 16:55:00', '2025-02-26 16:55:00', 2, '2025-02-26 16:55:00');
-INSERT INTO `sys_task_logs` VALUES (1894673758425346050, 11, '没有找到任务数据', '2025-02-26 17:00:00', '2025-02-26 17:00:00', 2, '2025-02-26 17:00:00');
-INSERT INTO `sys_task_logs` VALUES (1894675016754294785, 11, '没有找到任务数据', '2025-02-26 17:05:00', '2025-02-26 17:05:00', 2, '2025-02-26 17:05:00');
-INSERT INTO `sys_task_logs` VALUES (1894676275062272002, 11, '没有找到任务数据', '2025-02-26 17:10:00', '2025-02-26 17:10:00', 2, '2025-02-26 17:10:00');
-INSERT INTO `sys_task_logs` VALUES (1894677533332500482, 11, '没有找到任务数据', '2025-02-26 17:15:00', '2025-02-26 17:15:00', 2, '2025-02-26 17:15:00');
-INSERT INTO `sys_task_logs` VALUES (1894678791623700482, 11, '没有找到任务数据', '2025-02-26 17:20:00', '2025-02-26 17:20:00', 2, '2025-02-26 17:20:00');
-INSERT INTO `sys_task_logs` VALUES (1894680049877151745, 11, '没有找到任务数据', '2025-02-26 17:25:00', '2025-02-26 17:25:00', 2, '2025-02-26 17:25:00');
-INSERT INTO `sys_task_logs` VALUES (1894681308172546050, 11, '没有找到任务数据', '2025-02-26 17:30:00', '2025-02-26 17:30:00', 2, '2025-02-26 17:30:00');
-INSERT INTO `sys_task_logs` VALUES (1894682566480523266, 11, '没有找到任务数据', '2025-02-26 17:35:00', '2025-02-26 17:35:00', 2, '2025-02-26 17:35:00');
-INSERT INTO `sys_task_logs` VALUES (1894683824763334657, 11, '没有找到任务数据', '2025-02-26 17:40:00', '2025-02-26 17:40:00', 2, '2025-02-26 17:40:00');
-INSERT INTO `sys_task_logs` VALUES (1894685083079700482, 11, '没有找到任务数据', '2025-02-26 17:45:00', '2025-02-26 17:45:00', 2, '2025-02-26 17:45:00');
-INSERT INTO `sys_task_logs` VALUES (1894686341387677698, 11, '没有找到任务数据', '2025-02-26 17:50:00', '2025-02-26 17:50:00', 2, '2025-02-26 17:50:00');
-INSERT INTO `sys_task_logs` VALUES (1894687599649517570, 11, '没有找到任务数据', '2025-02-26 17:55:00', '2025-02-26 17:55:00', 2, '2025-02-26 17:55:00');
-INSERT INTO `sys_task_logs` VALUES (1894688857953300481, 11, '没有找到任务数据', '2025-02-26 18:00:00', '2025-02-26 18:00:00', 2, '2025-02-26 18:00:00');
-INSERT INTO `sys_task_logs` VALUES (1894690116236111873, 11, '没有找到任务数据', '2025-02-26 18:05:00', '2025-02-26 18:05:00', 2, '2025-02-26 18:05:00');
-INSERT INTO `sys_task_logs` VALUES (1894691374497951746, 11, '没有找到任务数据', '2025-02-26 18:10:00', '2025-02-26 18:10:00', 2, '2025-02-26 18:10:00');
-INSERT INTO `sys_task_logs` VALUES (1894692632805928961, 11, '没有找到任务数据', '2025-02-26 18:15:00', '2025-02-26 18:15:00', 2, '2025-02-26 18:15:00');
-INSERT INTO `sys_task_logs` VALUES (1894693891105517570, 11, '没有找到任务数据', '2025-02-26 18:20:00', '2025-02-26 18:20:00', 2, '2025-02-26 18:20:00');
-INSERT INTO `sys_task_logs` VALUES (1894695149430272001, 11, '没有找到任务数据', '2025-02-26 18:25:00', '2025-02-26 18:25:00', 2, '2025-02-26 18:25:00');
-INSERT INTO `sys_task_logs` VALUES (1894696407725666306, 11, '没有找到任务数据', '2025-02-26 18:30:00', '2025-02-26 18:30:00', 2, '2025-02-26 18:30:00');
-INSERT INTO `sys_task_logs` VALUES (1894697666004283393, 11, '没有找到任务数据', '2025-02-26 18:35:00', '2025-02-26 18:35:00', 2, '2025-02-26 18:35:00');
-INSERT INTO `sys_task_logs` VALUES (1894698924291289089, 11, '没有找到任务数据', '2025-02-26 18:40:00', '2025-02-26 18:40:00', 2, '2025-02-26 18:40:00');
-INSERT INTO `sys_task_logs` VALUES (1894700182586683394, 11, '没有找到任务数据', '2025-02-26 18:45:00', '2025-02-26 18:45:00', 2, '2025-02-26 18:45:00');
-INSERT INTO `sys_task_logs` VALUES (1894701440840134658, 11, '没有找到任务数据', '2025-02-26 18:50:00', '2025-02-26 18:50:00', 2, '2025-02-26 18:50:00');
-INSERT INTO `sys_task_logs` VALUES (1894702699169083393, 11, '没有找到任务数据', '2025-02-26 18:55:00', '2025-02-26 18:55:00', 2, '2025-02-26 18:55:00');
-INSERT INTO `sys_task_logs` VALUES (1894703957435117570, 11, '没有找到任务数据', '2025-02-26 19:00:00', '2025-02-26 19:00:00', 2, '2025-02-26 19:00:00');
-INSERT INTO `sys_task_logs` VALUES (1894705215726317569, 11, '没有找到任务数据', '2025-02-26 19:05:00', '2025-02-26 19:05:00', 2, '2025-02-26 19:05:00');
-INSERT INTO `sys_task_logs` VALUES (1894706474030100481, 11, '没有找到任务数据', '2025-02-26 19:10:00', '2025-02-26 19:10:00', 2, '2025-02-26 19:10:00');
-INSERT INTO `sys_task_logs` VALUES (1894707732329689090, 11, '没有找到任务数据', '2025-02-26 19:15:00', '2025-02-26 19:15:00', 2, '2025-02-26 19:15:00');
-INSERT INTO `sys_task_logs` VALUES (1894708990574751745, 11, '没有找到任务数据', '2025-02-26 19:20:00', '2025-02-26 19:20:00', 2, '2025-02-26 19:20:00');
-INSERT INTO `sys_task_logs` VALUES (1895299156368662530, 11, '任务数据：[\"1891647771387158617\",\"1891647771387158616\",\"1891647771387158615\",\"1891647771387158611\"]处理结果，总计：4 成功：4 已存在：0 失败：0', '2025-02-28 10:25:00', '2025-02-28 10:25:06', 2, '2025-02-28 10:25:06');
-INSERT INTO `sys_task_logs` VALUES (1895300387459801090, 11, '没有找到任务数据', '2025-02-28 10:30:00', '2025-02-28 10:30:00', 2, '2025-02-28 10:30:00');
-INSERT INTO `sys_task_logs` VALUES (1895301645776166914, 11, '没有找到任务数据', '2025-02-28 10:35:00', '2025-02-28 10:35:00', 2, '2025-02-28 10:35:00');
-INSERT INTO `sys_task_logs` VALUES (1895302904038006785, 11, '没有找到任务数据', '2025-02-28 10:40:00', '2025-02-28 10:40:00', 2, '2025-02-28 10:40:00');
-INSERT INTO `sys_task_logs` VALUES (1895304162329206785, 11, '没有找到任务数据', '2025-02-28 10:45:00', '2025-02-28 10:45:00', 2, '2025-02-28 10:45:00');
-INSERT INTO `sys_task_logs` VALUES (1895305420616212481, 11, '没有找到任务数据', '2025-02-28 10:50:00', '2025-02-28 10:50:00', 2, '2025-02-28 10:50:00');
-INSERT INTO `sys_task_logs` VALUES (1895306678903218177, 11, '没有找到任务数据', '2025-02-28 10:55:00', '2025-02-28 10:55:00', 2, '2025-02-28 10:55:00');
-INSERT INTO `sys_task_logs` VALUES (1895307937236361217, 11, '没有找到任务数据', '2025-02-28 11:00:00', '2025-02-28 11:00:00', 2, '2025-02-28 11:00:00');
-INSERT INTO `sys_task_logs` VALUES (1895309195498201089, 11, '没有找到任务数据', '2025-02-28 11:05:00', '2025-02-28 11:05:00', 2, '2025-02-28 11:05:00');
-INSERT INTO `sys_task_logs` VALUES (1895310453801984002, 11, '没有找到任务数据', '2025-02-28 11:10:00', '2025-02-28 11:10:00', 2, '2025-02-28 11:10:00');
-INSERT INTO `sys_task_logs` VALUES (1895311712068018178, 11, '没有找到任务数据', '2025-02-28 11:15:00', '2025-02-28 11:15:00', 2, '2025-02-28 11:15:00');
-INSERT INTO `sys_task_logs` VALUES (1895314859876298753, 11, '任务数据：[\"1851639221870563330\"]处理结果，总计：1 成功：1 已存在：0 失败：0', '2025-02-28 11:25:00', '2025-02-28 11:27:30', 2, '2025-02-28 11:27:30');
-INSERT INTO `sys_task_logs` VALUES (1895315498593415170, 11, '没有找到任务数据', '2025-02-28 11:30:00', '2025-02-28 11:30:03', 2, '2025-02-28 11:30:03');
-INSERT INTO `sys_task_logs` VALUES (1895316745312460802, 11, '没有找到任务数据', '2025-02-28 11:35:00', '2025-02-28 11:35:00', 2, '2025-02-28 11:35:00');
-INSERT INTO `sys_task_logs` VALUES (1895318003523969025, 11, '没有找到任务数据', '2025-02-28 11:40:00', '2025-02-28 11:40:00', 2, '2025-02-28 11:40:00');
-INSERT INTO `sys_task_logs` VALUES (1895319261819363329, 11, '没有找到任务数据', '2025-02-28 11:45:00', '2025-02-28 11:45:00', 2, '2025-02-28 11:45:00');
-INSERT INTO `sys_task_logs` VALUES (1895320520223809538, 11, '没有找到任务数据', '2025-02-28 11:50:00', '2025-02-28 11:50:00', 2, '2025-02-28 11:50:00');
-INSERT INTO `sys_task_logs` VALUES (1895321778426929153, 11, '没有找到任务数据', '2025-02-28 11:55:00', '2025-02-28 11:55:00', 2, '2025-02-28 11:55:00');
-INSERT INTO `sys_task_logs` VALUES (1895323036734906370, 11, '没有找到任务数据', '2025-02-28 12:00:00', '2025-02-28 12:00:00', 2, '2025-02-28 12:00:00');
-INSERT INTO `sys_task_logs` VALUES (1895324295030300673, 11, '没有找到任务数据', '2025-02-28 12:05:00', '2025-02-28 12:05:00', 2, '2025-02-28 12:05:00');
-INSERT INTO `sys_task_logs` VALUES (1895325553275363329, 11, '没有找到任务数据', '2025-02-28 12:10:00', '2025-02-28 12:10:00', 2, '2025-02-28 12:10:00');
-INSERT INTO `sys_task_logs` VALUES (1895326811608506370, 11, '没有找到任务数据', '2025-02-28 12:15:00', '2025-02-28 12:15:00', 2, '2025-02-28 12:15:00');
-INSERT INTO `sys_task_logs` VALUES (1895328069857763330, 11, '没有找到任务数据', '2025-02-28 12:20:00', '2025-02-28 12:20:00', 2, '2025-02-28 12:20:00');
-INSERT INTO `sys_task_logs` VALUES (1895329328148963329, 11, '没有找到任务数据', '2025-02-28 12:25:00', '2025-02-28 12:25:00', 2, '2025-02-28 12:25:00');
-INSERT INTO `sys_task_logs` VALUES (1895330586477912065, 11, '没有找到任务数据', '2025-02-28 12:30:00', '2025-02-28 12:30:00', 2, '2025-02-28 12:30:00');
-INSERT INTO `sys_task_logs` VALUES (1895331844773306370, 11, '没有找到任务数据', '2025-02-28 12:35:00', '2025-02-28 12:35:00', 2, '2025-02-28 12:35:00');
-INSERT INTO `sys_task_logs` VALUES (1895333103018369026, 11, '没有找到任务数据', '2025-02-28 12:40:00', '2025-02-28 12:40:00', 2, '2025-02-28 12:40:00');
-INSERT INTO `sys_task_logs` VALUES (1895334361326346242, 11, '没有找到任务数据', '2025-02-28 12:45:00', '2025-02-28 12:45:00', 2, '2025-02-28 12:45:00');
-INSERT INTO `sys_task_logs` VALUES (1895335619638517761, 11, '没有找到任务数据', '2025-02-28 12:50:00', '2025-02-28 12:50:00', 2, '2025-02-28 12:50:00');
-INSERT INTO `sys_task_logs` VALUES (1895336877917134849, 11, '没有找到任务数据', '2025-02-28 12:55:00', '2025-02-28 12:55:00', 2, '2025-02-28 12:55:00');
-INSERT INTO `sys_task_logs` VALUES (1895338136191557634, 11, '没有找到任务数据', '2025-02-28 13:00:00', '2025-02-28 13:00:00', 2, '2025-02-28 13:00:00');
-INSERT INTO `sys_task_logs` VALUES (1895339394482757634, 11, '没有找到任务数据', '2025-02-28 13:05:00', '2025-02-28 13:05:00', 2, '2025-02-28 13:05:00');
-INSERT INTO `sys_task_logs` VALUES (1895340652773957634, 11, '没有找到任务数据', '2025-02-28 13:10:00', '2025-02-28 13:10:00', 2, '2025-02-28 13:10:00');
-INSERT INTO `sys_task_logs` VALUES (1895341911044186113, 11, '没有找到任务数据', '2025-02-28 13:15:00', '2025-02-28 13:15:00', 2, '2025-02-28 13:15:00');
-INSERT INTO `sys_task_logs` VALUES (1895343169360551937, 11, '没有找到任务数据', '2025-02-28 13:20:00', '2025-02-28 13:20:00', 2, '2025-02-28 13:20:00');
-INSERT INTO `sys_task_logs` VALUES (1895344427655946241, 11, '没有找到任务数据', '2025-02-28 13:25:00', '2025-02-28 13:25:00', 2, '2025-02-28 13:25:00');
-INSERT INTO `sys_task_logs` VALUES (1895345685934563330, 11, '没有找到任务数据', '2025-02-28 13:30:00', '2025-02-28 13:30:00', 2, '2025-02-28 13:30:00');
-INSERT INTO `sys_task_logs` VALUES (1895346944225763330, 11, '没有找到任务数据', '2025-02-28 13:35:00', '2025-02-28 13:35:00', 2, '2025-02-28 13:35:00');
-INSERT INTO `sys_task_logs` VALUES (1895348202550517762, 11, '没有找到任务数据', '2025-02-28 13:40:00', '2025-02-28 13:40:00', 2, '2025-02-28 13:40:00');
-INSERT INTO `sys_task_logs` VALUES (1895349460808163330, 11, '没有找到任务数据', '2025-02-28 13:45:00', '2025-02-28 13:45:00', 2, '2025-02-28 13:45:00');
-INSERT INTO `sys_task_logs` VALUES (1895350719099363329, 11, '没有找到任务数据', '2025-02-28 13:50:00', '2025-02-28 13:50:00', 2, '2025-02-28 13:50:00');
-INSERT INTO `sys_task_logs` VALUES (1895351977424117761, 11, '没有找到任务数据', '2025-02-28 13:55:00', '2025-02-28 13:55:00', 2, '2025-02-28 13:55:00');
-INSERT INTO `sys_task_logs` VALUES (1895353235685957633, 11, '没有找到任务数据', '2025-02-28 14:00:00', '2025-02-28 14:00:00', 2, '2025-02-28 14:00:00');
-INSERT INTO `sys_task_logs` VALUES (1895354493989740546, 11, '没有找到任务数据', '2025-02-28 14:05:00', '2025-02-28 14:05:00', 2, '2025-02-28 14:05:00');
-INSERT INTO `sys_task_logs` VALUES (1895355752264163330, 11, '没有找到任务数据', '2025-02-28 14:10:00', '2025-02-28 14:10:00', 2, '2025-02-28 14:10:00');
-INSERT INTO `sys_task_logs` VALUES (1895357010597306370, 11, '没有找到任务数据', '2025-02-28 14:15:00', '2025-02-28 14:15:00', 2, '2025-02-28 14:15:00');
-INSERT INTO `sys_task_logs` VALUES (1895358268888494081, 11, '没有找到任务数据', '2025-02-28 14:20:00', '2025-02-28 14:20:00', 2, '2025-02-28 14:20:00');
-INSERT INTO `sys_task_logs` VALUES (1895359559949791234, 11, '任务数据：[\"1891647771387158638\",\"1891647771387158637\"]处理结果，总计：2 成功：2 已存在：0 失败：0', '2025-02-28 14:25:00', '2025-02-28 14:25:08', 2, '2025-02-28 14:25:08');
 
 -- ----------------------------
 -- Table structure for sys_user
