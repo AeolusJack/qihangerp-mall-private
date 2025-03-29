@@ -34,6 +34,13 @@ public class GoodsController extends BaseController
         return AjaxResult.success(pageList);
     }
 
+    @GetMapping("/detail")
+    public AjaxResult detail(@RequestParam("goodsId") Long goodsId)
+    {
+        MallGoods goods = mallGoodsService.queryById(goodsId);
+        return AjaxResult.success(goods);
+    }
+
     @PostMapping("/publish")
     public AjaxResult publish(@RequestBody GoodsPublishBo goods, HttpServletRequest request)
     {

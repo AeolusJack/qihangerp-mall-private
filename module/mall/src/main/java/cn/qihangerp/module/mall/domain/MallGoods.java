@@ -6,6 +6,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -271,6 +274,10 @@ public class MallGoods implements Serializable {
      * 卖家联系微信（谈判联系人）
      */
     private String shopWx;
+
+    @TableField(exist = false)
+    @JsonProperty("goods_images")
+    private List<MallGoodsAttachment> goodsImages;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -9,7 +9,7 @@
 
     <van-swipe :autoplay="3000" @change="onChange">
       <van-swipe-item v-for="(image, index) in images" :key="index">
-        <img :src="image.external_url" />
+        <img :src="image.url" />
       </van-swipe-item>
 
       <template #indicator>
@@ -23,13 +23,13 @@
     <div class="info">
       <div class="title">
         <div class="price">
-          <span class="now">￥{{ detail.goods_price_min }}</span>
-          <span class="oldprice">￥{{ detail.goods_price_max }}</span>
+          <span class="now">￥{{ detail.marketPrice }}</span>
+          <span class="oldprice">￥{{ detail.salePrice }}</span>
         </div>
-        <div class="sellcount">已售{{ detail.goods_sales }}件</div>
+        <div class="sellcount">已售{{ detail.saleNum }}件</div>
       </div>
       <div class="msg text-ellipsis-2">
-        {{ detail.goods_name }}
+        {{ detail.title }}
       </div>
 
       <div class="service">
@@ -169,11 +169,9 @@ export default {
       this.current = index;
     },
     async getDetail() {
-      const {
-        data: { detail },
-      } = await getProDetail(this.goodsId);
-      this.detail = detail;
-      this.images = detail.goods_images;
+      const response = await getProDetail(this.goodsId);
+      this.detail = response.data;
+      this.images = response.data.goods_images;
     },
     async getComments() {
       const {

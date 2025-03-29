@@ -57,6 +57,18 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         return PageResult.build(pages);
     }
 
+    @Override
+    public MallGoods queryById(Long id) {
+        MallGoods goods = this.baseMapper.selectById(id);
+        if(goods!=null){
+            goods.setGoodsImages(goodsAttachmentService.list(new LambdaQueryWrapper<MallGoodsAttachment>()
+                    .eq(MallGoodsAttachment::getGoodsId,goods.getGoodsId())
+                    .eq(MallGoodsAttachment::getType,0)
+            ));
+        }
+        return goods;
+    }
+
     /**
      * 发布商城商品
      * @param userId

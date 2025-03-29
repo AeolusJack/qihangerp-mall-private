@@ -14,7 +14,7 @@ export const getProList = (obj) => {
 
 //获取商品详情数据
 export const getProDetail = (goodsId) => {
-  return request.get('/goods/detail', {
+  return request.get('/api/mall-api/goods/detail', {
     params: {
       goodsId
     }
@@ -23,7 +23,7 @@ export const getProDetail = (goodsId) => {
 
 //获取商品评价数据
 export const getProComments = (goodsId, limit) => {
-  return request.get('/comment/listRows', {
+  return request.get('/api/mall-api/goodsComment/list', {
     params: {
       goodsId,
       limit

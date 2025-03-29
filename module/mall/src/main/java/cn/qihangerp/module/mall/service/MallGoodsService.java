@@ -14,5 +14,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface MallGoodsService extends IService<MallGoods> {
     PageResult<MallGoods> querySalePageList(MallGoods bo, PageQuery pageQuery);
+    MallGoods queryById(Long id);
     ResultVo<Long> publishGoods(Long userId , GoodsPublishBo goods);
 }

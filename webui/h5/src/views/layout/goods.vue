@@ -13,7 +13,7 @@ export default {
   },
   async created() {
     listGoods().then(resp => {
-      this.proList = resp.data;
+      this.proList = resp.data.records;
     })
   }
 };
