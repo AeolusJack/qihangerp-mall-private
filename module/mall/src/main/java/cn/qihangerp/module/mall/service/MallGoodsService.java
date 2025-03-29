@@ -1,5 +1,7 @@
 package cn.qihangerp.module.mall.service;
 
+import cn.qihangerp.common.PageQuery;
+import cn.qihangerp.common.PageResult;
 import cn.qihangerp.common.ResultVo;
 import cn.qihangerp.module.mall.domain.MallGoods;
 import cn.qihangerp.module.mall.domain.bo.GoodsPublishBo;
@@ -11,5 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2025-03-29 15:21:00
 */
 public interface MallGoodsService extends IService<MallGoods> {
+    PageResult<MallGoods> querySalePageList(MallGoods bo, PageQuery pageQuery);
     ResultVo<Long> publishGoods(Long userId , GoodsPublishBo goods);
 }

@@ -7,3 +7,11 @@ export function publishGoods(data) {
     data: data,
   })
 }
+
+export function listGoods(param) {
+  return request({
+    url: '/api/mall-api/goods/list',
+    method: 'get',
+    params: param,
+  })
+}

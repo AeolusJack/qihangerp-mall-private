@@ -1,6 +1,7 @@
 <script >
 import GoodsItem from "@/components/GoodsItem.vue";
-import {getHomeGoods} from "@/api/home";
+
+import {listGoods} from "@/api/goods";
 
 export default {
   components: {GoodsItem},
@@ -11,7 +12,7 @@ export default {
     };
   },
   async created() {
-    getHomeGoods().then(resp => {
+    listGoods().then(resp => {
       this.proList = resp.data;
     })
   }

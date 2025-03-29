@@ -1,16 +1,12 @@
-package cn.qihangerp.mall.controller;
+package cn.qihangerp.mall.controller.goods;
 
 
 import cn.qihangerp.common.*;
-import cn.qihangerp.module.goods.domain.OGoods;
+import cn.qihangerp.module.mall.domain.MallGoods;
 import cn.qihangerp.module.mall.domain.bo.GoodsPublishBo;
-import cn.qihangerp.module.goods.service.OGoodsService;
 
-import cn.qihangerp.module.goods.service.OGoodsSkuService;
 import cn.qihangerp.module.mall.service.MallGoodsService;
-import cn.qihangerp.utils.JwtUtils;
 import lombok.AllArgsConstructor;
-import org.aspectj.weaver.loadtime.Aj;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,19 +23,15 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/goods")
 public class GoodsController extends BaseController
 {
-    private final OGoodsService goodsService;
-    private final OGoodsSkuService skuService;
     private final MallGoodsService mallGoodsService;
     /**
      * 查询商品管理列表
      */
     @GetMapping("/list")
-    public TableDataInfo list(OGoods goods,PageQuery pageQuery, HttpServletRequest request)
+    public AjaxResult list(MallGoods goods,PageQuery pageQuery, HttpServletRequest request)
     {
-        Long userIdFromToken = JwtUtils.getUserIdFromToken(request);
-        goods.setSupplierId(userIdFromToken);
-        PageResult<OGoods> pageList = goodsService.queryPageList(goods, pageQuery);
-        return getDataTable(pageList);
+        PageResult<MallGoods> pageList = mallGoodsService.querySalePageList(goods, pageQuery);
+        return AjaxResult.success(pageList);
     }
 
     @PostMapping("/publish")

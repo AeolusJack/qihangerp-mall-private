@@ -1,5 +1,7 @@
 package cn.qihangerp.module.mall.service.impl;
 
+import cn.qihangerp.common.PageQuery;
+import cn.qihangerp.common.PageResult;
 import cn.qihangerp.common.ResultVo;
 import cn.qihangerp.module.mall.domain.MallGoodsAttachment;
 import cn.qihangerp.module.mall.domain.MallGoodsAttribute;
@@ -14,6 +16,8 @@ import cn.qihangerp.module.mts.service.MtsGoodsSourceOrderService;
 import cn.qihangerp.module.mts.service.MtsGoodsSourceService;
 import cn.qihangerp.module.user.domain.MallUser;
 import cn.qihangerp.module.user.service.MallUserService;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.qihangerp.module.mall.domain.MallGoods;
 import cn.qihangerp.module.mall.service.MallGoodsService;
@@ -40,6 +44,18 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
     private final MallGoodsAttachmentService goodsAttachmentService;
     private final MallGoodsAttributeService goodsAttributeService;
     private final MallGoodsSkuService goodsSkuService;
+
+    @Override
+    public PageResult<MallGoods> querySalePageList(MallGoods bo, PageQuery pageQuery) {
+        LambdaQueryWrapper<MallGoods> queryWrapper = new LambdaQueryWrapper<MallGoods>();
+        queryWrapper.eq(MallGoods::getSaleStatus,1);
+        queryWrapper.eq(bo.getCategoryId()!=null,MallGoods::getCategoryId,bo.getCategoryId());
+        pageQuery.setOrderByColumn("goods_id");
+        pageQuery.setIsAsc("desc");
+        Page<MallGoods> pages = this.baseMapper.selectPage(pageQuery.build(), queryWrapper);
+
+        return PageResult.build(pages);
+    }
 
     /**
      * 发布商城商品
