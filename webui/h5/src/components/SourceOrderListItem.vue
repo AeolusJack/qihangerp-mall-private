@@ -3,7 +3,11 @@
     <div class="tit">
       <div class="time">{{ item.acceptTime }}</div>
       <div class="status">
-        <span>{{ item.state_text }}</span>
+
+        <van-tag type="primary" v-if="item.status==0">已取消</van-tag>
+        <van-tag type="primary" v-if="item.status==1">进行中</van-tag>
+        <van-tag type="primary" v-if="item.status==2">发布审核中</van-tag>
+        <van-tag type="primary" v-if="item.status==3">已发布</van-tag>
       </div>
     </div>
     <div class="list">
@@ -12,20 +16,29 @@
           <img :src="item.image" alt="" />
         </div>
         <div class="goods-content text-ellipsis-2">
-          {{ item.goods_name }}
+          <span>
+          <van-tag plain type="primary">{{item.model}}</van-tag>
+          </span>
+          <span style="padding-left: 10px;">
+          <van-tag plain type="primary" >{{item.brand}}</van-tag>
+          </span>
+          <span style="padding-left: 10px;">
+          <van-tag plain type="primary" >{{item.type}}</van-tag>
+          </span>
         </div>
         <div class="goods-trade">
-          <p>¥ {{ item.total_pay_price }}</p>
-          <p>x {{ item.total_num }}</p>
+          <p>¥ {{ item.price }}</p>
+          <p>x {{ item.quantity }}</p>
         </div>
       </div>
     </div>
-    <div class="total">
-      共 {{ item.total_num }} 件商品，总金额 ¥{{ item.total_price }}
-    </div>
+<!--    <div class="total">-->
+<!--&lt;!&ndash;      共 {{ item.total_num }} 件商品，总金额 ¥{{ item.total_price }}&ndash;&gt;-->
+<!--      <van-button type="primary" size="small" @click="publish(item)">发布</van-button>-->
+<!--    </div>-->
     <div class="actions">
-      <div v-if="item.order_status === 10">
-        <span v-if="item.pay_status === 10">立刻付款</span>
+      <div v-if="item.status === 1">
+        <span v-if="item.status === 1" @click="$router.push({path:'/source/publishGoods',query:{id:item.goodsSourceId}})" >立刻发布</span>
         <span v-else-if="item.delivery_status === 10">申请取消</span>
         <span
           v-else-if="item.delivery_status === 20 || item.delivery_status === 30"
@@ -40,6 +53,8 @@
 </template>
 
 <script>
+import {Toast} from "vant";
+
 export default {
   props: {
     item: {
@@ -49,6 +64,11 @@ export default {
       },
     },
   },
+  methods: {
+    publishGoods(item){
+      Toast("发布成功！请等待审核！")
+    }
+  }
 };
 </script>
 

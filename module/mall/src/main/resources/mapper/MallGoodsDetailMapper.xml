@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qihangerp.module.mall.mapper.MallGoodsDetailMapper">
+
+    <resultMap id="BaseResultMap" type="cn.qihangerp.module.mall.domain.MallGoodsDetail">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+            <result property="pcDetail" column="pc_detail" jdbcType="VARCHAR"/>
+            <result property="mDetail" column="m_detail" jdbcType="VARCHAR"/>
+            <result property="modifyOn" column="modify_on" jdbcType="INTEGER"/>
+            <result property="modifyBy" column="modify_by" jdbcType="VARCHAR"/>
+            <result property="attributeText" column="attribute_text" jdbcType="VARCHAR"/>
+            <result property="specText" column="spec_text" jdbcType="VARCHAR"/>
+            <result property="detailText" column="detail_text" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,goods_id,pc_detail,
+        m_detail,modify_on,modify_by,
+        attribute_text,spec_text,detail_text
+    </sql>
+</mapper>

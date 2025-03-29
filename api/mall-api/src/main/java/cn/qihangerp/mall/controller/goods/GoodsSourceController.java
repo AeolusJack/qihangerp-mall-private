@@ -31,6 +31,11 @@ public class GoodsSourceController extends BaseController {
         return getDataTable(pageList);
     }
 
+    @GetMapping(value = "/{id}")
+    public AjaxResult getInfo(@PathVariable("id") Long id)
+    {
+        return success(goodsSourceService.getById(id));
+    }
 
     @PostMapping("/publish")
     public AjaxResult list(@RequestBody GoodsSourcePublishRequest publish ,HttpServletRequest request)

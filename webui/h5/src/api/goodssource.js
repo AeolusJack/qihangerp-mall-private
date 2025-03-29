@@ -8,6 +8,13 @@ export function publishGoodsSource(data) {
   })
 }
 
+export function getGoodsSource(id) {
+  return request({
+    url: '/api/mall-api/goodsSource/'+id,
+    method: 'get',
+  })
+}
+
 export function listPendingGoodsSource(param) {
   return request({
     url: '/api/mall-api/goodsSource/pendingSourceList',

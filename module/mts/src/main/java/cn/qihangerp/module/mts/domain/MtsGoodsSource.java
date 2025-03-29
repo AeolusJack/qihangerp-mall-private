@@ -222,6 +222,11 @@ public class MtsGoodsSource implements Serializable {
      */
     private Date acceptTime;
 
+    /**
+     * 接单id
+     */
+    private Long acceptOrderId;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.qihangerp.module.mall.mapper.MallGoodsMapper">
+
+    <resultMap id="BaseResultMap" type="cn.qihangerp.module.mall.domain.MallGoods">
+            <id property="goodsId" column="goods_id" jdbcType="BIGINT"/>
+            <result property="goodsSourceId" column="goods_source_id" jdbcType="BIGINT"/>
+            <result property="goodsCode" column="goods_code" jdbcType="VARCHAR"/>
+            <result property="mainImage" column="main_image" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="deputyTitle" column="deputy_title" jdbcType="VARCHAR"/>
+            <result property="priceMax" column="price_max" jdbcType="DECIMAL"/>
+            <result property="priceMin" column="price_min" jdbcType="DECIMAL"/>
+            <result property="linePriceMax" column="line_price_max" jdbcType="DECIMAL"/>
+            <result property="linePriceMin" column="line_price_min" jdbcType="DECIMAL"/>
+            <result property="salePrice" column="sale_price" jdbcType="DECIMAL"/>
+            <result property="marketPrice" column="market_price" jdbcType="DECIMAL"/>
+            <result property="commisionRate" column="commision_rate" jdbcType="DECIMAL"/>
+            <result property="commisionRate2" column="commision_rate2" jdbcType="DECIMAL"/>
+            <result property="detail" column="detail" jdbcType="VARCHAR"/>
+            <result property="detailPics" column="detail_pics" jdbcType="VARCHAR"/>
+            <result property="goodsTypeId" column="goods_type_id" jdbcType="BIGINT"/>
+            <result property="categoryId" column="category_id" jdbcType="BIGINT"/>
+            <result property="category1" column="category1" jdbcType="BIGINT"/>
+            <result property="category2" column="category2" jdbcType="BIGINT"/>
+            <result property="category3" column="category3" jdbcType="BIGINT"/>
+            <result property="orderSocre" column="order_socre" jdbcType="DECIMAL"/>
+            <result property="commentNum" column="comment_num" jdbcType="INTEGER"/>
+            <result property="commentSocre" column="comment_socre" jdbcType="DECIMAL"/>
+            <result property="saleNum" column="sale_num" jdbcType="INTEGER"/>
+            <result property="saleNumShow" column="sale_num_show" jdbcType="INTEGER"/>
+            <result property="saleType" column="sale_type" jdbcType="INTEGER"/>
+            <result property="publishStatus" column="publish_status" jdbcType="INTEGER"/>
+            <result property="saleStatus" column="sale_status" jdbcType="INTEGER"/>
+            <result property="createOn" column="create_on" jdbcType="INTEGER"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="modifyOn" column="modify_on" jdbcType="INTEGER"/>
+            <result property="modifyBy" column="modify_by" jdbcType="VARCHAR"/>
+            <result property="deliveryFreightTemplate" column="delivery_freight_template" jdbcType="INTEGER"/>
+            <result property="deliveryProvince" column="delivery_province" jdbcType="VARCHAR"/>
+            <result property="deliveryCity" column="delivery_city" jdbcType="VARCHAR"/>
+            <result property="deliveryAddress" column="delivery_address" jdbcType="VARCHAR"/>
+            <result property="deliveryDays" column="delivery_days" jdbcType="INTEGER"/>
+            <result property="keyword" column="keyword" jdbcType="VARCHAR"/>
+            <result property="isPromotion" column="is_promotion" jdbcType="INTEGER"/>
+            <result property="promotionId" column="promotion_id" jdbcType="INTEGER"/>
+            <result property="promotionType" column="promotion_type" jdbcType="INTEGER"/>
+            <result property="promotionTitle" column="promotion_title" jdbcType="VARCHAR"/>
+            <result property="promotionRate" column="promotion_rate" jdbcType="INTEGER"/>
+            <result property="promotionFullCount" column="promotion_full_count" jdbcType="INTEGER"/>
+            <result property="oGoodsId" column="o_goods_id" jdbcType="INTEGER"/>
+            <result property="shopSellerId" column="shop_seller_id" jdbcType="BIGINT"/>
+            <result property="shopContactsId" column="shop_contacts_id" jdbcType="BIGINT"/>
+            <result property="shopContacts" column="shop_contacts" jdbcType="VARCHAR"/>
+            <result property="shopMobile" column="shop_mobile" jdbcType="VARCHAR"/>
+            <result property="shopWx" column="shop_wx" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        goods_id,goods_source_id,goods_code,
+        main_image,title,deputy_title,
+        price_max,price_min,line_price_max,
+        line_price_min,sale_price,market_price,
+        commision_rate,commision_rate2,detail,
+        detail_pics,goods_type_id,category_id,
+        category1,category2,category3,
+        order_socre,comment_num,comment_socre,
+        sale_num,sale_num_show,sale_type,
+        publish_status,sale_status,create_on,
+        create_by,modify_on,modify_by,
+        delivery_freight_template,delivery_province,delivery_city,
+        delivery_address,delivery_days,keyword,
+        is_promotion,promotion_id,promotion_type,
+        promotion_title,promotion_rate,promotion_full_count,
+        o_goods_id,shop_seller_id,shop_contacts_id,
+        shop_contacts,shop_mobile,shop_wx
+    </sql>
+</mapper>

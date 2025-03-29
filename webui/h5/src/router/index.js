@@ -17,8 +17,9 @@ const Pay = () => import('@/views/pay')
 const MyOrder = () => import('@/views/myorder')
 const Goods = () => import('@/views/layout/goods.vue')
 const mySourceOrder = () => import('@/views/source/myOrder.vue')
-const GoodsSourceOrder = () => import('@/views/source/acceptOrder.vue')
+const GoodsSourceOrder = () => import('@/views/source/acceptOrder')
 const GoodsSourcePublish = () => import('@/views/source/publish')
+const PublishGoods = () => import('@/views/source/publishGoods')
 
 Vue.use(VueRouter)
 
@@ -45,8 +46,8 @@ const router = new VueRouter({
     { path: '/pay', component: Pay },
     { path: '/myorder', component: MyOrder },
     { path: '/source/myOrder', component: mySourceOrder },
-
     { path: '/source/publish', component: GoodsSourcePublish },
+    { path: '/source/publishGoods', component: PublishGoods },
   ]
 })
 

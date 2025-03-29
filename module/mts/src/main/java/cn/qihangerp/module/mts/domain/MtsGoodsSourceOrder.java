@@ -7,8 +7,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -40,14 +38,13 @@ public class MtsGoodsSourceOrder implements Serializable {
     private Long goodsSourceId;
 
     /**
-     * 状态1接单中0已取消
+     * 状态1接单中0已取消2发布审核中3已发布
      */
     private Integer status;
 
     /**
      * 接单时间
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date acceptTime;
 
     /**

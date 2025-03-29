@@ -142,6 +142,7 @@ public class MtsGoodsSourceServiceImpl extends ServiceImpl<MtsGoodsSourceMapper,
         update.setId(id);
         update.setAcceptStatus(1);
         update.setPhase(1);
+        update.setAcceptOrderId(accept.getId());
         update.setAcceptUserId(userId);
         update.setAcceptUserName(userName);
         update.setAcceptUserMobile(userName);
