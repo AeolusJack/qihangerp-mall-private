@@ -70,16 +70,7 @@
           v-hasPermi="['goods:goods:add']"
         >添加商品</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd2"
-          v-hasPermi="['goods:goods:add']"
-        >添加商品2</el-button>
-      </el-col>
+
 <!--      <el-col :span="1.5">-->
 <!--        <el-button-->
 <!--          type="success"-->
@@ -478,9 +469,6 @@ export default {
     },
     handleAdd(){
       this.$router.push('/goods/create');
-    },
-    handleAdd2(){
-      this.$router.push('/goods/create2');
     },
     // 取消按钮
     cancel() {
