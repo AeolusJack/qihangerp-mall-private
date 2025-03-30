@@ -1,9 +1,16 @@
 import request from '@/utils/request'
 
+export function listAllShop(query) {
+  return request({
+    url: '/api/ams-api/shop/list',
+    method: 'get',
+    params: query
+  })
+}
 // 查询店铺列表
 export function listShop(query) {
   return request({
-    url: '/api/ams-api/shop/list',
+    url: '/api/ams-api/shop/pageList',
     method: 'get',
     params: query
   })

@@ -4,17 +4,12 @@ import cn.qihangerp.common.AjaxResult;
 import cn.qihangerp.common.PageQuery;
 import cn.qihangerp.common.PageResult;
 import cn.qihangerp.common.TableDataInfo;
-import cn.qihangerp.domain.OLogisticsCompany;
-import cn.qihangerp.domain.OShop;
-import cn.qihangerp.domain.OShopPullLasttime;
 import cn.qihangerp.module.mall.domain.MallShop;
 import cn.qihangerp.module.mall.service.MallShopService;
-import cn.qihangerp.request.ShopPullTimeRequest;
 import cn.qihangerp.security.common.BaseController;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -32,9 +27,8 @@ public class ShopController extends BaseController {
     private final MallShopService shopService;
 
     /**
-     * 查询店铺列表logistics
+     * 查询店铺列表
      */
-    @PreAuthorize("@ss.hasPermi('shop:shop:list')")
     @GetMapping("/list")
     public TableDataInfo list(MallShop shop)
     {
