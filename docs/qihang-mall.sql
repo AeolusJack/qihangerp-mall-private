@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 29/03/2025 20:58:41
+ Date: 30/03/2025 18:25:34
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ CREATE TABLE `mall_banner`  (
   `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_on` int NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城Banner' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城Banner' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_banner
@@ -118,7 +118,7 @@ CREATE TABLE `mall_goods`  (
   `shop_mobile` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家联系手机号（谈判联系人）',
   `shop_wx` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家联系微信（谈判联系人）',
   PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods
@@ -140,7 +140,7 @@ CREATE TABLE `mall_goods_attachment`  (
   `create_on` int NOT NULL COMMENT '创建时间',
   `create_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '\'创建人\'',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品附件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品附件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_attachment
@@ -159,7 +159,7 @@ CREATE TABLE `mall_goods_attribute`  (
   `value_id` bigint NOT NULL COMMENT '属性值id',
   `value` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品属性表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_attribute
@@ -184,7 +184,7 @@ CREATE TABLE `mall_goods_comment`  (
   `status` int NOT NULL COMMENT '状态1评价2已删除',
   `create_on` int NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_comment
@@ -202,7 +202,7 @@ CREATE TABLE `mall_goods_comment_image`  (
   `goods_id` bigint NOT NULL COMMENT '商品id',
   `create_on` int NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论图片表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论图片表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_comment_image
@@ -223,7 +223,7 @@ CREATE TABLE `mall_goods_detail`  (
   `spec_text` varchar(555) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `detail_text` varchar(555) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品详情表（暂时没用）' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品详情表（暂时没用）' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_detail
@@ -264,7 +264,7 @@ CREATE TABLE `mall_goods_sku`  (
   `modify_by` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '\'最后修改人\'',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城商品SKU表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城商品SKU表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_sku
@@ -287,7 +287,7 @@ CREATE TABLE `mall_nav`  (
   `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_on` int NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城导航表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城导航表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_nav
@@ -309,7 +309,7 @@ CREATE TABLE `mall_rec_category`  (
   `parent_id` bigint NULL DEFAULT NULL,
   `sale_info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城推荐分类展示' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商城推荐分类展示' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_rec_category
@@ -356,7 +356,7 @@ CREATE TABLE `mall_rec_goods`  (
   `create_on` int NULL DEFAULT NULL COMMENT '创建时间',
   `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '推荐商品表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '推荐商品表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_rec_goods
@@ -559,7 +559,7 @@ CREATE TABLE `mall_user_favorite`  (
   `favorite_price` decimal(10, 2) NULL DEFAULT NULL,
   `create_on` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_user_favorite
@@ -583,7 +583,7 @@ CREATE TABLE `media`  (
   `modify_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   `modify_on` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of media
@@ -596,7 +596,7 @@ DROP TABLE IF EXISTS `media_info`;
 CREATE TABLE `media_info`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of media_info
@@ -650,7 +650,7 @@ CREATE TABLE `mts_goods_source`  (
   `accept_time` datetime NULL DEFAULT NULL COMMENT '接单时间',
   `accept_order_id` bigint NOT NULL DEFAULT 0 COMMENT '接单id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '货源信息表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '货源信息表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mts_goods_source
@@ -686,7 +686,7 @@ CREATE TABLE `mts_goods_source_order`  (
   `brand` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '品牌',
   `type` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '货源信息接单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '货源信息接单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mts_goods_source_order
@@ -1008,7 +1008,7 @@ CREATE TABLE `o_goods_sku`  (
   UNIQUE INDEX `sku_id_unique`(`outer_erp_sku_id`) USING BTREE,
   INDEX `id`(`id`) USING BTREE,
   INDEX `number`(`sku_code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品库SKU表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品库SKU表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of o_goods_sku
@@ -1022,10 +1022,6 @@ INSERT INTO `o_goods_sku` VALUES (6, 7, '10045', '1004', '文香潮州三宝特�
 INSERT INTO `o_goods_sku` VALUES (7, 79, NULL, NULL, 'aa', '默认', 'aa00', 425, '默认', 'https://cbu01.alicdn.com/img/ibank/O1CN01Aqa1cY1oPteJHyDYW_!!2217885915218-0-cib.jpg', 0, '', 0, '', NULL, 12.90, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (8, 80, NULL, NULL, '潮牌mm24秋冬新款时髦洋气字母提花短款羽绒面包服轻便保暖', '默认', 'ABC909338800', 425, '默认', 'https://cbu01.alicdn.com/img/ibank/O1CN01Mnbr4L2Exx8KntWGB_!!2215681298812-0-cib.jpg', 0, '', 0, '', NULL, 148.90, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (9, 81, NULL, NULL, '潮牌mm24秋冬新款时髦洋气字母提花短款羽绒面包服轻便保暖', '默认', 'ACDE3434300', 425, '默认', 'https://cbu01.alicdn.com/img/ibank/O1CN01Mnbr4L2Exx8KntWGB_!!2215681298812-0-cib.jpg', 0, '', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (31, 76, NULL, '23', '小众碎花连衣裙女夏高级感初恋裙子显瘦浪漫茶歇裙温柔风甜美气质', '黄色 L', 'DY36404303', 359, '黄色', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 343, 'L', 0, '', NULL, 79.20, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (41, 76, NULL, '52', '小众碎花连衣裙女夏高级感初恋裙子显瘦浪漫茶歇裙温柔风甜美气质', '黄色 XL', 'DY36404304', 359, '黄色', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 344, 'XL', 0, '', NULL, 79.20, 0.00, 0.00, '', 2, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (51, 77, NULL, NULL, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', '黑色', 'QIHANGNIUERP00122', 308, '黑色', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', 0, '', 0, '', NULL, 49.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
-INSERT INTO `o_goods_sku` VALUES (61, 78, NULL, NULL, '红罐加多宝', '大红色 均码', 'JIADUOBAO2600', 333, '大红色', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', 340, '均码', 0, '11', NULL, 19.00, 25.90, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (11, 82, NULL, NULL, 'aaa', 'aad 红色', '1233', 0, 'aad', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (12, 82, NULL, NULL, 'aaa', 'aad 绿色', '1244', 0, 'aad', 'aa', 0, '绿色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (13, 82, NULL, NULL, 'aaa', 'dfdfd 红色', '1355', 0, 'dfdfd', 'aa', 0, '红色', 0, '', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
@@ -1038,6 +1034,10 @@ INSERT INTO `o_goods_sku` VALUES (19, 83, NULL, NULL, ' 窄版直筒牛仔裤女
 INSERT INTO `o_goods_sku` VALUES (20, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 L 短款', 'ANK99387', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'L', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (21, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 长款', 'ANK99388', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '长款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 INSERT INTO `o_goods_sku` VALUES (22, 83, NULL, NULL, ' 窄版直筒牛仔裤女2025春秋新款高腰宽松显瘦复古小个子百搭阔腿裤', '红色 XL 短款', 'ANK99383', 0, '红色', 'https://cbu01.alicdn.com/img/ibank/O1CN015iiIIu20L6wxuXRr0_!!3823476832-0-cib.jpg', 0, 'XL', 0, '短款', NULL, 123.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (31, 76, NULL, '23', '小众碎花连衣裙女夏高级感初恋裙子显瘦浪漫茶歇裙温柔风甜美气质', '黄色 L', 'DY36404303', 359, '黄色', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 343, 'L', 0, '', NULL, 79.20, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (41, 76, NULL, '52', '小众碎花连衣裙女夏高级感初恋裙子显瘦浪漫茶歇裙温柔风甜美气质', '黄色 XL', 'DY36404304', 359, '黄色', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 344, 'XL', 0, '', NULL, 79.20, 0.00, 0.00, '', 2, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (51, 77, NULL, NULL, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', '黑色', 'QIHANGNIUERP00122', 308, '黑色', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', 0, '', 0, '', NULL, 49.00, 0.00, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
+INSERT INTO `o_goods_sku` VALUES (61, 78, NULL, NULL, '红罐加多宝', '大红色 均码', 'JIADUOBAO2600', 333, '大红色', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', 340, '均码', 0, '11', NULL, 19.00, 25.90, 0.00, '', 1, 0, 0, NULL, 0, 0, 0, 0);
 
 -- ----------------------------
 -- Table structure for o_goods_sku_attr
@@ -1753,7 +1753,7 @@ CREATE TABLE `order_goods_comment`  (
   `state` int NULL DEFAULT NULL,
   `create_on` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of order_goods_comment
@@ -1931,21 +1931,19 @@ CREATE TABLE `sys_menu`  (
   `update_time` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2141 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2142 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (10, '货源管理', 0, 10, 'goodsSource', NULL, NULL, 1, 0, 'M', '0', '0', '', 'dict', 'admin', '2025-03-27 11:36:40', 'admin', '2025-03-27 11:53:03', '');
-INSERT INTO `sys_menu` VALUES (20, '商品库', 0, 20, 'goods', 'Layout', '', 1, 0, 'M', '0', '0', '', 'international', 'admin', '2023-12-29 16:53:03', 'admin', '2025-03-27 11:53:10', '');
+INSERT INTO `sys_menu` VALUES (20, '商品管理', 0, 20, 'goods', 'Layout', '', 1, 0, 'M', '0', '0', '', 'international', 'admin', '2023-12-29 16:53:03', 'admin', '2025-03-30 18:16:36', '');
 INSERT INTO `sys_menu` VALUES (30, '用户管理', 0, 30, 'user', NULL, NULL, 1, 0, 'M', '0', '0', NULL, 'peoples', 'admin', '2025-03-27 11:54:04', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (50, '订单管理', 0, 50, '/order', 'Layout', '', 1, 0, 'M', '0', '0', '', 'shopping', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-27 11:53:29', '系统管理目录');
-INSERT INTO `sys_menu` VALUES (60, '售后管理', 0, 60, '/refund', 'Layout', '', 1, 0, 'M', '0', '0', '', 'monitor', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-27 11:54:51', '至简官网地址');
-INSERT INTO `sys_menu` VALUES (98, '商城设置', 0, 80, 'shop', 'Layout', '', 1, 0, 'M', '0', '0', '', 'dict', 'admin', '2023-12-29 13:29:44', 'admin', '2025-03-27 11:56:51', '');
+INSERT INTO `sys_menu` VALUES (98, '商城装修', 0, 80, 'shop', 'Layout', '', 1, 0, 'M', '0', '0', '', 'dict', 'admin', '2023-12-29 13:29:44', 'admin', '2025-03-30 18:19:27', '');
 INSERT INTO `sys_menu` VALUES (99, '系统设置', 0, 99, '/system', 'Layout', '', 1, 0, 'M', '0', '0', '', 'system', 'admin', '2023-12-27 15:00:27', 'admin', '2023-12-29 09:07:42.856856', '系统管理目录');
-INSERT INTO `sys_menu` VALUES (100, '订单库', 50, 1, 'order_list', 'order/index', '', 1, 0, 'C', '0', '0', '', 'shopping', 'admin', '2023-12-27 15:00:27', 'admin', '2024-09-15 16:57:59', '用户管理菜单');
-INSERT INTO `sys_menu` VALUES (104, '售后中心', 60, 1, 'refund_list', 'refund/index', '', 1, 0, 'C', '0', '0', '', 'tree', 'admin', '2023-12-27 15:00:27', 'admin', '2024-09-15 18:58:16', '岗位管理菜单');
-INSERT INTO `sys_menu` VALUES (106, '店铺售后管理', 60, 2, 'shop_refund_list', 'refund/shopRefund/index', '', 1, 0, 'C', '0', '0', '', 'edit', 'admin', '2023-12-27 15:00:27', 'admin', '2024-07-20 11:56:11', '参数设置菜单');
+INSERT INTO `sys_menu` VALUES (100, '订单管理', 50, 1, 'order_list', 'order/index', '', 1, 0, 'C', '0', '0', '', 'shopping', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-30 18:13:40', '用户管理菜单');
+INSERT INTO `sys_menu` VALUES (104, '售后管理', 50, 10, 'refund_list', 'refund/index', '', 1, 0, 'C', '0', '0', '', 'tree', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-30 18:13:57', '岗位管理菜单');
+INSERT INTO `sys_menu` VALUES (106, '发货管理', 50, 25, 'shipping_list', 'order/shipping', '', 1, 0, 'C', '0', '0', '', 'edit', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-30 18:24:57', '参数设置菜单');
 INSERT INTO `sys_menu` VALUES (116, '用户管理', 99, 0, 'user', 'system/user/index', '', 1, 0, 'C', '0', '0', '', 'user', 'admin', '2023-12-27 15:00:27', 'admin', '2025-02-17 22:03:15', '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (117, '菜单管理', 99, 1, 'menu', 'system/menu/index', '', 1, 0, 'C', '0', '0', '', 'user', 'admin', '2023-12-27 15:00:27', '', '', '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (1001, '添加ERP商品', 20, 99, 'create', 'goods/create', NULL, 1, 0, 'C', '1', '0', '', 'checkbox', 'admin', '2024-03-18 07:59:57', 'admin', '2024-09-07 16:41:46', '');
@@ -1963,7 +1961,7 @@ INSERT INTO `sys_menu` VALUES (2086, '定时任务配置', 98, 99, 'sys_task', '
 INSERT INTO `sys_menu` VALUES (2088, '发货快递管理', 98, 99, 'ship_logistics_company', 'shipping/logistics/company', NULL, 1, 0, 'C', '0', '0', '', 'checkbox', 'admin', '2024-03-30 17:37:01', 'admin', '2025-03-27 09:40:41', '');
 INSERT INTO `sys_menu` VALUES (2090, '角色管理', 99, 2, 'role', 'system/role/index', NULL, 1, 0, 'C', '0', '0', NULL, 'peoples', 'admin', '2024-03-31 12:40:50', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2091, '部门管理', 99, 3, 'dept', 'system/dept/index', NULL, 1, 0, 'C', '0', '0', NULL, 'tree', 'admin', '2024-03-31 12:42:57', '', NULL, '');
-INSERT INTO `sys_menu` VALUES (2092, '售后处理记录', 60, 5, 'processing', 'afterSale/index', NULL, 1, 0, 'C', '0', '0', '', 'documentation', 'admin', '2024-04-06 17:27:03', 'admin', '2024-07-28 18:59:41', '');
+INSERT INTO `sys_menu` VALUES (2092, '售后处理记录', 50, 50, 'process', 'refund/after_process.vue', NULL, 1, 0, 'C', '0', '0', '', 'documentation', 'admin', '2024-04-06 17:27:03', 'admin', '2025-03-30 18:22:43', '');
 INSERT INTO `sys_menu` VALUES (2093, '订单明细', 50, 2, 'order_item_list', 'order/item_list', NULL, 1, 0, 'C', '0', '0', NULL, 'chart', 'admin', '2024-04-06 18:58:06', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (2103, '手动创建订单', 50, 49, 'offline_order_create', 'offline/order/create', NULL, 1, 0, 'C', '1', '0', '', 'date', 'admin', '2024-07-27 20:30:07', 'admin', '2024-09-07 23:20:43', '');
 INSERT INTO `sys_menu` VALUES (2105, '库存管理', 0, 40, 'wms', NULL, NULL, 1, 0, 'M', '0', '1', '', 'lock', 'admin', '2024-08-25 15:54:14', 'admin', '2025-03-27 11:57:00', '');
@@ -1974,9 +1972,7 @@ INSERT INTO `sys_menu` VALUES (2116, '商品出库管理', 2105, 20, 'stock_out'
 INSERT INTO `sys_menu` VALUES (2117, '仓位管理', 2105, 91, 'position', 'wms/warehouse/position', NULL, 1, 0, 'C', '1', '0', '', '404', 'admin', '2024-09-22 11:52:18', 'admin', '2024-09-22 14:48:21', '');
 INSERT INTO `sys_menu` VALUES (2118, '新建商品入库单', 2105, 11, 'stock_in/create', 'wms/stockIn/create.vue', NULL, 1, 0, 'C', '1', '0', '', '404', 'admin', '2024-09-22 14:49:40', 'admin', '2024-09-22 15:30:10', '');
 INSERT INTO `sys_menu` VALUES (2128, '新建商品出库单', 2105, 21, 'stock_out/create', 'wms/stockOut/create', NULL, 1, 0, 'C', '1', '0', '', 'color', 'admin', '2025-02-15 21:03:45', 'admin', '2025-02-15 21:04:07', '');
-INSERT INTO `sys_menu` VALUES (2137, '货源发布管理', 10, 0, 'list', 'goodsSource/source.vue', NULL, 1, 0, 'C', '0', '0', '', 'checkbox', 'admin', '2025-03-27 11:37:18', 'admin', '2025-03-27 21:39:23', '');
 INSERT INTO `sys_menu` VALUES (2140, '普通用户', 30, 10, 'list', 'user/index', NULL, 1, 0, 'C', '0', '0', '', 'qq', 'admin', '2025-03-27 11:54:29', 'admin', '2025-03-27 20:35:39', '');
-INSERT INTO `sys_menu` VALUES (2141, '货源管理', 10, 10, 'goods_list', 'goodsSource/mallGoods', NULL, 1, 0, 'C', '0', '0', '', 'dict', 'admin', '2025-03-27 21:42:14', 'admin', '2025-03-27 21:42:35', '');
 
 -- ----------------------------
 -- Table structure for sys_oss
@@ -2003,11 +1999,6 @@ CREATE TABLE `sys_oss`  (
 -- ----------------------------
 -- Records of sys_oss
 -- ----------------------------
-INSERT INTO `sys_oss` VALUES (50, 'x4.jpg', 'x4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/08/28/x4.jpg', '/images/2024/08/28/x4.jpg', 'ecerp', 0, '0', '0', '', '2024-08-28 22:39:05', '', NULL);
-INSERT INTO `sys_oss` VALUES (51, 'x11.jpg', 'x11.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/08/28/x11.jpg', '/images/2024/08/28/x11.jpg', 'ecerp', 0, '0', '0', '', '2024-08-28 22:47:11', '', NULL);
-INSERT INTO `sys_oss` VALUES (52, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:31:44', '', NULL);
-INSERT INTO `sys_oss` VALUES (53, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:35:41', '', NULL);
-INSERT INTO `sys_oss` VALUES (54, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', '/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:36:09', '', NULL);
 INSERT INTO `sys_oss` VALUES (1, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', '/images/2024/09/07/a3e935aa-d1b3-4524-bd84-e567df01f2e3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:38:57', '', NULL);
 INSERT INTO `sys_oss` VALUES (2, '主图画板2.jpg', '主图画板2.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', '/images/2024/09/07/1dbe1530-787f-4461-9f20-3efa3c332588.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:57:54', '', NULL);
 INSERT INTO `sys_oss` VALUES (3, '主图画板5.jpg', '主图画板5.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', '/images/2024/09/07/2dc06b89-8661-4a72-a7cd-7f85f4545c6e.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 18:03:24', '', NULL);
@@ -2019,6 +2010,11 @@ INSERT INTO `sys_oss` VALUES (8, '主图画板 1.jpg', '主图画板 1.jpg', '.j
 INSERT INTO `sys_oss` VALUES (9, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://223.83.100.30:9001/omsimage/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', '/images/2024/09/07/b28f4e15-8997-418c-bd32-b4beb4966f6b.jpg', 'omsimage', 0, '0', '0', '', '2024-09-07 20:37:51', '', NULL);
 INSERT INTO `sys_oss` VALUES (10, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', '/images/2025/02/21/76f75113-710f-4ff4-b3f9-213f89d6242a.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:23', '', NULL);
 INSERT INTO `sys_oss` VALUES (11, 'kjds..png', 'kjds..png', '.png', 'http://8.138.114.135:9000/zpmalloss/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', '/images/2025/02/21/91b45bfa-58cb-4aef-826d-1601a1c27e89.png', 'zpmalloss', 0, '0', '0', '', '2025-02-21 20:16:36', '', NULL);
+INSERT INTO `sys_oss` VALUES (50, 'x4.jpg', 'x4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/08/28/x4.jpg', '/images/2024/08/28/x4.jpg', 'ecerp', 0, '0', '0', '', '2024-08-28 22:39:05', '', NULL);
+INSERT INTO `sys_oss` VALUES (51, 'x11.jpg', 'x11.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/08/28/x11.jpg', '/images/2024/08/28/x11.jpg', 'ecerp', 0, '0', '0', '', '2024-08-28 22:47:11', '', NULL);
+INSERT INTO `sys_oss` VALUES (52, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:31:44', '', NULL);
+INSERT INTO `sys_oss` VALUES (53, '主图画板 4.jpg', '主图画板 4.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/主图画板 4.jpg', '/images/2024/09/07/主图画板 4.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:35:41', '', NULL);
+INSERT INTO `sys_oss` VALUES (54, '主图画板 1.jpg', '主图画板 1.jpg', '.jpg', 'http://127.0.0.1:9000/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', '/images/2024/09/07/f35a3cb8-1b9e-41f4-8158-31d458c7efb3.jpg', 'ecerp', 0, '0', '0', '', '2024-09-07 17:36:09', '', NULL);
 
 -- ----------------------------
 -- Table structure for sys_role
@@ -2159,6 +2155,9 @@ CREATE TABLE `sys_task_logs`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '后台任务运行日志表' ROW_FORMAT = DYNAMIC;
 
+-- ----------------------------
+-- Records of sys_task_logs
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -2190,7 +2189,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-27 21:21:44', 'admin', '2023-08-07 19:31:37', '', '2025-03-27 21:21:44', '管理员');
+INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-30 18:10:37', 'admin', '2023-08-07 19:31:37', '', '2025-03-30 18:10:37', '管理员');
 INSERT INTO `sys_user` VALUES (2, NULL, 'openapi', 'openApi接口专用', '00', '2806456181@qq.com', '15818590000', '0', '', '$2a$10$fHkhoqbMiyracAsTzl38H.55bu.M.of1FXk2EK7RQBjfic3tLU0Ue', '0', '0', '127.0.0.1', '2024-06-24 10:23:35', 'admin', '2024-03-17 14:55:22', 'admin', '2024-06-24 10:23:35', NULL);
 INSERT INTO `sys_user` VALUES (101, 101, '15818590119', 'aaa123', '00', '', '', '0', '', '$2a$10$pXcT6cHaObMeKuYd9vZb5uEb8PyUdF2AcqqRN1cBqiA9rV4qYQW7G', '0', '2', '', NULL, 'admin', '2024-08-15 13:45:25', '', NULL, NULL);
 INSERT INTO `sys_user` VALUES (102, 101, '15818590119', '老齐', '00', '', '', '0', '', '$2a$10$ysk.zgJ8wh25c7vOjKyZ8uarM2hkG0S51j8GYdJSo2kZmc3f8HdKe', '0', '0', '', NULL, 'admin', '2024-08-15 13:49:59', 'admin', '2025-02-10 16:26:20', NULL);
