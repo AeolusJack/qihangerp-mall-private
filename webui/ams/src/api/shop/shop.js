@@ -43,46 +43,6 @@ export function delShop(id) {
   })
 }
 
-// 查询店铺平台列表
-export function listPlatform(query) {
-  return request({
-    url: '/api/ams-api/shop/platformList',
-    method: 'get',
-    params: query
-  })
-}
-
-// 查询店铺详细
-export function getPlatform(id) {
-  return request({
-    url: '/api/ams-api/shop/platform/' + id,
-    method: 'get'
-  })
-}
-
-// 修改店铺
-export function updatePlatform(data) {
-  return request({
-    url: '/api/ams-api/shop/platform',
-    method: 'put',
-    data: data
-  })
-}
-
-// 角色状态修改
-export function changePlatformStatus(id, status) {
-  const data = {
-    id,
-    status
-  }
-  return request({
-    url: '/oms-api/shop/platform/changeStatus',
-    method: 'put',
-    data: data
-  })
-}
-
-
 export function listLogistics(query) {
   return request({
     url: '/api/oms-api/shop/logistics',

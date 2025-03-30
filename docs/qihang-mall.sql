@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 30/03/2025 20:09:43
+ Date: 30/03/2025 20:51:52
 */
 
 SET NAMES utf8mb4;
@@ -364,6 +364,45 @@ CREATE TABLE `mall_rec_goods`  (
 INSERT INTO `mall_rec_goods` VALUES (1, 10052, 'http://smart-shop.itheima.net/uploads/10001/20230321/1d1801baa9c9b8d1d1524ec917d2adde.jpg', '蒙牛 特仑苏纯牛奶 250ml*12包 学生青少年营养早餐奶 送礼佳品 1月产', 49.00, 49.00, 1990, 59.00, 59.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
 INSERT INTO `mall_rec_goods` VALUES (2, 10038, 'http://smart-shop.itheima.net/uploads/10001/20230321/8f505c6c437fc3d4b4310b57b1567544.jpg', '三星手机 SAMSUNG Galaxy S23 8GB+256GB 超视觉夜拍系统 超清夜景 悠雾紫 5G手机 游戏拍照旗舰机s23', 55.00, 55.00, 4554, 2333.00, 2333.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
 INSERT INTO `mall_rec_goods` VALUES (3, 1233, 'http://smart-shop.itheima.net/uploads/10001/20230321/bfe7f91b8413f35f8a222450d630d0c0.jpg', '[郎酒旗舰店郎牌郎酒]郎酒 郎牌郎酒 普郎 53度酱香型白酒 500ml*6瓶 整箱装白酒普郎原箱', 1620.00, 1620.00, 3444, 2499.00, 2499.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
+
+-- ----------------------------
+-- Table structure for mall_shop
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_shop`;
+CREATE TABLE `mall_shop`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '店铺名',
+  `type` int NOT NULL COMMENT '对应第三方平台Id',
+  `url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '店铺url',
+  `sort` int NOT NULL DEFAULT 9 COMMENT '排序',
+  `status` int NULL DEFAULT 0 COMMENT '状态（1正常2已删除）',
+  `modify_on` bigint NOT NULL COMMENT '更新时间',
+  `remark` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
+  `seller_id` bigint NOT NULL DEFAULT 0 COMMENT '第三方平台店铺id，淘宝天猫开放平台使用',
+  `app_key` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Appkey',
+  `app_sercet` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Appsercet',
+  `access_token` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方平台sessionKey（access_token）',
+  `expires_in` bigint NULL DEFAULT NULL COMMENT '到期',
+  `access_token_begin` bigint NULL DEFAULT NULL COMMENT 'access_token开始时间',
+  `refresh_token` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '刷新token',
+  `refresh_token_timeout` bigint NULL DEFAULT NULL COMMENT '刷新token过期时间',
+  `api_request_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '请求url',
+  `manage_user_id` bigint NULL DEFAULT NULL COMMENT '负责人id',
+  `shop_group_id` bigint NULL DEFAULT NULL COMMENT '店铺分组',
+  `region_id` bigint NOT NULL COMMENT '国家/地区',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1006 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '店铺表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of mall_shop
+-- ----------------------------
+INSERT INTO `mall_shop` VALUES (1, '天猫旗舰店测试', 100, NULL, 9, 1, 1739609707, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 103, 1, 1);
+INSERT INTO `mall_shop` VALUES (2, '京东旗舰店测试', 200, NULL, 9, 0, 1739614498, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102, 2, 0);
+INSERT INTO `mall_shop` VALUES (3, '抖音旗舰店测试', 400, 'http://openapi.jinritemai.com', 87, 1, 1740130767, NULL, 206832235, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', 103, NULL, 1);
+INSERT INTO `mall_shop` VALUES (4, '启航电商ERP拼多多店', 300, NULL, 9, 0, 1726389225, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `mall_shop` VALUES (5, '京东自营测试店铺', 280, NULL, 10, 0, 1726389888, NULL, 0, NULL, NULL, NULL, 31535999, NULL, 'af8befdefa064283a6b62189419d8cebzgvm', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `mall_shop` VALUES (6, '微信小店测试', 500, NULL, 9, 1, 1740131041, NULL, 1705173416, 'wx95c95a55074ada3a', '988804c17442fdb5fd7b7da6725ea536', '90_uzNNFPQbyugjqMO99QuGY_UaPMGlK-YCgF09AgNrAJvXv_skU76tZdiaLXgflornbNBRxRbNVfn7iu47fCKDtQccmKpytRzm52ZNiW53mZ6TsSTW7IjwWt-GLT4BXLaAEASOC', NULL, NULL, NULL, NULL, 'https://api.weixin.qq.com/', NULL, NULL, 1);
+INSERT INTO `mall_shop` VALUES (999, '线下渠道测试店铺', 999, NULL, 9, 1, 1740481082, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102, 2, 0);
 
 -- ----------------------------
 -- Table structure for mall_trade_account
@@ -1939,7 +1978,7 @@ CREATE TABLE `sys_menu`  (
 INSERT INTO `sys_menu` VALUES (20, '商品管理', 0, 20, 'goods', 'Layout', '', 1, 0, 'M', '0', '0', '', 'international', 'admin', '2023-12-29 16:53:03', 'admin', '2025-03-30 18:16:36', '');
 INSERT INTO `sys_menu` VALUES (30, '用户管理', 0, 30, 'user', NULL, NULL, 1, 0, 'M', '0', '0', NULL, 'peoples', 'admin', '2025-03-27 11:54:04', '', NULL, '');
 INSERT INTO `sys_menu` VALUES (50, '订单管理', 0, 50, '/order', 'Layout', '', 1, 0, 'M', '0', '0', '', 'shopping', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-27 11:53:29', '系统管理目录');
-INSERT INTO `sys_menu` VALUES (98, '商城装修', 0, 80, 'shop', 'Layout', '', 1, 0, 'M', '0', '0', '', 'dict', 'admin', '2023-12-29 13:29:44', 'admin', '2025-03-30 18:19:27', '');
+INSERT INTO `sys_menu` VALUES (98, '商城管理', 0, 80, 'mall', 'Layout', '', 1, 0, 'M', '0', '0', '', 'dict', 'admin', '2023-12-29 13:29:44', 'admin', '2025-03-30 20:34:49', '');
 INSERT INTO `sys_menu` VALUES (99, '系统设置', 0, 99, '/system', 'Layout', '', 1, 0, 'M', '0', '0', '', 'system', 'admin', '2023-12-27 15:00:27', 'admin', '2023-12-29 09:07:42.856856', '系统管理目录');
 INSERT INTO `sys_menu` VALUES (100, '订单管理', 50, 1, 'order_list', 'order/index', '', 1, 0, 'C', '0', '0', '', 'shopping', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-30 18:13:40', '用户管理菜单');
 INSERT INTO `sys_menu` VALUES (104, '售后管理', 50, 10, 'refund_list', 'refund/index', '', 1, 0, 'C', '0', '0', '', 'tree', 'admin', '2023-12-27 15:00:27', 'admin', '2025-03-30 18:13:57', '岗位管理菜单');
@@ -1970,6 +2009,7 @@ INSERT INTO `sys_menu` VALUES (2117, '仓位管理', 2105, 91, 'position', 'wms/
 INSERT INTO `sys_menu` VALUES (2118, '新建商品入库单', 2105, 11, 'stock_in/create', 'wms/stockIn/create.vue', NULL, 1, 0, 'C', '1', '0', '', '404', 'admin', '2024-09-22 14:49:40', 'admin', '2024-09-22 15:30:10', '');
 INSERT INTO `sys_menu` VALUES (2128, '新建商品出库单', 2105, 21, 'stock_out/create', 'wms/stockOut/create', NULL, 1, 0, 'C', '1', '0', '', 'color', 'admin', '2025-02-15 21:03:45', 'admin', '2025-02-15 21:04:07', '');
 INSERT INTO `sys_menu` VALUES (2140, '普通用户', 30, 10, 'list', 'user/index', NULL, 1, 0, 'C', '0', '0', '', 'qq', 'admin', '2025-03-27 11:54:29', 'admin', '2025-03-27 20:35:39', '');
+INSERT INTO `sys_menu` VALUES (2142, '商城店铺管理', 98, 10, 'shop_list', 'shop/index', NULL, 1, 0, 'C', '0', '0', NULL, 'post', 'admin', '2025-03-30 20:35:50', '', NULL, '');
 
 -- ----------------------------
 -- Table structure for sys_oss
@@ -2186,7 +2226,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-30 19:56:50', 'admin', '2023-08-07 19:31:37', '', '2025-03-30 19:56:50', '管理员');
+INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-30 20:33:37', 'admin', '2023-08-07 19:31:37', '', '2025-03-30 20:33:36', '管理员');
 INSERT INTO `sys_user` VALUES (2, NULL, 'openapi', 'openApi接口专用', '00', '2806456181@qq.com', '15818590000', '0', '', '$2a$10$fHkhoqbMiyracAsTzl38H.55bu.M.of1FXk2EK7RQBjfic3tLU0Ue', '0', '0', '127.0.0.1', '2024-06-24 10:23:35', 'admin', '2024-03-17 14:55:22', 'admin', '2024-06-24 10:23:35', NULL);
 INSERT INTO `sys_user` VALUES (101, 101, '15818590119', 'aaa123', '00', '', '', '0', '', '$2a$10$pXcT6cHaObMeKuYd9vZb5uEb8PyUdF2AcqqRN1cBqiA9rV4qYQW7G', '0', '2', '', NULL, 'admin', '2024-08-15 13:45:25', '', NULL, NULL);
 INSERT INTO `sys_user` VALUES (102, 101, '15818590119', '老齐', '00', '', '', '0', '', '$2a$10$ysk.zgJ8wh25c7vOjKyZ8uarM2hkG0S51j8GYdJSo2kZmc3f8HdKe', '0', '0', '', NULL, 'admin', '2024-08-15 13:49:59', 'admin', '2025-02-10 16:26:20', NULL);
