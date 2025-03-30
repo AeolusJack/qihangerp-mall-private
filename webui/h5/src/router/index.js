@@ -15,11 +15,7 @@ const SearchList = () => import('@/views/search/list')
 const ProDetail = () => import('@/views/prodetail')
 const Pay = () => import('@/views/pay')
 const MyOrder = () => import('@/views/myorder')
-const Goods = () => import('@/views/layout/goods.vue')
-const mySourceOrder = () => import('@/views/source/myOrder.vue')
-const GoodsSourceOrder = () => import('@/views/source/acceptOrder')
-const GoodsSourcePublish = () => import('@/views/source/publish')
-const PublishGoods = () => import('@/views/source/publishGoods')
+
 
 Vue.use(VueRouter)
 
@@ -33,9 +29,8 @@ const router = new VueRouter({
         { path: '/home', component: Home },
         { path: '/category', component: Category },
         { path: '/cart', component: Cart },
-        { path: '/source', component: GoodsSourceOrder },
+        // { path: '/source', component: GoodsSourceOrder },
         { path: '/user', component: User },
-        { path: '/goods', component: Goods },
       ]
     },
     { path: '/login', component: Login },
@@ -45,9 +40,6 @@ const router = new VueRouter({
     { path: '/prodetail/:id', component: ProDetail },
     { path: '/pay', component: Pay },
     { path: '/myorder', component: MyOrder },
-    { path: '/source/myOrder', component: mySourceOrder },
-    { path: '/source/publish', component: GoodsSourcePublish },
-    { path: '/source/publishGoods', component: PublishGoods },
   ]
 })
 
