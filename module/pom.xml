@@ -18,7 +18,6 @@
         <module>order</module>
         <module>goods</module>
         <module>mall</module>
-        <module>mts</module>
         <module>user</module>
     </modules>
     <properties>

@@ -10,10 +10,6 @@ import cn.qihangerp.module.mall.domain.bo.GoodsPublishBo;
 import cn.qihangerp.module.mall.service.MallGoodsAttachmentService;
 import cn.qihangerp.module.mall.service.MallGoodsAttributeService;
 import cn.qihangerp.module.mall.service.MallGoodsSkuService;
-import cn.qihangerp.module.mts.domain.MtsGoodsSource;
-import cn.qihangerp.module.mts.domain.MtsGoodsSourceOrder;
-import cn.qihangerp.module.mts.service.MtsGoodsSourceOrderService;
-import cn.qihangerp.module.mts.service.MtsGoodsSourceService;
 import cn.qihangerp.module.user.domain.MallUser;
 import cn.qihangerp.module.user.service.MallUserService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
@@ -38,8 +34,7 @@ import java.util.Date;
 @Service
 public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods>
     implements MallGoodsService{
-    private final MtsGoodsSourceService goodsSourceService;
-    private final MtsGoodsSourceOrderService goodsSourceOrderService;
+
     private final MallUserService mallUserService;
     private final MallGoodsAttachmentService goodsAttachmentService;
     private final MallGoodsAttributeService goodsAttributeService;
@@ -83,27 +78,13 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         else if (user.getBusinessType()!=10) {
             return ResultVo.error("只能谈判人身份发布商品信息");
         }
-        MtsGoodsSource source = goodsSourceService.getById(goods.getGoodsSourceId());
-        if(source==null){
-            return ResultVo.error("货源信息不存在");
-        }else if (source.getAcceptUserId()==null||source.getAcceptUserId()!=userId){
-            return ResultVo.error("不是你的接单，没有权限发布！");
-        }
-        else if (source.getStatus()==3) {
-            return ResultVo.error("已发布过了!");
-        } else if (source.getStatus()!=2) {
-            return ResultVo.error("未审核不能发布");
-        }
-        MtsGoodsSourceOrder sourceOrder = goodsSourceOrderService.getById(goods.getGoodsSourceOrderId());
-        if(sourceOrder==null){
-            return ResultVo.error("接单数据不存在");
-        }
+
         // 添加商城商品
         MallGoods good = new MallGoods();
-        good.setGoodsSourceId(source.getId());
+        good.setGoodsSourceId(0L);
         good.setTitle(goods.getTitle());
         good.setMainImage(goods.getPicList()[0]);
-        good.setGoodsTypeId(source.getTypeId());
+//        good.setGoodsTypeId(source.getTypeId());
         if(goods.getCategoryId()!=null){
             good.setCategoryId(goods.getCategoryId());
         }
@@ -122,10 +103,10 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         good.setCreateOn(System.currentTimeMillis()/1000);
         good.setCreateBy(user.getUserName());
         good.setShopSellerId(userId);
-        good.setShopContactsId(source.getUserId());
-        good.setShopContacts(source.getSourceContacts());
-        good.setShopMobile(source.getSourceMobile());
-        good.setShopWx(source.getSourceWx());
+//        good.setShopContactsId(source.getUserId());
+//        good.setShopContacts(source.getSourceContacts());
+//        good.setShopMobile(source.getSourceMobile());
+//        good.setShopWx(source.getSourceWx());
         this.baseMapper.insert(good);
 
         // 添加附件
@@ -147,16 +128,16 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         model.setGoodsId(good.getGoodsId());
         model.setAttributeId(100L);//固定ID
         model.setAttribute("型号");
-        model.setValueId(source.getModelId());
-        model.setValue(source.getModel());
+//        model.setValueId(source.getModelId());
+//        model.setValue(source.getModel());
         goodsAttributeService.save(model);
 
         MallGoodsAttribute brand = new MallGoodsAttribute();
         brand.setGoodsId(good.getGoodsId());
         brand.setAttributeId(500L);
         brand.setAttribute("品牌");
-        brand.setValueId(source.getBrandId());
-        brand.setValue(source.getBrand());
+//        brand.setValueId(source.getBrandId());
+//        brand.setValue(source.getBrand());
         goodsAttributeService.save(brand);
         if(StringUtils.hasText(goods.getFz())) {
             MallGoodsAttribute fz = new MallGoodsAttribute();
@@ -188,9 +169,9 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         //添加sku
         MallGoodsSku sku = new MallGoodsSku();
         sku.setGoodsId(good.getGoodsId());
-        sku.setSkuName(source.getModel());
+//        sku.setSkuName(source.getModel());
         sku.setColorId(100L);
-        sku.setColorValue(source.getModel());
+//        sku.setColorValue(source.getModel());
         sku.setColorImage(good.getMainImage());
         sku.setPrice(goods.getPrice());
         sku.setLinePrice(goods.getPrice());
@@ -199,22 +180,7 @@ public class MallGoodsServiceImpl extends ServiceImpl<MallGoodsMapper, MallGoods
         sku.setCreateOn(System.currentTimeMillis()/1000);
         sku.setCreateBy(user.getUserName());
         goodsSkuService.save(sku);
-        // 更新状态
-        MtsGoodsSource goodsSourceUpdate = new MtsGoodsSource();
-        goodsSourceUpdate.setId(source.getId());
-        goodsSourceUpdate.setStatus(3);
-        goodsSourceUpdate.setPhase(3);
-        goodsSourceUpdate.setUpdateTime(new Date());
-        goodsSourceUpdate.setUpdateBy(user.getUserName());
-        goodsSourceService.updateById(goodsSourceUpdate);
 
-        // 更新接单状态
-        MtsGoodsSourceOrder goodsSourceOrderUpdate = new MtsGoodsSourceOrder();
-        goodsSourceOrderUpdate.setId(sourceOrder.getId());
-        goodsSourceOrderUpdate.setStatus(3);
-        goodsSourceOrderUpdate.setPublishStatus(2);
-        goodsSourceOrderUpdate.setPublishTime(new Date());
-        goodsSourceOrderService.updateById(goodsSourceOrderUpdate);
         return ResultVo.success(good.getGoodsId());
     }
 }
