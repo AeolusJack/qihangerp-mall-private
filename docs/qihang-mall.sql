@@ -11,7 +11,7 @@
  Target Server Version : 80200
  File Encoding         : 65001
 
- Date: 30/03/2025 20:51:52
+ Date: 30/03/2025 21:17:40
 */
 
 SET NAMES utf8mb4;
@@ -184,7 +184,7 @@ CREATE TABLE `mall_goods_comment`  (
   `status` int NOT NULL COMMENT '状态1评价2已删除',
   `create_on` int NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_comment
@@ -202,7 +202,7 @@ CREATE TABLE `mall_goods_comment_image`  (
   `goods_id` bigint NOT NULL COMMENT '商品id',
   `create_on` int NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论图片表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品评论图片表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of mall_goods_comment_image
@@ -298,6 +298,121 @@ INSERT INTO `mall_nav` VALUES (3, '服饰鞋包', 'https://smart-shop.itheima.ne
 INSERT INTO `mall_nav` VALUES (4, '美食酒水', 'https://smart-shop.itheima.net/uploads/10001/20230320/f01c5fc360f55c6053beec34913bc699.png', 'icon-2.png', 'pages/category/index', 'HOME', 2, 1, NULL, NULL);
 
 -- ----------------------------
+-- Table structure for mall_order
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_order`;
+CREATE TABLE `mall_order`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单id，自增',
+  `order_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单编号（第三方平台订单号）',
+  `shop_id` bigint NOT NULL COMMENT '店铺ID',
+  `remark` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单备注',
+  `buyer_memo` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家留言信息',
+  `seller_memo` varchar(2550) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '卖家留言信息',
+  `tag` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标签',
+  `refund_status` int NOT NULL COMMENT '售后状态 1：无售后或售后关闭，2：售后处理中，3：退款中，4： 退款成功 ',
+  `order_status` int NOT NULL COMMENT '订单状态0：新订单，1：待发货，2：已发货，3：已完成，11已取消；12退款中；21待付款；22锁定，29删除，101部分发货',
+  `goods_amount` double NULL DEFAULT NULL COMMENT '订单商品金额',
+  `post_fee` double NULL DEFAULT NULL COMMENT '订单运费',
+  `amount` double NOT NULL COMMENT '订单实际金额',
+  `seller_discount` double NULL DEFAULT 0 COMMENT '商家优惠金额，单位：元',
+  `platform_discount` double NULL DEFAULT 0 COMMENT '平台优惠金额，单位：元',
+  `payment` double NULL DEFAULT NULL COMMENT '实付金额',
+  `receiver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收件人姓名',
+  `receiver_mobile` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收件人手机号',
+  `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收件人地址',
+  `province` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '省',
+  `city` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '市',
+  `town` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '区',
+  `order_time` datetime NULL DEFAULT NULL COMMENT '订单时间',
+  `ship_type` int NOT NULL COMMENT '发货类型（0仓库发货；1供应商代发）',
+  `shipping_time` datetime NULL DEFAULT NULL COMMENT '发货时间',
+  `shipping_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '快递单号',
+  `shipping_company` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '物流公司',
+  `shipping_man` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '发货人',
+  `shipping_cost` decimal(10, 2) NULL DEFAULT NULL COMMENT '发货费用',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `update_by` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
+  `oms_push_status` int NULL DEFAULT 0 COMMENT 'OMS推送状态(1已推送0未推送）',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `order_sn_index`(`order_num`) USING BTREE,
+  INDEX `shopid_index`(`shop_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1827306419678949378 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '线下渠道订单表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of mall_order
+-- ----------------------------
+INSERT INTO `mall_order` VALUES (1817216580231049217, '1722092947647399', 999, NULL, NULL, NULL, NULL, 1, 2, 156, 0, 156, 0, 0, 156, '启航', '15818590119', 'AAAAAAAAAAAAAAAAAAAA', '山西省', '阳泉市', '郊区', '2024-07-27 23:12:50', 0, '2024-07-30 23:06:09', 'SF100500002220000', 'SFTC001', 'admin', NULL, '2024-07-27 23:12:50', 'admin', '2024-07-30 23:06:06', '批量发货', 1);
+INSERT INTO `mall_order` VALUES (1823969391941693441, '172370314299481', 999, NULL, NULL, NULL, NULL, 1, 2, 156, 0, 156, 0, 0, 156, 'qq', '13852200666', 'aaaaa', '河北省', '秦皇岛市', '山海关区', '2024-08-15 14:26:05', 0, '2024-08-15 15:36:16', 'AAD33343', 'SFTC001', 'admin', NULL, '2024-08-15 14:26:05', 'admin', '2024-08-15 15:36:16', '批量发货', 1);
+INSERT INTO `mall_order` VALUES (1823987689517395970, '1723707501431263', 999, NULL, NULL, NULL, NULL, 1, 2, 156, 0, 156, 0, 0, 156, 'aaaa', '13134567890', 'aaaa', '山西省', '晋城市', '陵川县', '2024-08-15 15:38:48', 0, '2024-08-18 16:14:59', '1111111', 'SFTC001', 'admin', NULL, '2024-08-15 15:38:48', 'admin', '2024-08-18 16:14:59', '批量发货', 1);
+INSERT INTO `mall_order` VALUES (1823990879193313282, '2723708260966435', 999, NULL, NULL, NULL, NULL, 2, 2, 171.9, 0, 171.9, 0, 0, 171.9, 'aaa', '13012345678', 'aa', '福建省', '三明市', '清流县', '2024-08-15 15:51:28', 0, '2024-08-18 16:13:54', 'AAA222222', 'SFTC001', 'admin', NULL, '2024-08-15 15:51:28', 'admin', '2024-08-24 23:08:40', 'admin', 1);
+INSERT INTO `mall_order` VALUES (1825084154723708929, '1723968921461168', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, '啊啊啊', '13000009999', 'AAAAAA', '天津市', '市辖区', '河东区', '2024-08-18 16:15:46', 0, NULL, '111111', 'SFTC001', NULL, NULL, '2024-08-18 16:15:46', 'admin', '2024-08-18 16:22:22', 'admin', 1);
+INSERT INTO `mall_order` VALUES (1825086522483814401, '1723969489164513', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, '111', '11111111111', '11111', '辽宁省', '抚顺市', '顺城区', '2024-08-18 16:25:10', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-18 16:25:10', 'admin', NULL, NULL, 0);
+INSERT INTO `mall_order` VALUES (1825087262455504897, '1723969663763311', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, '2222', '22222222222', '2222', '江苏省', '徐州市', '贾汪区', '2024-08-18 16:28:07', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-18 16:28:07', 'admin', '2024-08-18 16:28:18', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827250747377520642, '1724485480259389', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'aa', '13122233445', 'aaa', '天津市', '市辖区', '和平区', '2024-08-24 15:45:02', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 15:45:02', 'admin', '2024-08-24 15:45:02', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827251035584925698, '1724485556330550', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 15:46:10', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 15:46:10', 'admin', '2024-08-24 15:46:50', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827251300543238145, '1724485556330553', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 15:47:13', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 15:47:13', 'admin', '2024-08-24 15:47:28', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827251794560946177, '1724485556330557', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 15:49:11', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 15:49:11', 'admin', '2024-08-24 15:49:36', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827304264385458178, '1724485556330000', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 19:17:41', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 19:17:41', 'admin', '2025-02-18 08:35:48', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827305508713836545, '1724485556330200', 999, NULL, NULL, NULL, NULL, 1, 1, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 19:22:38', 0, NULL, NULL, NULL, NULL, NULL, '2024-08-24 19:22:38', 'admin', '2024-08-24 19:22:38', '推送状态更新', 1);
+INSERT INTO `mall_order` VALUES (1827306419678949377, '1724485556330230', 999, NULL, NULL, NULL, NULL, 1, 2, 15.9, 0, 15.9, 0, 0, 15.9, 'a', 'aa', 'aa', '内蒙古自治区', '赤峰市', '松山区', '2024-08-24 19:26:15', 0, '2024-08-25 10:46:09', '000000', 'SFTC001', 'admin', NULL, '2024-08-24 19:26:15', 'admin', '2024-08-25 10:46:09', '批量发货', 1);
+
+-- ----------------------------
+-- Table structure for mall_order_item
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_order_item`;
+CREATE TABLE `mall_order_item`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id，自增',
+  `order_id` bigint NOT NULL COMMENT '订单ID（o_order外键）',
+  `order_num` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单号（第三方平台）',
+  `sub_order_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '子订单号（第三方平台）',
+  `sku_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方平台skuId',
+  `goods_id` bigint NOT NULL DEFAULT 0 COMMENT '商品id(o_goods外键)',
+  `goods_sku_id` bigint NOT NULL DEFAULT 0 COMMENT '商品skuid(o_goods_sku外键)',
+  `goods_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品标题',
+  `goods_img` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品图片',
+  `goods_num` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品编码',
+  `goods_spec` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品规格',
+  `sku_num` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品规格编码',
+  `goods_price` double NOT NULL COMMENT '商品单价',
+  `item_amount` double NULL DEFAULT NULL COMMENT '子订单金额',
+  `payment` double NULL DEFAULT NULL COMMENT '实际支付金额',
+  `quantity` int NOT NULL COMMENT '商品数量',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `refund_count` int NULL DEFAULT 0 COMMENT '已退货数量',
+  `refund_status` int NULL DEFAULT NULL COMMENT '售后状态 1：无售后或售后关闭，2：售后处理中，3：退款中，4： 退款成功 ',
+  `order_status` int NULL DEFAULT NULL COMMENT '订单状态1：待发货，2：已发货，3：已完成，11已取消；21待付款',
+  `has_push_erp` int NULL DEFAULT 0 COMMENT '是否推送到ERP',
+  `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
+  `create_by` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
+  `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
+  `update_by` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `goodId_index`(`goods_id`) USING BTREE,
+  INDEX `order_id`(`order_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1827306419687337987 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '渠道订单明细表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of mall_order_item
+-- ----------------------------
+INSERT INTO `mall_order_item` VALUES (1817216580231049218, 1817216580231049217, '1722092947647399', '1722092947647399', '1', 0, 1, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', NULL, '黑色', 'QIHANGNIUERP00122', 156, 156, 156, 1, NULL, 0, 1, 1, 0, '2024-07-27 23:12:50', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1823969391975247873, 1823969391941693441, '172370314299481', '172370314299481', '1', 0, 1, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', NULL, '黑色', 'QIHANGNIUERP00122', 156, 156, 156, 1, NULL, 0, 1, 1, 0, '2024-08-15 14:26:05', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1823987689517395971, 1823987689517395970, '1723707501431263', '1723707501431263', '1', 0, 1, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', NULL, '黑色', 'QIHANGNIUERP00122', 156, 156, 156, 1, NULL, 0, 1, 1, 0, '2024-08-15 15:38:48', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1823990879193313283, 1823990879193313282, '2723708260966435', '17237082609664351', '1', 0, 1, '开源电商ERP启航电商ERP系统多平台多店铺订单管理系统演示账号', 'https://img.pddpic.com/garner-api-new/ffca4d8bba93ecc7813d350de43d5c50.jpeg?imageView2/2/w/2125/q/85', NULL, '黑色', 'QIHANGNIUERP00122', 156, 156, 156, 1, NULL, 0, 1, 1, 0, '2024-08-15 15:51:28', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1823990879193313284, 1823990879193313282, '2723708260966435', '17237082609664352', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 1, 2, 1, 0, '2024-08-15 15:51:28', 'admin', '2024-08-24 23:08:40', 'admin');
+INSERT INTO `mall_order_item` VALUES (1825084154723708930, 1825084154723708929, '1723968921461168', '1723968921461168', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-18 16:15:46', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1825086522483814402, 1825086522483814401, '1723969489164513', '1723969489164513', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-18 16:25:10', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1825087262489059329, 1825087262455504897, '1723969663763311', '1723969663763311', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-18 16:28:07', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827250747398492162, 1827250747377520642, '1724485480259389', '1724485480259389', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 15:45:02', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827251035584925699, 1827251035584925698, '1724485556330550', '1724485556330550', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 15:46:10', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827251300543238146, 1827251300543238145, '1724485556330553', '1724485556330553', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 15:47:13', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827251794581917698, 1827251794560946177, '1724485556330557', '1724485556330557', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 15:49:11', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827304264402235393, 1827304264385458178, '1724485556330000', '1724485556330000', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 19:17:41', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827305508743196673, 1827305508713836545, '1724485556330200', '1724485556330200', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 19:22:38', 'admin', NULL, NULL);
+INSERT INTO `mall_order_item` VALUES (1827306419687337986, 1827306419678949377, '1724485556330230', '1724485556330230', '2', 0, 2, '红罐加多宝', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '易拉罐 6瓶', 'JIADUOBAO2600', 15.9, 15.9, 15.9, 1, NULL, 0, 1, 1, 0, '2024-08-24 19:26:15', 'admin', NULL, NULL);
+
+-- ----------------------------
 -- Table structure for mall_rec_category
 -- ----------------------------
 DROP TABLE IF EXISTS `mall_rec_category`;
@@ -366,6 +481,48 @@ INSERT INTO `mall_rec_goods` VALUES (2, 10038, 'http://smart-shop.itheima.net/up
 INSERT INTO `mall_rec_goods` VALUES (3, 1233, 'http://smart-shop.itheima.net/uploads/10001/20230321/bfe7f91b8413f35f8a222450d630d0c0.jpg', '[郎酒旗舰店郎牌郎酒]郎酒 郎牌郎酒 普郎 53度酱香型白酒 500ml*6瓶 整箱装白酒普郎原箱', 1620.00, 1620.00, 3444, 2499.00, 2499.00, NULL, 'HOME', 2, NULL, NULL, 0, 1, NULL, NULL, NULL);
 
 -- ----------------------------
+-- Table structure for mall_refund
+-- ----------------------------
+DROP TABLE IF EXISTS `mall_refund`;
+CREATE TABLE `mall_refund`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `type` int NOT NULL COMMENT '类型（10退货退款；11仅退款；20换货；）',
+  `shop_id` int NOT NULL COMMENT '店铺id',
+  `refund_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '退款单号',
+  `order_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单号',
+  `order_item_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '子订单号',
+  `order_num` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单id',
+  `status` int NULL DEFAULT NULL COMMENT '状态（10005等待卖家处理 10006等待卖家发货 10011退款关闭 10010退款完成 10020售后成功 10021售后失败 10090退款中 10091换货成功 10092换货失败 ）',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+  `create_time` datetime NULL DEFAULT NULL,
+  `create_by` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `update_time` datetime NULL DEFAULT NULL,
+  `update_by` datetime NULL DEFAULT NULL,
+  `sku_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方平台skuId',
+  `goods_id` bigint NOT NULL DEFAULT 0 COMMENT '商品id(o_goods外键)',
+  `goods_sku_id` bigint NOT NULL DEFAULT 0 COMMENT '商品skuid(o_goods_sku外键)',
+  `goods_title` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品标题',
+  `goods_img` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品图片',
+  `goods_num` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品编码',
+  `goods_spec` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品规格',
+  `sku_num` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品规格编码',
+  `item_amount` double NULL DEFAULT NULL COMMENT '子订单金额',
+  `refund_fee` float NOT NULL COMMENT '退款金额',
+  `has_good_return` int NOT NULL COMMENT '买家是否需要退货。可选值:1(是),0(否)',
+  `refund_quantity` bigint NOT NULL COMMENT '退货数量',
+  `return_logistics_company` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '退货物流公司',
+  `return_logistics_code` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '退货物流单号',
+  `receive_time` datetime NULL DEFAULT NULL COMMENT '收货时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1827362395312390147 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '线下渠道退款表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of mall_refund
+-- ----------------------------
+INSERT INTO `mall_refund` VALUES (1827361291463852034, 11, 2, '1724511826792359', '1823990879193313282', '1823990879193313284', '2723708260966435', 10005, 'dddd', '2024-08-24 23:04:14', 'admin', NULL, NULL, '2', 0, 2, 'AAABBB', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '红罐加多宝', 'AABB002', 15.9, 20.8, 0, 1, NULL, NULL, NULL);
+INSERT INTO `mall_refund` VALUES (1827362395312390146, 11, 2, '1724511826792359', '1823990879193313282', '1823990879193313284', '2723708260966435', 10005, 'dddd', '2024-08-24 23:08:40', 'admin', NULL, NULL, '2', 0, 2, 'AAABBB', 'https://cbu01.alicdn.com/img/ibank/O1CN012YyP5f1hbcSsvkd3k_!!2218127114296-0-cib.jpg', NULL, '红罐加多宝', 'AABB002', 15.9, 20.8, 0, 1, NULL, NULL, NULL);
+
+-- ----------------------------
 -- Table structure for mall_shop
 -- ----------------------------
 DROP TABLE IF EXISTS `mall_shop`;
@@ -396,13 +553,11 @@ CREATE TABLE `mall_shop`  (
 -- ----------------------------
 -- Records of mall_shop
 -- ----------------------------
-INSERT INTO `mall_shop` VALUES (1, '天猫旗舰店测试', 100, NULL, 9, 1, 1739609707, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 103, 1, 1);
-INSERT INTO `mall_shop` VALUES (2, '京东旗舰店测试', 200, NULL, 9, 0, 1739614498, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102, 2, 0);
-INSERT INTO `mall_shop` VALUES (3, '抖音旗舰店测试', 400, 'http://openapi.jinritemai.com', 87, 1, 1740130767, NULL, 206832235, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', 103, NULL, 1);
-INSERT INTO `mall_shop` VALUES (4, '启航电商ERP拼多多店', 300, NULL, 9, 0, 1726389225, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `mall_shop` VALUES (5, '京东自营测试店铺', 280, NULL, 10, 0, 1726389888, NULL, 0, NULL, NULL, NULL, 31535999, NULL, 'af8befdefa064283a6b62189419d8cebzgvm', NULL, NULL, NULL, NULL, 0);
-INSERT INTO `mall_shop` VALUES (6, '微信小店测试', 500, NULL, 9, 1, 1740131041, NULL, 1705173416, 'wx95c95a55074ada3a', '988804c17442fdb5fd7b7da6725ea536', '90_uzNNFPQbyugjqMO99QuGY_UaPMGlK-YCgF09AgNrAJvXv_skU76tZdiaLXgflornbNBRxRbNVfn7iu47fCKDtQccmKpytRzm52ZNiW53mZ6TsSTW7IjwWt-GLT4BXLaAEASOC', NULL, NULL, NULL, NULL, 'https://api.weixin.qq.com/', NULL, NULL, 1);
-INSERT INTO `mall_shop` VALUES (999, '线下渠道测试店铺', 999, NULL, 9, 1, 1740481082, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102, 2, 0);
+INSERT INTO `mall_shop` VALUES (1, '测试1', 100, NULL, 9, 1, 1739609707, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 103, 1, 1);
+INSERT INTO `mall_shop` VALUES (2, '测试2', 200, NULL, 9, 0, 1739614498, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 102, 2, 0);
+INSERT INTO `mall_shop` VALUES (3, '测试3', 400, 'http://openapi.jinritemai.com', 87, 1, 1740130767, NULL, 206832235, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2', 103, NULL, 1);
+INSERT INTO `mall_shop` VALUES (4, '店4', 300, NULL, 9, 0, 1726389225, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `mall_shop` VALUES (5, '店铺5', 280, NULL, 10, 0, 1726389888, NULL, 0, NULL, NULL, NULL, 31535999, NULL, '', NULL, NULL, NULL, NULL, 0);
 
 -- ----------------------------
 -- Table structure for mall_trade_account
@@ -1970,7 +2125,7 @@ CREATE TABLE `sys_menu`  (
   `update_time` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2142 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2143 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单权限表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -2226,7 +2381,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-30 20:33:37', 'admin', '2023-08-07 19:31:37', '', '2025-03-30 20:33:36', '管理员');
+INSERT INTO `sys_user` VALUES (1, NULL, 'admin', '启航老齐', '00', '280645618@qq.com', '18123879144', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2025-03-30 21:10:08', 'admin', '2023-08-07 19:31:37', '', '2025-03-30 21:10:07', '管理员');
 INSERT INTO `sys_user` VALUES (2, NULL, 'openapi', 'openApi接口专用', '00', '2806456181@qq.com', '15818590000', '0', '', '$2a$10$fHkhoqbMiyracAsTzl38H.55bu.M.of1FXk2EK7RQBjfic3tLU0Ue', '0', '0', '127.0.0.1', '2024-06-24 10:23:35', 'admin', '2024-03-17 14:55:22', 'admin', '2024-06-24 10:23:35', NULL);
 INSERT INTO `sys_user` VALUES (101, 101, '15818590119', 'aaa123', '00', '', '', '0', '', '$2a$10$pXcT6cHaObMeKuYd9vZb5uEb8PyUdF2AcqqRN1cBqiA9rV4qYQW7G', '0', '2', '', NULL, 'admin', '2024-08-15 13:45:25', '', NULL, NULL);
 INSERT INTO `sys_user` VALUES (102, 101, '15818590119', '老齐', '00', '', '', '0', '', '$2a$10$ysk.zgJ8wh25c7vOjKyZ8uarM2hkG0S51j8GYdJSo2kZmc3f8HdKe', '0', '0', '', NULL, 'admin', '2024-08-15 13:49:59', 'admin', '2025-02-10 16:26:20', NULL);
