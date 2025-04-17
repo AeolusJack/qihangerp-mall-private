@@ -36,10 +36,10 @@
 import RefundTao  from "@/views/tao/refund/index";
 import RefundJd  from "@/views/jd/refund/index";
 import RefundJdvc  from "@/views/jd/refund/index-vc";
-import RefundDou from "@/views/dou/refund/goods.vue";
-import RefundPdd from "@/views/pdd/refund/goods.vue";
-import RefundWei from "@/views/wei/refund/goods.vue"
-import AfterSaleOffline from "@/views/offline/aftersale/goods.vue"
+import RefundDou from "@/views/dou/refund/index.vue";
+import RefundPdd from "@/views/pdd/refund/index.vue";
+import RefundWei from "@/views/wei/refund/index.vue"
+import AfterSaleOffline from "@/views/offline/aftersale/index.vue"
 import {listPlatform} from "@/api/shop/shop";
 
 

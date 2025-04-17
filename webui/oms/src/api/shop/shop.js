@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询店铺列表
 export function listShop(query) {
   return request({
-    url: '/api/oms-api/shop/list',
+    url: '/api/sys-api/shop/list',
     method: 'get',
     params: query
   })

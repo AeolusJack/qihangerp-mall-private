@@ -31,9 +31,9 @@ spring:
             - StripPrefix=2
 
         - id: ams_api_route
-          uri: lb://ams-api
+          uri: lb://sys-api
           predicates:
-            - Path=/api/ams-api/**
+            - Path=/api/sys-api/**
           filters:
             - StripPrefix=2
 

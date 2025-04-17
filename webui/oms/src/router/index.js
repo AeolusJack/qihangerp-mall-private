@@ -63,10 +63,10 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        // component: () => import('@/views/order/goods.vue'),
-        component: () => import('@/views/goods.vue'),
+        component: () => import('@/views/order/index.vue'),
+        // component: () => import('@/views/goods.vue'),
         name: 'Index',
-        meta: { title: '首页', icon: 'dashboard', affix: true }
+        meta: { title: '首页', icon: 'monitor', affix: true }
       }
     ]
   },

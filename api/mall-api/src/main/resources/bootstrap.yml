@@ -1,6 +1,6 @@
 # nacos配置
 server:
-  port: 7000
+  port: 7004
 
 spring:
   application:
