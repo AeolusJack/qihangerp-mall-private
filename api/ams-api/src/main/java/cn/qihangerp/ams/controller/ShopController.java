@@ -7,6 +7,8 @@ import cn.qihangerp.common.TableDataInfo;
 import cn.qihangerp.module.mall.domain.MallShop;
 import cn.qihangerp.module.mall.service.MallShopService;
 import cn.qihangerp.security.common.BaseController;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -94,5 +96,17 @@ public class ShopController extends BaseController {
     }
 
 
-
+    //platformList
+    /**
+     * 获取平台列表
+     */
+    @GetMapping("/platformList")
+    public AjaxResult platformList()
+    {
+        ArrayList<Object> objects = new ArrayList<>();
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("code", "100");
+//        objects.add(jsonObject);
+        return error("失败");
+    }
 }
